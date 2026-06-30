@@ -1,0 +1,277 @@
+/* RESET */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+
+
+ body{
+ height: auto;
+overflow-y: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+/* FUNDO ESTRELADO */
+
+.stars{
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    radial-gradient(white 1px, transparent 1px);
+
+  background-size: 50px 50px;
+
+  opacity: 0.15;
+
+  z-index: 0;
+}
+
+/* CONTAINER INDEX */
+
+.container{
+ display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+
+  padding: 60px;
+  max-width: 1200px;
+  margin: auto;
+}
+.book-card{
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+
+  transition: 0.3s;
+  backdrop-filter: blur(8px);
+}
+/* CAPA */
+
+.book-cover{
+  width: 100%;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+/* EFEITO HOVER */
+
+.book-cover:hover{
+  transform:
+    scale(1.03)
+    rotate(-1deg);
+
+  box-shadow:
+    0 0 40px rgba(255,255,255,0.4);
+}
+
+/* TÍTULO */
+
+h1{
+  margin-top: 25px;
+
+  font-size: 3rem;
+
+  letter-spacing: 3px;
+
+  color: #fff;
+}
+
+/* SUBTÍTULO */
+
+.subtitle{
+  margin-top: 10px;
+
+  font-size: 1.4rem;
+
+  color: #c8d2ff;
+}
+
+/* BOTÃO */
+
+.start-button{
+  display: inline-block;
+
+  margin-top: 30px;
+
+  padding:
+    15px 35px;
+
+  background: linear-gradient(
+    45deg,
+    #6c63ff,
+    #9b5cff
+  );
+
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 12px;
+
+  font-size: 1.2rem;
+
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+.btn.disabled{
+  background: gray;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.btn{
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: linear-gradient(45deg, #6c63ff, #9b5cff);
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.book-card h2{
+  margin-top: 15px;
+  font-size: 1.2rem;
+}
+
+.book-card p{
+  color: #c8d2ff;
+  font-size: 0.95rem;
+}
+/* HOVER BOTÃO */
+
+.start-button:hover{
+  transform: scale(1.05);
+
+  box-shadow:
+    0 0 20px rgba(155,92,255,0.6);
+}
+.video-button{
+  display: inline-block;
+  padding: 12px 20px;
+  background: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.video-button:hover{
+  transform: scale(1.05);
+}
+
+/* FLIPBOOK */
+
+.book-container{
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* LIVRO */
+
+#flipbook{
+  width: 400px;
+  height: 600px;
+}
+
+/* PÁGINAS */
+
+.page{
+  background: #111;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+}
+
+/* IMAGENS */
+
+.page img{
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* CAPA */
+
+.cover{
+  background: black;
+}
+.video-page {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.video-page iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+/* ÚLTIMA PÁGINA */
+
+.end-page{
+  background:
+    linear-gradient(
+      180deg,
+      #0d1330,
+      #050816
+    );
+
+  color: white;
+
+  font-size: 2rem;
+
+  text-align: center;
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 768px){
+
+  .book-cover{
+    width: 240px;
+  }
+
+  h1{
+    font-size: 2rem;
+  }
+
+  .subtitle{
+    font-size: 1rem;
+  }
+
+  #flipbook{
+    width: 300px;
+    height: 500px;
+  }
+
+}
