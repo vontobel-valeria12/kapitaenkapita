@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Kapitän Kapita </title>
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PAGEFLIP -->
+  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- FUNDO -->
+  <div class="stars"></div>
+
+  <!-- CONTAINER -->
+  <div class="book-container">
+
+    <!-- LIVRO -->
+    <div id="flipbook">
+
+      <!-- CAPA -->
+      <div class="page cover">
+        <img src="img/capa.png" alt="Capa">
+      </div>
+
+      <!-- PÁGINA 1 -->
+      <div class="page">
+        <img src="img/pagina1.jpg" alt="Página 1">
+      </div>
+
+      <!-- PÁGINA 2 -->
+      <div class="page">
+        <img src="img/pagina2.jpg" alt="Página 2">
+      </div>
+
+      
+      <!-- PÁGINA 3-->
+      <div class="page">
+        <img src="img/pagina3.jpg" alt="Página 3">
+      </div>
+
+     
+      <!-- PÁGINA 4-->
+      <div class="page">
+        <img src="img/pagina4.jpg" alt="Página 4">
+      </div>
+
+      <!-- PÁGINA 5-->
+      <div class="page">
+        <img src="img/pagina5.jpg" alt="Página 5">
+      </div>
+
+      
+      <!-- PÁGINA 6-->
+      <div class="page">
+        <img src="img/pagina6.jpg" alt="Página 6">
+      </div>
+
+       <!-- PÁGINA 7-->
+      <div class="page">
+        <img src="img/pagina7.jpg" alt="Página 7">
+      </div>
+
+       <!-- PÁGINA 8-->
+      <div class="page">
+        <img src="img/pagina8.jpg" alt="Página 8">
+      </div>
+ <!-- PÁGINA 9-->
+      <div class="page">
+        <img src="img/pagina9.jpg" alt="Página 9">
+      </div>
+      <!-- PÁGINA 10-->
+      <div class="page">
+        <img src="img/pagina10.jpg" alt="Página 10">
+      </div>
+ <!-- PÁGINA 11-->
+      <div class="page">
+        <img src="img/pagina11.jpg" alt="Página 11">
+      </div>
+ <!-- PÁGINA 12-->
+      <div class="page">
+        <img src="img/pagina12.jpg" alt="Página 12">
+      </div>
+       <!-- PÁGINA 13-->
+      <div class="page">
+        <img src="img/pagina13.jpg" alt="Página 13">
+      </div>
+       <!-- PÁGINA 14-->
+      <div class="page">
+        <img src="img/pagina14.jpg" alt="Página 14">
+      </div>
+      <div class="page video-page">
+  <iframe
+    src="https://www.youtube.com/embed/8469m0L6gg4"
+    title="Vídeo da Kapitän Kapita"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+</div>
+      
+      <!-- FINAL -->
+      <div class="page end-page">
+        <h2>Fortsetzung folgt...</h2>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SCRIPT -->
+ <script>
+
+  const pageFlip = new St.PageFlip(
+    document.getElementById("flipbook"),
+    {
+      width: 400,
+      height: 600,
+
+      size: "stretch",
+
+      minWidth: 300,
+      maxWidth: 700,
+
+      minHeight: 420,
+      maxHeight: 1000,
+
+      showCover: true,
+      mobileScrollSupport: false,
+      flippingTime: 1000,
+      usePortrait: true,
+      startPage: 0,
+      autoSize: true,
+      maxShadowOpacity: 0.5,
+    }
+  );
+
+  pageFlip.loadFromHTML(
+    document.querySelectorAll(".page")
+  );
+
+  // Áudios de cada página
+  const audios = [
+    "audio/capa.mp3",      // capa
+    "audio/pagina1.mp3",   // página 1
+    "audio/pagina2.mp3",   // página 2
+    "audio/pagina3.mp3",   // página 3
+    "audio/pagina4.mp3",
+    "audio/pagina5.mp3",
+    "audio/pagina6.mp3",
+    "audio/pagina7.mp3",
+    "audio/pagina8.mp3",
+    "audio/pagina9.mp3",
+    "audio/pagina10.mp3",
+    "audio/pagina11.mp3",
+    "audio/pagina12.mp3",
+    "audio/pagina13.mp3",
+    "audio/pagina14.mp3"
+  ];
+
+  let currentAudio = null;
+
+  // Tocar áudio quando virar a página
+  pageFlip.on("flip", (e) => {
+
+    // Parar o áudio anterior
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+
+    const paginaAtual = e.data;
+
+    // Verifica se existe áudio para a página
+    if (audios[paginaAtual]) {
+      currentAudio = new Audio(audios[paginaAtual]);
+
+      currentAudio.play().catch(() => {
+        console.log("O navegador bloqueou a reprodução automática.");
+      });
+    }
+  });
+
+</script>
+</body>
+</html>
