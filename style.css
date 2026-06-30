@@ -39,13 +39,15 @@ align-items: center;
 /* CONTAINER INDEX */
 
 .container{
- display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ display: flex;
+ flex-direction: column;
   gap: 40px;
-
-  padding: 60px;
-  max-width: 1200px;
+ padding: 60px;
+  max-width: 800px;
   margin: auto;
+
+  align-items: center;
+  
 }
 .book-card{
   background: rgba(255,255,255,0.05);
@@ -254,6 +256,16 @@ h1{
 }
 
 /* RESPONSIVO */
+@media (max-width: 768px){
+  .container{
+    padding: 30px 15px;
+  }
+
+  .book-card{
+    width: 100%;
+    max-width: 320px;
+  }
+}
 
 @media(max-width: 768px){
 
