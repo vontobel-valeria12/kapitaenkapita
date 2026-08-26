@@ -1,99 +1,886 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Kapitän Kapita</title>
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Valeria Books</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
-  <!-- FUNDO ESPACIAL -->
+  <!-- FUNDO -->
   <div class="stars"></div>
 
-  <!-- CONTAINER PRINCIPAL -->
-  <main class="container">
 
-   <main class="container">
+  <!-- =========================
+       TOPO DO APP
+  ========================== -->
 
-  <!-- LIVRO 1 -->
-  <div class="book-card">
-    <a href="flipbook.html">
-      <img src="img/capa.png" class="book-cover" alt="Olympische Spiele">
-    </a>
-    <h2>KAPITÄN KAPITA</h2>
-    <p>Die Olympischen Spiele</p>
-    <a class="btn" href="flipbook.html">Buch öffnen</a>
-  </div>
+  <header class="app-header">
 
-  <!-- LIVRO 2 -->
-  <div class="book-card">
-    <img src="img/c081b512-6344-4681-aeb6-79b04d6a90b8.jfif" class="book-cover" alt="Enceladus">
-    <h2>KAPITÄN KAPITA</h2>
-    <p>In Enceladus</p>
-    <a class="btn disabled" href="#">Bald verfügbar</a>
-  </div>
+    <div class="brand">
 
-  <!-- LIVRO 3 -->
-  <div class="book-card">
-    <img src="img/os gigantes de gelo.jpg" class="book-cover" alt="Eisriesen">
-    <h2>KAPITÄN KAPITA</h2>
-    <p>Die Eisriesen</p>
-    <a class="btn disabled" href="#">Bald verfügbar</a>
-  </div>
+      <div class="brand-logo">
+        📚
+      </div>
+
+      <div>
+        <h1>Valeria Books</h1>
+
+        <p>
+          Geschichten zum Lesen, Hören und Entdecken
+        </p>
+      </div>
+
+    </div>
 
 
-    <!--quarto livro-->
-   
-    <div class="book-card">
+    <div class="header-actions">
 
-      <img 
-        src="img/d065a248-a0b7-4462-bba8-9881a14c8a6c.jfif" 
-        alt="Kapitän Kapita und die Dunkle Zone "
-        class="book-cover"
+      <button
+        class="icon-button"
+        aria-label="Suchen"
       >
+        🔍
+      </button>
 
-    </a>
-
-    <!-- TÍTULO -->
-    <h1>KAPITÄN KAPITA</h1>
-
-    <p class="subtitle">
-      Kapitän Kapita und die Dunkle Zone.
-    </p>
-
-    <!-- BOTÃO -->
-   <a class="btn disabled" href="#">Bald verfügbar</a>
-  </div>
-    <!--quinto livro-->
-  
-
-    <div class="book-card">
-      <img 
-        src="img/volta para terra.jpg" 
-        alt="Kapitän Kapita die Reise Zurück zur Erde durch das sonnensystem"
-        class="book-cover"
+      <button
+        class="profile-button"
+        aria-label="Profil"
       >
+        👤
+      </button>
 
-    </a>
+    </div>
 
-    <!-- TÍTULO -->
-    <h1>KAPITÄN KAPITA</h1>
-
-    <p class="subtitle">
-      Kapitän Kapita die Reise Zurück zur Erde durch das sonnensystem.
-    </p>
-
-     <!-- BOTÃO -->
-   <a class="btn disabled" href="#">Bald verfügbar</a>
-  </div>
+  </header>
 
 
-    
+
+  <!-- =========================
+       CONTEÚDO PRINCIPAL
+  ========================== -->
+
+  <main class="app-container">
+
+
+    <!-- =========================
+         DESTAQUE
+    ========================== -->
+
+    <section class="hero-section">
+
+      <div class="hero-content">
+
+        <span class="hero-label">
+          NEU
+        </span>
+
+        <h2>
+          Geschichten, die mit dir wachsen.
+        </h2>
+
+        <p>
+          Lies spannende Bücher, höre Geschichten,
+          entdecke Videos und begleite deine
+          Lieblingsfiguren auf neuen Abenteuern.
+        </p>
+
+        <a
+          href="#kinder"
+          class="hero-button"
+        >
+          Bücher entdecken
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CATEGORIAS
+    ========================== -->
+
+    <section class="category-section">
+
+      <div class="section-header">
+
+        <h2>
+          Entdecken
+        </h2>
+
+      </div>
+
+
+      <div class="category-scroll">
+
+
+        <button class="category-card active">
+
+          <span class="category-icon">
+            🚀
+          </span>
+
+          <span>
+            Kinder
+          </span>
+
+        </button>
+
+
+        <button class="category-card">
+
+          <span class="category-icon">
+            ✨
+          </span>
+
+          <span>
+            Fantasy
+          </span>
+
+        </button>
+
+
+        <button class="category-card">
+
+          <span class="category-icon">
+            ❤️
+          </span>
+
+          <span>
+            Romantik
+          </span>
+
+        </button>
+
+
+        <button class="category-card">
+
+          <span class="category-icon">
+            🔎
+          </span>
+
+          <span>
+            Abenteuer
+          </span>
+
+        </button>
+
+
+        <button class="category-card">
+
+          <span class="category-icon">
+            📖
+          </span>
+
+          <span>
+            Alle
+          </span>
+
+        </button>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTINUE LENDO
+    ========================== -->
+
+    <section class="continue-section">
+
+      <div class="section-header">
+
+        <h2>
+          Weiterlesen
+        </h2>
+
+      </div>
+
+
+      <div class="continue-card">
+
+        <img
+          src="img/capa.png"
+          alt="Kapitän Kapita"
+        >
+
+
+        <div class="continue-info">
+
+          <span class="small-label">
+            Zuletzt gelesen
+          </span>
+
+          <h3>
+            Kapitän Kapita
+          </h3>
+
+          <p>
+            Die Olympischen Spiele
+          </p>
+
+
+          <div class="progress-bar">
+
+            <div
+              class="progress"
+              style="width: 35%;">
+            </div>
+
+          </div>
+
+
+          <span class="progress-text">
+            35 % gelesen
+          </span>
+
+
+          <a
+            href="flipbook.html"
+            class="continue-button"
+          >
+            Weiterlesen
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         KINDERBÜCHER
+    ========================== -->
+
+    <section
+      class="books-section"
+      id="kinder"
+    >
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            Kinder
+          </span>
+
+          <h2>
+            Kapitän Kapita
+          </h2>
+
+        </div>
+
+
+        <button class="text-button">
+          Alle anzeigen
+        </button>
+
+      </div>
+
+
+
+      <div class="books-scroll">
+
+
+        <!-- LIVRO 1 -->
+        <article class="book-card">
+
+
+          <div class="cover-wrapper">
+
+            <img
+              src="img/capa.png"
+              class="book-cover"
+              alt="Kapitän Kapita – Die Olympischen Spiele"
+            >
+
+
+            <span class="book-badge free">
+              Kostenlos
+            </span>
+
+          </div>
+
+
+          <div class="book-info">
+
+            <span class="book-series">
+              KAPITÄN KAPITA
+            </span>
+
+            <h3>
+              Die Olympischen Spiele
+            </h3>
+
+            <p>
+              Abenteuer · Kinder
+            </p>
+
+
+            <a
+              class="book-button"
+              href="flipbook.html"
+            >
+              Lesen
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- LIVRO 2 -->
+        <article class="book-card">
+
+
+          <div class="cover-wrapper">
+
+            <img
+              src="img/c081b512-6344-4681-aeb6-79b04d6a90b8.jfif"
+              class="book-cover"
+              alt="Kapitän Kapita in Enceladus"
+            >
+
+
+            <span class="book-badge premium">
+              👑 Premium
+            </span>
+
+          </div>
+
+
+          <div class="book-info">
+
+            <span class="book-series">
+              KAPITÄN KAPITA
+            </span>
+
+            <h3>
+              In Enceladus
+            </h3>
+
+            <p>
+              Weltraum · Abenteuer
+            </p>
+
+
+            <a
+              class="book-button premium-button"
+              href="flipbuch2.html"
+            >
+              Lesen
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- LIVRO 3 -->
+        <article class="book-card">
+
+
+          <div class="cover-wrapper">
+
+            <img
+              src="img/os gigantes de gelo.jpg"
+              class="book-cover"
+              alt="Kapitän Kapita – Die Eisriesen"
+            >
+
+
+            <span class="book-badge locked">
+              🔒 Demnächst
+            </span>
+
+          </div>
+
+
+          <div class="book-info">
+
+            <span class="book-series">
+              KAPITÄN KAPITA
+            </span>
+
+            <h3>
+              Die Eisriesen
+            </h3>
+
+            <p>
+              Weltraum · Abenteuer
+            </p>
+
+
+            <button
+              class="book-button disabled"
+              disabled
+            >
+              Bald verfügbar
+            </button>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- LIVRO 4 -->
+        <article class="book-card">
+
+
+          <div class="cover-wrapper">
+
+            <img
+              src="img/d065a248-a0b7-4462-bba8-9881a14c8a6c.jfif"
+              class="book-cover"
+              alt="Kapitän Kapita und die Dunkle Zone"
+            >
+
+
+            <span class="book-badge locked">
+              🔒 Demnächst
+            </span>
+
+          </div>
+
+
+          <div class="book-info">
+
+            <span class="book-series">
+              KAPITÄN KAPITA
+            </span>
+
+            <h3>
+              Die Dunkle Zone
+            </h3>
+
+            <p>
+              Weltraum · Abenteuer
+            </p>
+
+
+            <button
+              class="book-button disabled"
+              disabled
+            >
+              Bald verfügbar
+            </button>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- LIVRO 5 -->
+        <article class="book-card">
+
+
+          <div class="cover-wrapper">
+
+            <img
+              src="img/volta para terra.jpg"
+              class="book-cover"
+              alt="Kapitän Kapita – Zurück zur Erde"
+            >
+
+
+            <span class="book-badge locked">
+              🔒 Demnächst
+            </span>
+
+          </div>
+
+
+          <div class="book-info">
+
+            <span class="book-series">
+              KAPITÄN KAPITA
+            </span>
+
+            <h3>
+              Zurück zur Erde
+            </h3>
+
+            <p>
+              Weltraum · Abenteuer
+            </p>
+
+
+            <button
+              class="book-button disabled"
+              disabled
+            >
+              Bald verfügbar
+            </button>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         OUTROS GÊNEROS
+    ========================== -->
+
+    <section class="books-section">
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            Mehr entdecken
+          </span>
+
+          <h2>
+            Andere Geschichten
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="genre-grid">
+
+
+        <div class="genre-large">
+
+          <span>
+            ✨
+          </span>
+
+          <div>
+
+            <h3>
+              Fantasy
+            </h3>
+
+            <p>
+              Magische Welten entdecken
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="genre-large">
+
+          <span>
+            🌊
+          </span>
+
+          <div>
+
+            <h3>
+              Abenteuer
+            </h3>
+
+            <p>
+              Neue Welten und Geheimnisse
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="genre-large">
+
+          <span>
+            ❤️
+          </span>
+
+          <div>
+
+            <h3>
+              Geschichten für Erwachsene
+            </h3>
+
+            <p>
+              Romane und besondere Geschichten
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PREMIUM
+    ========================== -->
+
+    <section class="premium-section">
+
+      <div class="premium-icon">
+        👑
+      </div>
+
+
+      <div class="premium-content">
+
+        <span>
+          VALERIA BOOKS PREMIUM
+        </span>
+
+        <h2>
+          Unbegrenzt lesen.
+        </h2>
+
+        <p>
+          Erhalte Zugang zu exklusiven Büchern,
+          Hörgeschichten, Videos und neuen
+          Veröffentlichungen.
+        </p>
+
+
+        <div class="premium-price">
+
+          <strong>
+            Jahresabo
+          </strong>
+
+          <span>
+            Preis folgt
+          </span>
+
+        </div>
+
+
+        <button class="premium-main-button">
+          Premium entdecken
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         LOJA
+    ========================== -->
+
+    <section class="shop-section">
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            Shop
+          </span>
+
+          <h2>
+            Aus den Geschichten in deine Welt
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="shop-preview">
+
+
+        <article class="product-card">
+
+          <div class="product-image-placeholder">
+            🧩
+          </div>
+
+          <h3>
+            Puzzle
+          </h3>
+
+          <p>
+            Kapitän Kapita
+          </p>
+
+          <button>
+            Zum Shop
+          </button>
+
+        </article>
+
+
+        <article class="product-card">
+
+          <div class="product-image-placeholder">
+            ☕
+          </div>
+
+          <h3>
+            Tassen
+          </h3>
+
+          <p>
+            Lieblingsmotive
+          </p>
+
+          <button>
+            Zum Shop
+          </button>
+
+        </article>
+
+
+        <article class="product-card">
+
+          <div class="product-image-placeholder">
+            👕
+          </div>
+
+          <h3>
+            Kleidung
+          </h3>
+
+          <p>
+            Kapitän Kapita
+          </p>
+
+          <button>
+            Zum Shop
+          </button>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- ESPAÇO PARA MENU -->
+    <div class="bottom-space"></div>
+
   </main>
+
+
+
+  <!-- =========================
+       MENU INFERIOR DO APP
+  ========================== -->
+
+  <nav class="bottom-nav">
+
+
+    <a
+      href="index.html"
+      class="nav-item active"
+    >
+
+      <span>
+        🏠
+      </span>
+
+      <small>
+        Start
+      </small>
+
+    </a>
+
+
+    <a
+      href="#kinder"
+      class="nav-item"
+    >
+
+      <span>
+        📚
+      </span>
+
+      <small>
+        Bibliothek
+      </small>
+
+    </a>
+
+
+    <button
+      class="nav-item"
+      type="button"
+    >
+
+      <span>
+        🔍
+      </span>
+
+      <small>
+        Entdecken
+      </small>
+
+    </button>
+
+
+    <button
+      class="nav-item"
+      type="button"
+    >
+
+      <span>
+        🛍️
+      </span>
+
+      <small>
+        Shop
+      </small>
+
+    </button>
+
+
+    <button
+      class="nav-item"
+      type="button"
+    >
+
+      <span>
+        👤
+      </span>
+
+      <small>
+        Profil
+      </small>
+
+    </button>
+
+
+  </nav>
+
 
 </body>
 </html>
