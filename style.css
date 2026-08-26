@@ -1,289 +1,1008 @@
-/* RESET */
+/* =========================
+   RESET
+========================= */
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BODY */
+html {
+  scroll-behavior: smooth;
+}
 
-
- body{
- height: auto;
-overflow-y: auto;
-display: flex;
-justify-content: center;
-align-items: center;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f6f8fb;
+  color: #1b2433;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 
-/* FUNDO ESTRELADO */
+/* =========================
+   FUNDO
+========================= */
 
-.stars{
-  position: absolute;
-
-  width: 100%;
-  height: 100%;
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
 
   background:
-    radial-gradient(white 1px, transparent 1px);
-
-  background-size: 50px 50px;
-
-  opacity: 0.15;
-
-  z-index: 0;
+    radial-gradient(circle at 15% 10%, rgba(119, 190, 255, 0.13), transparent 25%),
+    radial-gradient(circle at 85% 15%, rgba(190, 154, 255, 0.12), transparent 22%),
+    linear-gradient(180deg, #f8fbff 0%, #f4f6fb 100%);
 }
 
-/* CONTAINER INDEX */
 
-.container{
- display: flex;
- flex-direction: column;
-  gap: 40px;
- padding: 60px;
-  max-width: 800px;
-  margin: auto;
+/* =========================
+   CABEÇALHO
+========================= */
 
-  align-items: center;
-  
-}
-.book-card{
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 18px;
-  text-align: center;
-
-  transition: 0.3s;
-  backdrop-filter: blur(8px);
-}
-/* CAPA */
-
-.book-cover{
+.app-header {
   width: 100%;
-  border-radius: 12px;
-  transition: 0.3s;
-}
+  max-width: 1200px;
+  margin: 0 auto;
 
-/* EFEITO HOVER */
-
-.book-cover:hover{
-  transform:
-    scale(1.03)
-    rotate(-1deg);
-
-  box-shadow:
-    0 0 40px rgba(255,255,255,0.4);
-}
-
-/* TÍTULO */
-
-h1{
-  margin-top: 25px;
-
-  font-size: 3rem;
-
-  letter-spacing: 3px;
-
-  color: #fff;
-}
-
-/* SUBTÍTULO */
-
-.subtitle{
-  margin-top: 10px;
-
-  font-size: 1.4rem;
-
-  color: #c8d2ff;
-}
-
-/* BOTÃO */
-
-.start-button{
-  display: inline-block;
-
-  margin-top: 30px;
-
-  padding:
-    15px 35px;
-
-  background: linear-gradient(
-    45deg,
-    #6c63ff,
-    #9b5cff
-  );
-
-  color: white;
-
-  text-decoration: none;
-
-  border-radius: 12px;
-
-  font-size: 1.2rem;
-
-  font-weight: bold;
-
-  transition: 0.3s;
-}
-.btn.disabled{
-  background: gray;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-.btn{
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 18px;
-  background: linear-gradient(45deg, #6c63ff, #9b5cff);
-  border-radius: 10px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-.book-card h2{
-  margin-top: 15px;
-  font-size: 1.2rem;
-}
-
-.book-card p{
-  color: #c8d2ff;
-  font-size: 0.95rem;
-}
-/* HOVER BOTÃO */
-
-.start-button:hover{
-  transform: scale(1.05);
-
-  box-shadow:
-    0 0 20px rgba(155,92,255,0.6);
-}
-.video-button{
-  display: inline-block;
-  padding: 12px 20px;
-  background: red;
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: bold;
-  margin-top: 20px;
-  transition: 0.3s;
-}
-
-.video-button:hover{
-  transform: scale(1.05);
-}
-
-/* FLIPBOOK */
-
-.book-container{
-  width: 100%;
-  height: 100vh;
+  padding: 18px 22px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
 
-  position: relative;
-  z-index: 2;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid rgba(20, 40, 70, 0.07);
 }
 
-/* LIVRO */
-
-#flipbook{
-  width: 400px;
-  height: 600px;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-/* PÁGINAS */
-
-.page{
-  background: #111;
+.brand-logo {
+  width: 46px;
+  height: 46px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #eef5ff;
+
+  font-size: 1.5rem;
+}
+
+.brand h1 {
+  font-size: 1.2rem;
+  margin-bottom: 3px;
+}
+
+.brand p {
+  font-size: 0.78rem;
+  color: #6f7b8d;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-button,
+.profile-button {
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f0f4f8;
+
+  cursor: pointer;
+
+  font-size: 1.05rem;
+}
+
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 22px 20px 120px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero-section {
+  min-height: 300px;
+
+  border-radius: 28px;
 
   overflow: hidden;
 
-  border-radius: 10px;
-}
+  display: flex;
+  align-items: center;
 
-/* IMAGENS */
+  padding: 34px;
 
-.page img{
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-}
-
-/* CAPA */
-
-.cover{
-  background: black;
-}
-.video-page {
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.video-page iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-/* ÚLTIMA PÁGINA */
-
-.end-page{
   background:
     linear-gradient(
-      180deg,
-      #0d1330,
-      #050816
+      120deg,
+      rgba(14, 36, 76, 0.98),
+      rgba(61, 86, 147, 0.92)
     );
 
   color: white;
 
-  font-size: 2rem;
+  box-shadow: 0 18px 45px rgba(26, 48, 88, 0.16);
+}
+
+.hero-content {
+  max-width: 620px;
+}
+
+.hero-label {
+  display: inline-block;
+
+  padding: 6px 11px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.16);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 16px;
+}
+
+.hero-content h2 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.05;
+
+  margin-bottom: 16px;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+
+  max-width: 540px;
+
+  opacity: 0.9;
+
+  margin-bottom: 24px;
+}
+
+.hero-button {
+  display: inline-flex;
+
+  padding: 12px 18px;
+
+  border-radius: 12px;
+
+  background: white;
+
+  color: #1a3158;
+
+  text-decoration: none;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   CABEÇALHO DAS SEÇÕES
+========================= */
+
+section {
+  margin-top: 38px;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+}
+
+.section-header h2 {
+  font-size: 1.55rem;
+}
+
+.section-label {
+  display: block;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  color: #72809a;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  margin-bottom: 4px;
+}
+
+.text-button {
+  border: none;
+  background: transparent;
+
+  color: #486fa9;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.category-scroll {
+  display: flex;
+  gap: 12px;
+
+  overflow-x: auto;
+
+  padding-bottom: 6px;
+
+  scrollbar-width: none;
+}
+
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-card {
+  min-width: 105px;
+
+  border: 1px solid #e4eaf2;
+
+  background: white;
+
+  border-radius: 16px;
+
+  padding: 14px 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(30, 50, 80, 0.05);
+
+  transition: 0.2s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-2px);
+}
+
+.category-card.active {
+  background: #1f3761;
+  color: white;
+  border-color: transparent;
+}
+
+.category-icon {
+  font-size: 1.5rem;
+}
+
+
+/* =========================
+   CONTINUE LENDO
+========================= */
+
+.continue-card {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+
+  gap: 20px;
+
+  background: white;
+
+  border-radius: 22px;
+
+  padding: 18px;
+
+  box-shadow: 0 12px 30px rgba(33, 53, 85, 0.08);
+}
+
+.continue-card img {
+  width: 140px;
+  height: 190px;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+}
+
+.continue-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.small-label {
+  color: #8090a5;
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.continue-info h3 {
+  margin-top: 5px;
+  font-size: 1.4rem;
+}
+
+.continue-info p {
+  color: #66758a;
+  margin-top: 3px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 7px;
+
+  border-radius: 999px;
+
+  background: #e7edf4;
+
+  margin-top: 16px;
+
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+
+  background: #466fa8;
+
+  border-radius: inherit;
+}
+
+.progress-text {
+  margin-top: 6px;
+
+  font-size: 0.75rem;
+  color: #718096;
+}
+
+.continue-button {
+  margin-top: 14px;
+
+  display: inline-flex;
+  align-self: flex-start;
+
+  padding: 10px 16px;
+
+  border-radius: 10px;
+
+  background: #1f3761;
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   LIVROS
+========================= */
+
+.books-scroll {
+  display: flex;
+  gap: 18px;
+
+  overflow-x: auto;
+
+  padding: 4px 2px 12px;
+
+  scrollbar-width: none;
+}
+
+.books-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.book-card {
+  min-width: 190px;
+  width: 190px;
+
+  background: white;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow: 0 12px 30px rgba(33, 53, 85, 0.08);
+
+  transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+}
+
+.cover-wrapper {
+  position: relative;
+}
+
+.book-cover {
+  width: 100%;
+  height: 270px;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.book-badge {
+  position: absolute;
+
+  top: 10px;
+  left: 10px;
+
+  padding: 6px 9px;
+
+  border-radius: 999px;
+
+  font-size: 0.67rem;
+  font-weight: 700;
+}
+
+.book-badge.free {
+  background: #e8fff0;
+  color: #26824a;
+}
+
+.book-badge.premium {
+  background: #fff0cb;
+  color: #8a5b00;
+}
+
+.book-badge.locked {
+  background: rgba(20, 29, 43, 0.82);
+  color: white;
+}
+
+.book-info {
+  padding: 14px;
+}
+
+.book-series {
+  font-size: 0.65rem;
+  font-weight: 700;
+
+  letter-spacing: 0.7px;
+
+  color: #6f7e91;
+}
+
+.book-info h3 {
+  font-size: 1rem;
+  line-height: 1.25;
+
+  margin-top: 6px;
+}
+
+.book-info p {
+  margin-top: 7px;
+
+  font-size: 0.76rem;
+  color: #7a8797;
+}
+
+.book-button {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 14px;
+
+  padding: 10px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #1f3761;
+
+  color: white;
 
   text-align: center;
+  text-decoration: none;
+
+  font-weight: 700;
+
+  cursor: pointer;
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px){
-  .container{
-    padding: 30px 15px;
-  }
-
-  .book-card{
-    width: 100%;
-    max-width: 320px;
-  }
+.premium-button {
+  background: #d6a13c;
 }
 
-@media(max-width: 768px){
+.book-button.disabled {
+  background: #e5e9ee;
+  color: #8e99a7;
 
-  .book-cover{
-    width: 240px;
+  cursor: not-allowed;
+}
+
+
+/* =========================
+   GÊNEROS
+========================= */
+
+.genre-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+}
+
+.genre-large {
+  min-height: 140px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  box-shadow: 0 10px 24px rgba(33, 53, 85, 0.06);
+}
+
+.genre-large > span {
+  font-size: 2.1rem;
+}
+
+.genre-large h3 {
+  margin-bottom: 5px;
+}
+
+.genre-large p {
+  font-size: 0.84rem;
+  color: #768498;
+}
+
+
+/* =========================
+   PREMIUM
+========================= */
+
+.premium-section {
+  border-radius: 26px;
+
+  padding: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #16233f,
+      #293e68
+    );
+
+  color: white;
+
+  display: grid;
+  grid-template-columns: 70px 1fr;
+
+  gap: 20px;
+
+  align-items: start;
+
+  box-shadow: 0 18px 45px rgba(23, 40, 70, 0.17);
+}
+
+.premium-icon {
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  font-size: 2rem;
+}
+
+.premium-content > span {
+  font-size: 0.7rem;
+
+  letter-spacing: 1px;
+
+  opacity: 0.8;
+}
+
+.premium-content h2 {
+  font-size: 1.9rem;
+
+  margin: 7px 0 10px;
+}
+
+.premium-content p {
+  line-height: 1.6;
+
+  max-width: 640px;
+
+  opacity: 0.86;
+}
+
+.premium-price {
+  margin-top: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.premium-price span {
+  font-size: 0.85rem;
+
+  opacity: 0.72;
+}
+
+.premium-main-button {
+  margin-top: 18px;
+
+  padding: 11px 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #f3c45d;
+
+  color: #36260a;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   LOJA
+========================= */
+
+.shop-preview {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+}
+
+.product-card {
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 16px;
+
+  box-shadow: 0 10px 26px rgba(33, 53, 85, 0.07);
+}
+
+.product-image-placeholder {
+  height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #edf3fb;
+
+  font-size: 3rem;
+
+  margin-bottom: 13px;
+}
+
+.product-card h3 {
+  margin-bottom: 4px;
+}
+
+.product-card p {
+  font-size: 0.83rem;
+  color: #788697;
+}
+
+.product-card button {
+  width: 100%;
+
+  margin-top: 14px;
+
+  padding: 10px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #1f3761;
+  color: white;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   MENU INFERIOR
+========================= */
+
+.bottom-nav {
+  position: fixed;
+
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 1200px;
+
+  min-height: 74px;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  background: rgba(255, 255, 255, 0.97);
+
+  border-top: 1px solid #e6ebf1;
+
+  backdrop-filter: blur(18px);
+
+  z-index: 1500;
+}
+
+.nav-item {
+  border: none;
+  background: transparent;
+
+  text-decoration: none;
+
+  color: #778596;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 3px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+}
+
+.nav-item span {
+  font-size: 1.2rem;
+}
+
+.nav-item small {
+  font-size: 0.68rem;
+}
+
+.nav-item.active {
+  color: #1f3761;
+}
+
+.bottom-space {
+  height: 20px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .genre-grid,
+  .shop-preview {
+    grid-template-columns: 1fr 1fr;
   }
 
-  h1{
-    font-size: 2rem;
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+  body {
+    background: #f6f8fb;
   }
 
-  .subtitle{
+  .app-header {
+    padding: 12px 14px;
+  }
+
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand h1 {
     font-size: 1rem;
   }
 
-  #flipbook{
-    width: 300px;
-    height: 500px;
+  .brand p {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 5px;
+  }
+
+  .icon-button,
+  .profile-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .app-container {
+    padding:
+      12px 12px 105px;
+  }
+
+  .hero-section {
+    min-height: 260px;
+
+    border-radius: 22px;
+
+    padding: 24px 20px;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  section {
+    margin-top: 28px;
+  }
+
+  .section-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .continue-card {
+    grid-template-columns: 105px 1fr;
+
+    gap: 14px;
+
+    padding: 13px;
+  }
+
+  .continue-card img {
+    width: 105px;
+    height: 145px;
+  }
+
+  .continue-info h3 {
+    font-size: 1.05rem;
+  }
+
+  .continue-info p {
+    font-size: 0.8rem;
+  }
+
+  .book-card {
+    min-width: 155px;
+    width: 155px;
+  }
+
+  .book-cover {
+    height: 220px;
+  }
+
+  .book-info {
+    padding: 11px;
+  }
+
+  .genre-grid,
+  .shop-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .genre-large {
+    min-height: 110px;
+  }
+
+  .premium-section {
+    grid-template-columns: 1fr;
+
+    padding: 22px;
+
+    border-radius: 22px;
+  }
+
+  .premium-content h2 {
+    font-size: 1.55rem;
+  }
+
+  .product-image-placeholder {
+    height: 125px;
+  }
+
+  .bottom-nav {
+    min-height: 68px;
+  }
+
+  .nav-item small {
+    font-size: 0.62rem;
+  }
+
+}
+
+
+/* =========================
+   CELULAR PEQUENO
+========================= */
+
+@media (max-width: 390px) {
+
+  .book-card {
+    min-width: 145px;
+    width: 145px;
+  }
+
+  .book-cover {
+    height: 205px;
+  }
+
+  .hero-content h2 {
+    font-size: 1.8rem;
   }
 
 }
