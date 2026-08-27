@@ -1133,3 +1133,124 @@ button:focus-visible {
 
   color: #162338;
 }
+/* =========================================================
+   CONTROLES DE ROLAGEM
+========================================================= */
+
+.reading-text:has(.book-text) {
+  position: relative;
+
+  padding: 0;
+
+  overflow: hidden;
+}
+
+
+.book-text {
+  width: 100%;
+  height: 100%;
+
+  min-height: 0;
+
+  padding:
+    20px
+    50px
+    35px
+    22px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  touch-action: pan-y;
+
+  overscroll-behavior: contain;
+
+  -webkit-overflow-scrolling: touch;
+
+  scroll-behavior: smooth;
+}
+
+
+
+/* BARRA LATERAL */
+
+.scroll-controls {
+  position: absolute;
+
+  top: 50%;
+  right: 5px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  z-index: 50;
+}
+
+
+.scroll-btn {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 2px 8px
+    rgba(0, 0, 0, 0.18);
+
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  touch-action: manipulation;
+}
+
+
+.scroll-btn:active {
+  transform: scale(0.9);
+}
+
+
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+  .book-text {
+    padding:
+      15px
+      48px
+      28px
+      18px;
+  }
+
+
+  .scroll-controls {
+    right: 4px;
+
+    gap: 5px;
+  }
+
+
+  .scroll-btn {
+    width: 34px;
+    height: 34px;
+
+    font-size: 0.9rem;
+  }
+
+}
