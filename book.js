@@ -1045,3 +1045,25 @@ window.addEventListener(
 
   }
 );
+/* =========================================================
+   SAIR DO LIVRO
+========================================================= */
+
+const exitBookButton =
+  document.getElementById("exitBookButton");
+
+if (exitBookButton) {
+
+  exitBookButton.addEventListener(
+    "click",
+    () => {
+
+      const exitUrl =
+        exitBookButton.dataset.exitUrl || "index.html";
+
+      window.location.href = exitUrl;
+
+    }
+  );
+
+}
