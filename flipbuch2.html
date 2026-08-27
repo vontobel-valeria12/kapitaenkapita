@@ -26,30 +26,48 @@
 
   <main class="book-area">
 
-    <!-- =====================================================
+    <!-- =========================
          CABEÇALHO
-    ====================================================== -->
+    ========================== -->
 
     <header class="book-header">
+
       <h1>Kapitänin Kapita</h1>
+
       <p>Mission Enceladus</p>
+
     </header>
 
 
-    <!-- =====================================================
+    <!-- =========================
          LIVRO
-    ====================================================== -->
+    ========================== -->
 
     <div class="book-container">
 
+      <!-- VOLTAR -->
+      <button
+        class="nav-btn prev-btn"
+        id="prevPage"
+        type="button"
+        aria-label="Vorherige Seite"
+      >
+        ❮
+      </button>
+
+
+      <!-- FLIPBOOK -->
       <div id="flipbook">
 
 
-        <!-- =================================================
+        <!-- =========================
              CAPA
-        ================================================== -->
+        ========================== -->
 
-        <div class="page cover">
+        <div
+          class="page cover"
+          data-audio="audio/mission_enceladus.mp3"
+        >
 
           <img
             src="https://raw.githubusercontent.com/vontobel-valeria12/kapitaenkapita/main/img/IMG_20260804_085201.png"
@@ -59,10 +77,10 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              PÁGINA 1
              INTRODUÇÃO
-        ================================================== -->
+        ========================== -->
 
         <div
           class="page reading-page"
@@ -97,11 +115,12 @@
                 </p>
 
                 <p>
-                  Dort schießen Wasserfontänen aus dem Inneren des Mondes
-                  ins All. Sie sind ein Hinweis darauf, dass sich unter
-                  dem Eis ein Ozean verbergen könnte.
-                  Gibt es vielleicht etwas, das in dieser gefrorenen Welt
-                  lebt? Oder vielleicht eine alte, vergessene Technologie?
+                  Dort schießen Wasserfontänen aus dem Inneren des
+                  Mondes ins All. Sie sind ein Hinweis darauf, dass
+                  sich unter dem Eis ein Ozean verbergen könnte.
+                  Gibt es vielleicht etwas, das in dieser gefrorenen
+                  Welt lebt? Oder vielleicht eine alte,
+                  vergessene Technologie?
                 </p>
 
                 <p>
@@ -110,11 +129,11 @@
                 </p>
 
                 <p>
-                  Die mutige Kapitänin Kapita erhielt eine wichtige Aufgabe:
-                  Sie soll zum Saturn reisen und eine moderne
-                  wissenschaftliche Sonde installieren, die den Forschern
-                  auf der Erde dabei helfen wird, Enceladus viele Jahre
-                  lang zu erforschen.
+                  Die mutige Kapitänin Kapita erhielt eine wichtige
+                  Aufgabe: Sie soll zum Saturn reisen und eine moderne
+                  wissenschaftliche Sonde installieren, die den
+                  Forschern auf der Erde dabei helfen wird,
+                  Enceladus viele Jahre lang zu erforschen.
                 </p>
 
                 <p>
@@ -132,9 +151,9 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              PÁGINA 2
-        ================================================== -->
+        ========================== -->
 
         <div
           class="page reading-page"
@@ -173,9 +192,9 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              PÁGINA 3
-        ================================================== -->
+        ========================== -->
 
         <div
           class="page reading-page"
@@ -213,10 +232,10 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              PÁGINA 4
              TEXTO
-        ================================================== -->
+        ========================== -->
 
         <div
           class="page reading-page text-page"
@@ -253,13 +272,13 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              PÁGINA 5
-        ================================================== -->
+        ========================== -->
 
         <div
           class="page reading-page"
-          data-audio="#"
+          data-audio="audio/#"
         >
 
           <div class="page-content">
@@ -295,13 +314,13 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              PÁGINA 6
-        ================================================== -->
+        ========================== -->
 
         <div
           class="page reading-page"
-          data-audio="#"
+          data-audio="audio/#"
         >
 
           <div class="page-content">
@@ -330,10 +349,10 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              PÁGINA 7
              CIÊNCIA
-        ================================================== -->
+        ========================== -->
 
         <div
           class="page reading-page science-page"
@@ -364,13 +383,13 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              PÁGINA 8
-        ================================================== -->
+        ========================== -->
 
         <div
           class="page reading-page"
-          data-audio="#"
+          data-audio="audio/#"
         >
 
           <div class="page-content">
@@ -405,9 +424,9 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              VÍDEO LOCAL
-        ================================================== -->
+        ========================== -->
 
         <div class="page video-page">
 
@@ -438,9 +457,9 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              YOUTUBE
-        ================================================== -->
+        ========================== -->
 
         <div class="page video-page">
 
@@ -466,9 +485,9 @@
         </div>
 
 
-        <!-- =================================================
+        <!-- =========================
              FINAL
-        ================================================== -->
+        ========================== -->
 
         <div class="page end-page">
 
@@ -488,17 +507,25 @@
 
       </div>
 
+
+      <!-- AVANÇAR -->
+      <button
+        class="nav-btn next-btn"
+        id="nextPage"
+        type="button"
+        aria-label="Nächste Seite"
+      >
+        ❯
+      </button>
+
     </div>
 
 
-    <!-- =====================================================
-         CONTROLES DO LIVRO
-    ====================================================== -->
+    <!-- =========================
+         CONTROLES
+    ========================== -->
 
-    <nav
-      class="book-controls"
-      aria-label="Buchsteuerung"
-    >
+    <div class="book-controls">
 
       <button
         id="audioButton"
@@ -516,14 +543,6 @@
       </button>
 
 
-      <button
-        id="pageMenuButton"
-        type="button"
-      >
-        📑 Seite wählen
-      </button>
-
-
       <span id="pageCounter">
         Seite 1
       </span>
@@ -536,61 +555,12 @@
         ⛶ Vollbild
       </button>
 
-
-      <button
-        id="exitBookButton"
-        type="button"
-        data-exit-url="index.html"
-      >
-        ✕ Beenden
-      </button>
-
-    </nav>
+    </div>
 
   </main>
 
 
-  <!-- =====================================================
-       MENU PARA ESCOLHER PÁGINA
-  ====================================================== -->
-
-  <div
-    id="pageMenu"
-    class="page-menu"
-    aria-hidden="true"
-  >
-
-    <div
-      class="page-menu-box"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="pageMenuTitle"
-    >
-
-      <h2 id="pageMenuTitle">
-        Seite wählen
-      </h2>
-
-
-      <div id="pageList"></div>
-
-
-      <button
-        id="closePageMenu"
-        type="button"
-      >
-        Schließen
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- =====================================================
-       JAVASCRIPT GERAL DOS LIVROS
-  ====================================================== -->
-
+  <!-- JAVASCRIPT GERAL DOS LIVROS -->
   <script src="book.js"></script>
 
 </body>
