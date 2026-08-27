@@ -552,103 +552,141 @@ document
 
 
 
+
 /* =========================================================
-   MARCADOR COM TOQUE
+   PREPARAR TEXTO PARA LEITURA
+   Divide automaticamente os parágrafos em frases
+========================================================= */
+
+function prepararTextoLeitura() {
+
+  document
+    .querySelectorAll(".reading-text p")
+    .forEach(paragraph => {
+
+      // Evita dividir novamente
+      if (paragraph.dataset.prepared === "true") {
+        return;
+      }
+
+      const texto =
+        paragraph.textContent.trim();
+
+      if (!texto) {
+        return;
+      }
+
+
+      /*
+        Divide o texto depois de:
+        .
+        !
+        ?
+
+        Mantém a pontuação na frase.
+      */
+
+      const frases =
+        texto.match(/[^.!?]+[.!?]+|[^.!?]+$/g);
+
+
+      if (!frases) {
+        return;
+      }
+
+
+      paragraph.innerHTML = "";
+
+
+      frases.forEach(frase => {
+
+        const span =
+          document.createElement("span");
+
+        span.className =
+          "reading-sentence";
+
+        span.textContent =
+          frase.trim() + " ";
+
+        paragraph.appendChild(span);
+
+      });
+
+
+      paragraph.dataset.prepared =
+        "true";
+
+    });
+
+}
+
+
+/* Executa quando a página carrega */
+
+prepararTextoLeitura();
+
+
+
+/* =========================================================
+   MARCAR FRASE
 ========================================================= */
 
 document.addEventListener(
-  "touchstart",
+  "click",
   event => {
 
-    if (
-      !readingMode ||
-      !marker
-    ) {
+    if (!readingMode) {
       return;
     }
 
 
-    const target =
+    const sentence =
       event.target.closest(
-        ".reading-text"
+        ".reading-sentence"
       );
 
 
-    if (!target) {
+    if (!sentence) {
       return;
     }
 
 
-    const touch =
-      event.touches[0];
+    event.stopPropagation();
 
 
-    marker.style.display =
-      "block";
+    /*
+      Remove destaque da frase anterior
+    */
+
+    document
+      .querySelectorAll(
+        ".reading-sentence"
+      )
+      .forEach(item => {
+
+        item.classList.remove(
+          "reading-line"
+        );
+
+      });
 
 
-    marker.style.top =
-      `${touch.clientY - 18}px`;
+    /*
+      Destaca somente a frase escolhida
+    */
 
-  },
-  {
-    passive: true
-  }
-);
-
-
-
-document.addEventListener(
-  "touchmove",
-  event => {
-
-    if (
-      !readingMode ||
-      !marker
-    ) {
-      return;
-    }
-
-
-    if (
-      marker.style.display !==
-      "block"
-    ) {
-      return;
-    }
-
-
-    const touch =
-      event.touches[0];
-
-
-    marker.style.top =
-      `${touch.clientY - 18}px`;
-
-  },
-  {
-    passive: true
-  }
-);
-
-
-
-document.addEventListener(
-  "touchend",
-  () => {
-
-    if (!marker) {
-      return;
-    }
-
-
-    marker.style.display =
-      "none";
+    sentence.classList.add(
+      "reading-line"
+    );
 
   }
 );
 
+   
 
+
+    
 
 /* =========================================================
    MARCADOR COM MOUSE
