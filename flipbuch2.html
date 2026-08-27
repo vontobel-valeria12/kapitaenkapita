@@ -1110,7 +1110,59 @@
 
       }
     );
+const readingAreas = document.querySelectorAll(".auto-scroll");
 
+readingAreas.forEach((area) => {
+
+  let autoScroll;
+  let paused = false;
+
+  function startAutoScroll() {
+
+    autoScroll = setInterval(() => {
+
+      if (!paused) {
+
+        area.scrollTop += 1;
+
+        if (
+          area.scrollTop + area.clientHeight >=
+          area.scrollHeight
+        ) {
+          clearInterval(autoScroll);
+        }
+
+      }
+
+    }, 70);
+
+  }
+
+  area.addEventListener("touchstart", () => {
+    paused = true;
+  });
+
+  area.addEventListener("touchend", () => {
+
+    setTimeout(() => {
+      paused = false;
+    }, 2000);
+
+  });
+
+  area.addEventListener("wheel", () => {
+
+    paused = true;
+
+    setTimeout(() => {
+      paused = false;
+    }, 2000);
+
+  });
+
+  startAutoScroll();
+
+});
 
 
   </script>
