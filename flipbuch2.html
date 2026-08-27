@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Kapitänin Kapita in Enceladus</title>
+  <title>Kapitänin Kapita – Mission Enceladus</title>
 
-  <!-- STYLES -->
+  <!-- CSS -->
   <link rel="stylesheet" href="flipbuch2.css">
 
-  <!-- PAGEFLIP -->
+  <!-- PAGE FLIP -->
   <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
 </head>
 
-<body>
+
+<body data-book-id="enceladus">
 
   <!-- FUNDO -->
   <div class="stars"></div>
@@ -21,49 +23,65 @@
   <!-- MARCADOR DE LEITURA -->
   <div id="readingMarker"></div>
 
-  <!-- ÁREA PRINCIPAL -->
+
   <main class="book-area">
 
-    <!-- CABEÇALHO -->
-    <div class="book-header">
-      <h1>Kapitänin Kapita</h1>
-      <p>Mission Enceladus</p>
-    </div>
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
 
-    <!-- CONTAINER -->
+    <header class="book-header">
+
+      <h1>Kapitänin Kapita</h1>
+
+      <p>Mission Enceladus</p>
+
+    </header>
+
+
+    <!-- =========================
+         LIVRO
+    ========================== -->
+
     <div class="book-container">
 
-      <!-- BOTÃO VOLTAR -->
+      <!-- VOLTAR -->
       <button
         class="nav-btn prev-btn"
         id="prevPage"
-        aria-label="Vorherige Seite">
+        type="button"
+        aria-label="Vorherige Seite"
+      >
         ❮
       </button>
 
 
-      <!-- LIVRO -->
+      <!-- FLIPBOOK -->
       <div id="flipbook">
 
 
         <!-- =========================
              CAPA
         ========================== -->
+
         <div
           class="page cover"
           data-audio="audio/mission_enceladus.mp3"
         >
+
           <img
-            src="https://github.com/vontobel-valeria12/kapitaenkapita/blob/main/img%2FIMG_20260804_085201.png"
-            alt="Kapitänin Kapita in Enceladus"
+            src="https://raw.githubusercontent.com/vontobel-valeria12/kapitaenkapita/main/img/IMG_20260804_085201.png"
+            alt="Kapitänin Kapita – Mission Enceladus"
           >
+
         </div>
 
 
         <!-- =========================
              PÁGINA 1
-             IMAGEM + TEXTO
+             INTRODUÇÃO
         ========================== -->
+
         <div
           class="page reading-page"
           data-audio="audio/pagina1.mp3"
@@ -77,43 +95,54 @@
               class="page-image"
             >
 
+
             <div class="reading-text">
+
               <div class="book-text auto-scroll">
 
-  <h2>Mission: Enceladus</h2>
+                <h2>Mission: Enceladus</h2>
 
-  <p>Der Weltraum ist riesig.</p>
+                <p>
+                  Der Weltraum ist riesig.
+                </p>
 
-  <p>
-    Zwischen Milliarden von Sternen und Planeten gibt es einen geheimnisvollen Ort,
-    der die Neugier der Wissenschaftler weckt: Enceladus, einen kleinen Mond,
-    der von einer dicken Eisschicht bedeckt ist und den riesigen Saturn umkreist.
-  </p>
+                <p>
+                  Zwischen Milliarden von Sternen und Planeten gibt es
+                  einen geheimnisvollen Ort, der die Neugier der
+                  Wissenschaftler weckt: Enceladus, einen kleinen Mond,
+                  der von einer dicken Eisschicht bedeckt ist und den
+                  riesigen Saturn umkreist.
+                </p>
 
-  <p>
-    Dort schießen Wasserfontänen aus dem Inneren des Mondes ins All.
-    Sie sind ein Hinweis darauf, dass sich unter dem Eis ein Ozean verbergen könnte.
-    Gibt es vielleicht etwas, das in dieser gefrorenen Welt lebt?
-    Oder vielleicht eine alte, vergessene Technologie?
-  </p>
+                <p>
+                  Dort schießen Wasserfontänen aus dem Inneren des
+                  Mondes ins All. Sie sind ein Hinweis darauf, dass
+                  sich unter dem Eis ein Ozean verbergen könnte.
+                  Gibt es vielleicht etwas, das in dieser gefrorenen
+                  Welt lebt? Oder vielleicht eine alte,
+                  vergessene Technologie?
+                </p>
 
-  <p>
-    Um die Antwort darauf zu finden, wurde eine neue Mission vorbereitet.
-  </p>
+                <p>
+                  Um die Antwort darauf zu finden,
+                  wurde eine neue Mission vorbereitet.
+                </p>
 
-  <p>
-    Die mutige Kapitänin Kapita erhielt eine wichtige Aufgabe:
-    Sie soll zum Saturn reisen und eine moderne wissenschaftliche Sonde installieren,
-    die den Forschern auf der Erde dabei helfen wird,
-    Enceladus viele Jahre lang zu erforschen.
-  </p>
+                <p>
+                  Die mutige Kapitänin Kapita erhielt eine wichtige
+                  Aufgabe: Sie soll zum Saturn reisen und eine moderne
+                  wissenschaftliche Sonde installieren, die den
+                  Forschern auf der Erde dabei helfen wird,
+                  Enceladus viele Jahre lang zu erforschen.
+                </p>
 
-  <p>
-    Doch schon bald wird sie feststellen,
-    dass diese Mission viel gefährlicher ist, als sie gedacht hat ...
-  </p>
+                <p>
+                  Doch schon bald wird sie feststellen,
+                  dass diese Mission viel gefährlicher ist,
+                  als sie gedacht hat ...
+                </p>
 
-</div>
+              </div>
 
             </div>
 
@@ -125,6 +154,7 @@
         <!-- =========================
              PÁGINA 2
         ========================== -->
+
         <div
           class="page reading-page"
           data-audio="audio/pagina2.mp3"
@@ -165,6 +195,7 @@
         <!-- =========================
              PÁGINA 3
         ========================== -->
+
         <div
           class="page reading-page"
           data-audio="audio/pagina3.mp3"
@@ -181,12 +212,12 @@
             <div class="reading-text">
 
               <p>
-                „Zoe, was ist das?“ fragte Kapita.
+                „Zoe, was ist das?“, fragte Kapita.
               </p>
 
               <p>
-                Die künstliche Intelligenz analysierte
-                das Signal.
+                Die künstliche Intelligenz
+                analysierte das Signal.
               </p>
 
               <p>
@@ -203,8 +234,9 @@
 
         <!-- =========================
              PÁGINA 4
-             TEXTO MAIOR
+             TEXTO
         ========================== -->
+
         <div
           class="page reading-page text-page"
           data-audio="audio/pagina4.mp3"
@@ -243,6 +275,7 @@
         <!-- =========================
              PÁGINA 5
         ========================== -->
+
         <div
           class="page reading-page"
           data-audio="audio/pagina5.mp3"
@@ -264,7 +297,7 @@
               </p>
 
               <p>
-                „Wie weit ist das Signal entfernt?“
+                „Wie weit ist das Signal entfernt?“,
                 fragte sie.
               </p>
 
@@ -284,6 +317,7 @@
         <!-- =========================
              PÁGINA 6
         ========================== -->
+
         <div
           class="page reading-page"
           data-audio="audio/pagina6.mp3"
@@ -317,8 +351,9 @@
 
         <!-- =========================
              PÁGINA 7
-             WISSEN
+             CIÊNCIA
         ========================== -->
+
         <div
           class="page reading-page science-page"
           data-audio="audio/pagina7.mp3"
@@ -351,6 +386,7 @@
         <!-- =========================
              PÁGINA 8
         ========================== -->
+
         <div
           class="page reading-page"
           data-audio="audio/pagina8.mp3"
@@ -377,8 +413,8 @@
 
               <p>
                 Kapita lächelte.
-                „Dann bringen wir heraus, wer dieses
-                Signal geschickt hat.“
+                „Dann finden wir heraus,
+                wer dieses Signal geschickt hat.“
               </p>
 
             </div>
@@ -389,8 +425,9 @@
 
 
         <!-- =========================
-             PÁGINA DE VÍDEO LOCAL
+             VÍDEO LOCAL
         ========================== -->
+
         <div class="page video-page">
 
           <div class="video-wrapper">
@@ -421,8 +458,9 @@
 
 
         <!-- =========================
-             PÁGINA DE YOUTUBE
+             YOUTUBE
         ========================== -->
+
         <div class="page video-page">
 
           <div class="video-wrapper">
@@ -430,7 +468,6 @@
             <iframe
               src="https://www.youtube.com/embed/8469m0L6gg4"
               title="Kapitänin Kapita Video"
-              frameborder="0"
               allow="
                 accelerometer;
                 autoplay;
@@ -439,7 +476,8 @@
                 gyroscope;
                 picture-in-picture
               "
-              allowfullscreen>
+              allowfullscreen
+            >
             </iframe>
 
           </div>
@@ -450,6 +488,7 @@
         <!-- =========================
              FINAL
         ========================== -->
+
         <div class="page end-page">
 
           <div class="end-content">
@@ -469,11 +508,13 @@
       </div>
 
 
-      <!-- BOTÃO AVANÇAR -->
+      <!-- AVANÇAR -->
       <button
         class="nav-btn next-btn"
         id="nextPage"
-        aria-label="Nächste Seite">
+        type="button"
+        aria-label="Nächste Seite"
+      >
         ❯
       </button>
 
@@ -486,19 +527,31 @@
 
     <div class="book-controls">
 
-      <button id="audioButton">
+      <button
+        id="audioButton"
+        type="button"
+      >
         🔊 Vorlesen
       </button>
 
-      <button id="readingModeButton">
+
+      <button
+        id="readingModeButton"
+        type="button"
+      >
         📖 Lesemodus
       </button>
+
 
       <span id="pageCounter">
         Seite 1
       </span>
 
-      <button id="fullscreenButton">
+
+      <button
+        id="fullscreenButton"
+        type="button"
+      >
         ⛶ Vollbild
       </button>
 
@@ -507,665 +560,9 @@
   </main>
 
 
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
-
-  <script>
-
-    /* =========================
-       PAGE FLIP
-    ========================== */
-
-    const flipbook =
-      document.getElementById("flipbook");
-
-
-    const pageFlip = new St.PageFlip(
-      flipbook,
-      {
-        width: 400,
-        height: 600,
-
-        size: "stretch",
-
-        minWidth: 300,
-        maxWidth: 700,
-
-        minHeight: 420,
-        maxHeight: 1000,
-
-        showCover: true,
-
-        mobileScrollSupport: false,
-
-        flippingTime: 900,
-
-        usePortrait: true,
-
-        startPage: 0,
-
-        autoSize: true,
-
-        maxShadowOpacity: 0.4,
-
-        drawShadow: true,
-
-        showPageCorners: true
-      }
-    );
-
-
-    pageFlip.loadFromHTML(
-      document.querySelectorAll(".page")
-    );
-
-
-
-    /* =========================
-       ELEMENTOS
-    ========================== */
-
-    const pages =
-      document.querySelectorAll(".page");
-
-    const pageCounter =
-      document.getElementById("pageCounter");
-
-    const audioButton =
-      document.getElementById("audioButton");
-
-    const readingModeButton =
-      document.getElementById("readingModeButton");
-
-    const marker =
-      document.getElementById("readingMarker");
-
-
-
-    /* =========================
-       ÁUDIO
-    ========================== */
-
-    let currentAudio = null;
-
-    let audioEnabled = false;
-
-
-    function stopAudio() {
-
-      if (!currentAudio) {
-        return;
-      }
-
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-
-      currentAudio = null;
-
-    }
-
-
-    function playPageAudio(pageNumber) {
-
-      stopAudio();
-
-      if (!audioEnabled) {
-        return;
-      }
-
-
-      const currentPage =
-        pages[pageNumber];
-
-
-      if (!currentPage) {
-        return;
-      }
-
-
-      const audioSource =
-        currentPage.dataset.audio;
-
-
-      if (!audioSource) {
-        return;
-      }
-
-
-      currentAudio =
-        new Audio(audioSource);
-
-
-      currentAudio.play().catch(() => {
-
-        console.log(
-          "Der Browser hat die automatische Wiedergabe blockiert."
-        );
-
-      });
-
-    }
-
-
-
-    /* =========================
-       BOTÃO DE ÁUDIO
-    ========================== */
-
-    audioButton.addEventListener(
-      "click",
-      () => {
-
-        audioEnabled =
-          !audioEnabled;
-
-
-        if (audioEnabled) {
-
-          audioButton.textContent =
-            "🔊 Vorlesen an";
-
-          audioButton.classList.add("active");
-
-
-          playPageAudio(
-            pageFlip.getCurrentPageIndex()
-          );
-
-        }
-
-        else {
-
-          audioButton.textContent =
-            "🔇 Vorlesen aus";
-
-          audioButton.classList.remove("active");
-
-          stopAudio();
-
-        }
-
-      }
-    );
-
-
-
-    /* =========================
-       PARAR VÍDEOS
-    ========================== */
-
-    function stopVideos() {
-
-      document
-        .querySelectorAll("video")
-        .forEach(video => {
-
-          video.pause();
-
-        });
-
-    }
-
-
-
-    /* =========================
-       MUDANÇA DE PÁGINA
-    ========================== */
-
-    pageFlip.on(
-      "flip",
-      event => {
-
-        const currentPage =
-          event.data;
-
-
-        stopAudio();
-
-        stopVideos();
-
-
-        if (audioEnabled) {
-
-          playPageAudio(currentPage);
-
-        }
-
-
-        updatePageCounter(currentPage);
-
-
-        saveProgress(currentPage);
-
-      }
-    );
-
-
-
-    /* =========================
-       CONTADOR
-    ========================== */
-
-    function updatePageCounter(pageNumber) {
-
-      pageCounter.textContent =
-        `Seite ${pageNumber + 1} / ${pages.length}`;
-
-    }
-
-
-    updatePageCounter(0);
-
-
-
-    /* =========================
-       NAVEGAÇÃO
-    ========================== */
-
-    document
-      .getElementById("nextPage")
-      .addEventListener(
-        "click",
-        () => {
-
-          pageFlip.flipNext();
-
-        }
-      );
-
-
-    document
-      .getElementById("prevPage")
-      .addEventListener(
-        "click",
-        () => {
-
-          pageFlip.flipPrev();
-
-        }
-      );
-
-
-
-    /* =========================
-       TECLADO
-    ========================== */
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (event.key === "ArrowRight") {
-
-          pageFlip.flipNext();
-
-        }
-
-
-        if (event.key === "ArrowLeft") {
-
-          pageFlip.flipPrev();
-
-        }
-
-      }
-    );
-
-
-
-    /* =========================
-       TELA CHEIA
-    ========================== */
-
-    document
-      .getElementById("fullscreenButton")
-      .addEventListener(
-        "click",
-        async () => {
-
-          try {
-
-            if (!document.fullscreenElement) {
-
-              await document
-                .documentElement
-                .requestFullscreen();
-
-            }
-
-            else {
-
-              await document
-                .exitFullscreen();
-
-            }
-
-          }
-
-          catch (error) {
-
-            console.log(
-              "Vollbild nicht verfügbar.",
-              error
-            );
-
-          }
-
-        }
-      );
-
-
-
-    /* =========================
-       MODO DE LEITURA
-    ========================== */
-
-    let readingMode = false;
-
-
-    readingModeButton.addEventListener(
-      "click",
-      () => {
-
-        readingMode =
-          !readingMode;
-
-
-        document.body.classList.toggle(
-          "reading-mode",
-          readingMode
-        );
-
-
-        if (readingMode) {
-
-          readingModeButton.textContent =
-            "📖 Lesemodus an";
-
-          readingModeButton.classList.add("active");
-
-        }
-
-        else {
-
-          readingModeButton.textContent =
-            "📖 Lesemodus";
-
-          readingModeButton.classList.remove("active");
-
-          marker.style.display = "none";
-
-        }
-
-      }
-    );
-
-
-
-    /* =========================
-       MARCAR PARÁGRAFO AO TOCAR
-    ========================== */
-
-    document
-      .querySelectorAll(".reading-text p")
-      .forEach(paragraph => {
-
-        paragraph.addEventListener(
-          "click",
-          event => {
-
-            if (!readingMode) {
-              return;
-            }
-
-
-            event.stopPropagation();
-
-
-            document
-              .querySelectorAll(".reading-text p")
-              .forEach(p => {
-
-                p.classList.remove(
-                  "reading-line"
-                );
-
-              });
-
-
-            paragraph.classList.add(
-              "reading-line"
-            );
-
-          }
-        );
-
-      });
-
-
-
-    /* =========================
-       MARCADOR COM O DEDO
-    ========================== */
-
-    document.addEventListener(
-      "touchstart",
-      event => {
-
-        if (!readingMode) {
-          return;
-        }
-
-
-        const target =
-          event.target.closest(".reading-text");
-
-
-        if (!target) {
-          return;
-        }
-
-
-        const touch =
-          event.touches[0];
-
-
-        marker.style.display =
-          "block";
-
-
-        marker.style.top =
-          `${touch.clientY - 18}px`;
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    document.addEventListener(
-      "touchmove",
-      event => {
-
-        if (!readingMode) {
-          return;
-        }
-
-
-        if (
-          marker.style.display !== "block"
-        ) {
-          return;
-        }
-
-
-        const touch =
-          event.touches[0];
-
-
-        marker.style.top =
-          `${touch.clientY - 18}px`;
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    document.addEventListener(
-      "touchend",
-      () => {
-
-        marker.style.display =
-          "none";
-
-      }
-    );
-
-
-
-    /* =========================
-       MARCADOR COM O MOUSE
-       PARA COMPUTADOR
-    ========================== */
-
-    document.addEventListener(
-      "mousemove",
-      event => {
-
-        if (!readingMode) {
-          return;
-        }
-
-
-        if (
-          !event.target.closest(".reading-text")
-        ) {
-
-          marker.style.display =
-            "none";
-
-          return;
-
-        }
-
-
-        marker.style.display =
-          "block";
-
-
-        marker.style.top =
-          `${event.clientY - 18}px`;
-
-      }
-    );
-
-
-
-    /* =========================
-       SALVAR PROGRESSO
-    ========================== */
-
-    function saveProgress(pageNumber) {
-
-      localStorage.setItem(
-        "kapitaEnceladusPage",
-        pageNumber
-      );
-
-    }
-
-
-
-    /* =========================
-       RECUPERAR PROGRESSO
-    ========================== */
-
-    window.addEventListener(
-      "load",
-      () => {
-
-        const savedPage =
-          localStorage.getItem(
-            "kapitaEnceladusPage"
-          );
-
-
-        if (
-          savedPage !== null &&
-          Number(savedPage) > 0
-        ) {
-
-          console.log(
-            `Zuletzt gelesen: Seite ${
-              Number(savedPage) + 1
-            }`
-          );
-
-        }
-
-      }
-    );
-const readingAreas = document.querySelectorAll(".auto-scroll");
-
-readingAreas.forEach((area) => {
-
-  let autoScroll;
-  let paused = false;
-
-  function startAutoScroll() {
-
-    autoScroll = setInterval(() => {
-
-      if (!paused) {
-
-        area.scrollTop += 1;
-
-        if (
-          area.scrollTop + area.clientHeight >=
-          area.scrollHeight
-        ) {
-          clearInterval(autoScroll);
-        }
-
-      }
-
-    }, 70);
-
-  }
-
-  area.addEventListener("touchstart", () => {
-    paused = true;
-  });
-
-  area.addEventListener("touchend", () => {
-
-    setTimeout(() => {
-      paused = false;
-    }, 2000);
-
-  });
-
-  area.addEventListener("wheel", () => {
-
-    paused = true;
-
-    setTimeout(() => {
-      paused = false;
-    }, 2000);
-
-  });
-
-  startAutoScroll();
-
-});
-
-
-  </script>
+  <!-- JAVASCRIPT GERAL DOS LIVROS -->
+  <script src="book.js"></script>
 
 </body>
-</htm
+
+</html>
