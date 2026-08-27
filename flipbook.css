@@ -228,3 +228,7 @@ h1{
   }
 
 }
+.book-text {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
