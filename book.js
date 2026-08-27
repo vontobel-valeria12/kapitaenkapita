@@ -691,58 +691,134 @@ document.addEventListener(
 );
 
 
-
 /* =========================================================
    ROLAGEM DO TEXTO
 ========================================================= */
 
 const readingAreas =
-  document.querySelectorAll(
-    ".auto-scroll"
-  );
+  document.querySelectorAll(".auto-scroll");
 
 
 readingAreas.forEach(area => {
 
-  let autoScrollTimer = null;
-
-  let paused = false;
-
-  let resumeTimer = null;
+  const readingContainer =
+    area.closest(".reading-text");
 
 
-
-  function pauseAutoScroll() {
-
-    paused = true;
-
-
-    clearTimeout(
-      resumeTimer
+  const topButton =
+    readingContainer?.querySelector(
+      ".scroll-top"
     );
 
 
-    resumeTimer =
-      setTimeout(
-        () => {
-
-          paused = false;
-
-        },
-        2500
-      );
-
-  }
+  const upButton =
+    readingContainer?.querySelector(
+      ".scroll-up"
+    );
 
 
+  const downButton =
+    readingContainer?.querySelector(
+      ".scroll-down"
+    );
+
+
+  const pauseButton =
+    readingContainer?.querySelector(
+      ".scroll-pause"
+    );
+
+
+  const playButton =
+    readingContainer?.querySelector(
+      ".scroll-play"
+    );
+
+
+  let autoScrollTimer = null;
+
+  let autoScrollEnabled = false;
+
+
+
+  /* -----------------------------------------
+     EVITAR QUE PAGEFLIP ROUBE O TOQUE
+  ----------------------------------------- */
+
+  [
+    "pointerdown",
+    "pointermove",
+    "pointerup",
+    "touchstart",
+    "touchmove",
+    "touchend",
+    "mousedown",
+    "mousemove",
+    "mouseup"
+  ].forEach(eventName => {
+
+    area.addEventListener(
+      eventName,
+      event => {
+
+        event.stopPropagation();
+
+      },
+      {
+        passive: true
+      }
+    );
+
+  });
+
+
+
+  /* -----------------------------------------
+     BOTÕES TAMBÉM NÃO VIRAM A PÁGINA
+  ----------------------------------------- */
+
+  readingContainer
+    ?.querySelectorAll(".scroll-btn")
+    .forEach(button => {
+
+      [
+        "pointerdown",
+        "touchstart",
+        "mousedown",
+        "click"
+      ].forEach(eventName => {
+
+        button.addEventListener(
+          eventName,
+          event => {
+
+            event.stopPropagation();
+
+          }
+        );
+
+      });
+
+    });
+
+
+
+  /* -----------------------------------------
+     INICIAR AUTO SCROLL
+  ----------------------------------------- */
 
   function startAutoScroll() {
+
+    stopAutoScroll();
+
+    autoScrollEnabled = true;
+
 
     autoScrollTimer =
       setInterval(
         () => {
 
-          if (paused) {
+          if (!autoScrollEnabled) {
             return;
           }
 
@@ -755,9 +831,7 @@ readingAreas.forEach(area => {
 
           if (reachedBottom) {
 
-            clearInterval(
-              autoScrollTimer
-            );
+            stopAutoScroll();
 
             return;
 
@@ -774,27 +848,133 @@ readingAreas.forEach(area => {
 
 
 
-  area.addEventListener(
-    "touchstart",
-    pauseAutoScroll,
-    {
-      passive: true
+  /* -----------------------------------------
+     PARAR AUTO SCROLL
+  ----------------------------------------- */
+
+  function stopAutoScroll() {
+
+    autoScrollEnabled = false;
+
+
+    if (autoScrollTimer) {
+
+      clearInterval(
+        autoScrollTimer
+      );
+
+      autoScrollTimer = null;
+
+    }
+
+  }
+
+
+
+  /* -----------------------------------------
+     VOLTAR AO TOPO
+  ----------------------------------------- */
+
+  topButton?.addEventListener(
+    "click",
+    () => {
+
+      stopAutoScroll();
+
+
+      area.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
     }
   );
 
 
-  area.addEventListener(
-    "touchmove",
-    pauseAutoScroll,
-    {
-      passive: true
+
+  /* -----------------------------------------
+     SUBIR
+  ----------------------------------------- */
+
+  upButton?.addEventListener(
+    "click",
+    () => {
+
+      stopAutoScroll();
+
+
+      area.scrollBy({
+        top: -180,
+        behavior: "smooth"
+      });
+
     }
   );
 
+
+
+  /* -----------------------------------------
+     DESCER
+  ----------------------------------------- */
+
+  downButton?.addEventListener(
+    "click",
+    () => {
+
+      stopAutoScroll();
+
+
+      area.scrollBy({
+        top: 180,
+        behavior: "smooth"
+      });
+
+    }
+  );
+
+
+
+  /* -----------------------------------------
+     PAUSAR
+  ----------------------------------------- */
+
+  pauseButton?.addEventListener(
+    "click",
+    () => {
+
+      stopAutoScroll();
+
+    }
+  );
+
+
+
+  /* -----------------------------------------
+     CONTINUAR
+  ----------------------------------------- */
+
+  playButton?.addEventListener(
+    "click",
+    () => {
+
+      startAutoScroll();
+
+    }
+  );
+
+
+
+  /* -----------------------------------------
+     ROLAGEM MANUAL
+  ----------------------------------------- */
 
   area.addEventListener(
     "wheel",
-    pauseAutoScroll,
+    () => {
+
+      stopAutoScroll();
+
+    },
     {
       passive: true
     }
@@ -802,16 +982,19 @@ readingAreas.forEach(area => {
 
 
   area.addEventListener(
-    "pointerdown",
-    pauseAutoScroll
+    "touchstart",
+    () => {
+
+      stopAutoScroll();
+
+    },
+    {
+      passive: true
+    }
   );
 
-
-  startAutoScroll();
-
 });
-
-
+  
 
 /* =========================================================
    RESETAR ROLAGEM AO TROCAR DE PÁGINA
