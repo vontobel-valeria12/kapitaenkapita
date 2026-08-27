@@ -1067,3 +1067,145 @@ if (exitBookButton) {
   );
 
 }
+/* =========================================================
+   ESCOLHER PÁGINA
+========================================================= */
+
+const pageMenuButton =
+  document.getElementById("pageMenuButton");
+
+const pageMenu =
+  document.getElementById("pageMenu");
+
+const pageList =
+  document.getElementById("pageList");
+
+const closePageMenu =
+  document.getElementById("closePageMenu");
+
+
+/* =========================================================
+   CRIAR LISTA DE PÁGINAS
+========================================================= */
+
+if (
+  pageMenuButton &&
+  pageMenu &&
+  pageList
+) {
+
+  pageList.innerHTML = "";
+
+
+  pages.forEach((page, index) => {
+
+    const button =
+      document.createElement("button");
+
+    button.type = "button";
+
+    button.classList.add(
+      "page-select-button"
+    );
+
+
+    /* CAPA */
+
+    if (index === 0) {
+
+      button.textContent = "Cover";
+
+    }
+
+    /* OUTRAS PÁGINAS */
+
+    else {
+
+      button.textContent =
+        `Seite ${index}`;
+
+    }
+
+
+    /* IR PARA A PÁGINA */
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        pageFlip.turnToPage(index);
+
+        closePageSelection();
+
+      }
+    );
+
+
+    pageList.appendChild(button);
+
+  });
+
+
+  /* =======================================================
+     ABRIR MENU
+  ======================================================= */
+
+  pageMenuButton.addEventListener(
+    "click",
+    () => {
+
+      pageMenu.classList.add("open");
+
+      pageMenu.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   FECHAR MENU
+========================================================= */
+
+function closePageSelection() {
+
+  if (!pageMenu) {
+    return;
+  }
+
+  pageMenu.classList.remove("open");
+
+  pageMenu.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+}
+
+
+closePageMenu?.addEventListener(
+  "click",
+  closePageSelection
+);
+
+
+/* =========================================================
+   FECHAR AO TOCAR FORA DA JANELA
+========================================================= */
+
+pageMenu?.addEventListener(
+  "click",
+  event => {
+
+    if (event.target === pageMenu) {
+
+      closePageSelection();
+
+    }
+
+  }
+);
