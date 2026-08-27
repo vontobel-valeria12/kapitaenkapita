@@ -419,18 +419,34 @@ body {
 
 
 /* =========================================================
-   LINHA DESTACADA
+   FRASES DO MODO DE LEITURA
 ========================================================= */
 
-.reading-line {
+.reading-sentence {
+  border-radius: 6px;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* Quando o modo de leitura estiver ligado */
+
+body.reading-mode .reading-sentence {
+  cursor: pointer;
+}
+
+
+/* Frase selecionada */
+
+.reading-sentence.reading-line {
   background:
     rgba(255, 220, 72, 0.38);
 
   box-shadow:
     0 0 0 2px
     rgba(255, 220, 72, 0.12);
-
-  transform: scale(1.01);
 }
 
 
