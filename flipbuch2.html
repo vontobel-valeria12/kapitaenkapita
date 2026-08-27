@@ -7,28 +7,40 @@
 
   <title>Kapitänin Kapita – Mission Enceladus</title>
 
-  <!-- CSS -->
+  <!-- CSS DO LIVRO -->
   <link rel="stylesheet" href="flipbuch2.css">
 
-  <!-- PAGE FLIP -->
+  <!-- BIBLIOTECA PAGE FLIP -->
   <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
 </head>
 
 
 <body data-book-id="enceladus">
 
-  <!-- FUNDO -->
+  <!-- =====================================================
+       FUNDO
+  ====================================================== -->
+
   <div class="stars"></div>
 
-  <!-- MARCADOR DE LEITURA -->
+
+  <!-- =====================================================
+       MARCADOR DE LEITURA
+  ====================================================== -->
+
   <div id="readingMarker"></div>
 
 
+  <!-- =====================================================
+       ÁREA PRINCIPAL
+  ====================================================== -->
+
   <main class="book-area">
 
-    <!-- =========================
+
+    <!-- ===================================================
          CABEÇALHO
-    ========================== -->
+    ==================================================== -->
 
     <header class="book-header">
 
@@ -39,13 +51,15 @@
     </header>
 
 
-    <!-- =========================
-         LIVRO
-    ========================== -->
+    <!-- ===================================================
+         CONTAINER DO LIVRO
+    ==================================================== -->
 
     <div class="book-container">
 
-      <!-- VOLTAR -->
+
+      <!-- BOTÃO: PÁGINA ANTERIOR -->
+
       <button
         class="nav-btn prev-btn"
         id="prevPage"
@@ -56,18 +70,18 @@
       </button>
 
 
-      <!-- FLIPBOOK -->
+      <!-- =================================================
+           FLIPBOOK
+      ================================================== -->
+
       <div id="flipbook">
 
 
-        <!-- =========================
+        <!-- =================================================
              CAPA
-        ========================== -->
+        ================================================== -->
 
-        <div
-          class="page cover"
-          data-audio="audio/mission_enceladus.mp3"
-        >
+        <div class="page cover">
 
           <img
             src="https://raw.githubusercontent.com/vontobel-valeria12/kapitaenkapita/main/img/IMG_20260804_085201.png"
@@ -77,10 +91,10 @@
         </div>
 
 
-        <!-- =========================
+        <!-- =================================================
              PÁGINA 1
              INTRODUÇÃO
-        ========================== -->
+        ================================================== -->
 
         <div
           class="page reading-page"
@@ -89,12 +103,16 @@
 
           <div class="page-content">
 
+            <!-- IMAGEM DA PÁGINA -->
+
             <img
               src="img/1785824876647.png"
               alt="Kapitänin Kapita im Weltraum"
               class="page-image"
             >
 
+
+            <!-- ÁREA DE LEITURA -->
 
             <div class="reading-text">
 
@@ -115,12 +133,14 @@
                 </p>
 
                 <p>
-                  Dort schießen Wasserfontänen aus dem Inneren des
-                  Mondes ins All. Sie sind ein Hinweis darauf, dass
-                  sich unter dem Eis ein Ozean verbergen könnte.
-                  Gibt es vielleicht etwas, das in dieser gefrorenen
-                  Welt lebt? Oder vielleicht eine alte,
-                  vergessene Technologie?
+                  Dort schießen Wasserfontänen aus dem Inneren des Mondes
+                  ins All. Sie sind ein Hinweis darauf, dass sich unter
+                  dem Eis ein Ozean verbergen könnte.
+                </p>
+
+                <p>
+                  Gibt es vielleicht etwas, das in dieser gefrorenen Welt
+                  lebt? Oder vielleicht eine alte, vergessene Technologie?
                 </p>
 
                 <p>
@@ -129,10 +149,13 @@
                 </p>
 
                 <p>
-                  Die mutige Kapitänin Kapita erhielt eine wichtige
-                  Aufgabe: Sie soll zum Saturn reisen und eine moderne
-                  wissenschaftliche Sonde installieren, die den
-                  Forschern auf der Erde dabei helfen wird,
+                  Die mutige Kapitänin Kapita erhielt eine wichtige Aufgabe:
+                  Sie soll zum Saturn reisen und eine moderne
+                  wissenschaftliche Sonde installieren.
+                </p>
+
+                <p>
+                  Diese Sonde soll den Forschern auf der Erde helfen,
                   Enceladus viele Jahre lang zu erforschen.
                 </p>
 
@@ -151,343 +174,283 @@
         </div>
 
 
-        <!-- =========================
+        <!-- =================================================
              PÁGINA 2
-        ========================== -->
+        ================================================== -->
 
-        <div
-          class="page reading-page"
-          data-audio="audio/#"
-        >
+        <div class="page reading-page">
 
           <div class="page-content">
 
-            <img
-              src="img/#"
-              alt="Saturn"
-              class="page-image"
-            >
-
-            <div class="reading-text">
-
-              <p>
-                Die Aurélia näherte sich langsam
-                dem Saturnsystem.
-              </p>
-
-              <p>
-                Kapita überprüfte die Instrumente.
-                Alles funktionierte genau nach Plan.
-              </p>
-
-              <p>
-                Doch plötzlich erschien ein kleines
-                blaues Licht auf dem Bildschirm.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- =========================
-             PÁGINA 3
-        ========================== -->
-
-        <div
-          class="page reading-page"
-          data-audio="audio/#"
-        >
-
-          <div class="page-content">
-
-            <img
-              src="img/#"
-              alt="Signal auf dem Bildschirm"
-              class="page-image"
-            >
-
-            <div class="reading-text">
-
-              <p>
-                „Zoe, was ist das?“, fragte Kapita.
-              </p>
-
-              <p>
-                Die künstliche Intelligenz
-                analysierte das Signal.
-              </p>
-
-              <p>
-                „Das Signal kommt von Enceladus“,
-                antwortete Zoe.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- =========================
-             PÁGINA 4
-             TEXTO
-        ========================== -->
-
-        <div
-          class="page reading-page text-page"
-          data-audio="audio/#"
-        >
-
-          <div class="reading-text full-text">
-
-            <h2>Ein unbekanntes Signal</h2>
-
-            <p>
-              Enceladus war einer der Monde des Saturn.
-              Seine Oberfläche bestand fast vollständig
-              aus Eis.
-            </p>
-
-            <p>
-              Unter dieser dicken Eisschicht befand
-              sich jedoch ein riesiger Ozean.
-            </p>
-
-            <p>
-              Wissenschaftler auf der Erde vermuteten
-              schon lange, dass dieser Ozean wichtige
-              Geheimnisse enthalten könnte.
-            </p>
-
-            <p>
-              Aber dieses Signal war etwas völlig Neues.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <!-- =========================
-             PÁGINA 5
-        ========================== -->
-
-        <div
-          class="page reading-page"
-          data-audio="audio/#"
-        >
-
-          <div class="page-content">
-
-            <img
-              src="img/#"
-              alt="Enceladus"
-              class="page-image"
-            >
-
-            <div class="reading-text">
-
-              <p>
-                Kapita betrachtete den kleinen weißen
-                Mond auf dem Bildschirm.
-              </p>
-
-              <p>
-                „Wie weit ist das Signal entfernt?“,
-                fragte sie.
-              </p>
-
-              <p>
-                Zoe antwortete:
-                „Nach der Landung ungefähr zehn Minuten
-                mit dem Rover.“
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- =========================
-             PÁGINA 6
-        ========================== -->
-
-        <div
-          class="page reading-page"
-          data-audio="audio/#"
-        >
-
-          <div class="page-content">
-
-            <img
-              src="img/#"
-              alt="Lerita Landemodul"
-              class="page-image"
-            >
-
-            <div class="reading-text">
-
-              <p>
-                Die Aurélia würde in der Umlaufbahn bleiben.
-              </p>
-
-              <p>
-                Für die Landung auf Enceladus musste
-                Kapita das Landemodul Lerita benutzen.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- =========================
-             PÁGINA 7
-             CIÊNCIA
-        ========================== -->
-
-        <div
-          class="page reading-page science-page"
-          data-audio="audio/#"
-        >
-
-          <div class="science-box">
-
-            <h2>Wusstest du schon?</h2>
-
-            <p>
-              Enceladus ist ein Mond des Saturn.
-            </p>
-
-            <p>
-              Seine Oberfläche ist mit Eis bedeckt.
-              Aus Spalten im Eis schießen Fontänen
-              aus Wasser und Eis ins Weltall.
-            </p>
-
-            <p>
-              Unter der Oberfläche befindet sich
-              wahrscheinlich ein großer Ozean.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <!-- =========================
-             PÁGINA 8
-        ========================== -->
-
-        <div
-          class="page reading-page"
-          data-audio="audio/#"
-        >
-
-          <div class="page-content">
-
-            <img
-              src="img/#"
-              alt="Kapitänin Kapita in der Lerita"
-              class="page-image"
-            >
-
-            <div class="reading-text">
-
-              <p>
-                Kapita setzte ihren Helm auf und
-                überprüfte ein letztes Mal ihren Anzug.
-              </p>
-
-              <p>
-                „Lerita bereit“, meldete Zoe.
-              </p>
-
-              <p>
-                Kapita lächelte.
-                „Dann finden wir heraus,
-                wer dieses Signal geschickt hat.“
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- =========================
-             VÍDEO LOCAL
-        ========================== -->
-
-        <div class="page video-page">
-
-          <div class="video-wrapper">
-
-            <video
-              controls
-              playsinline
-              preload="metadata"
-              poster="img/video-cover.jpg"
-            >
-
-              <source
-                src="video/landung-enceladus.mp4"
-                type="video/mp4"
+            <!--
+              IMAGEM OPCIONAL
+
+              <img
+                src="img/pagina2.jpg"
+                alt="Illustration Seite 2"
+                class="page-image"
               >
-
-              Dein Browser unterstützt dieses Video nicht.
-
-            </video>
-
-            <p class="video-title">
-              Die Landung auf Enceladus
-            </p>
-
-          </div>
-
-        </div>
+            -->
 
 
-        <!-- =========================
-             YOUTUBE
-        ========================== -->
+            <div class="reading-text">
 
-        <div class="page video-page">
+              <div class="book-text auto-scroll">
 
-          <div class="video-wrapper">
+                <h2>Titel der Seite</h2>
 
-            <iframe
-              src="https://www.youtube.com/embed/8469m0L6gg4"
-              title="Kapitänin Kapita Video"
-              allow="
-                accelerometer;
-                autoplay;
-                clipboard-write;
-                encrypted-media;
-                gyroscope;
-                picture-in-picture
-              "
-              allowfullscreen
-            >
-            </iframe>
+                <p>
+                  Hier kommt der Text der zweiten Seite.
+                </p>
+
+                <p>
+                  Du kannst diesen Text später ersetzen.
+                </p>
+
+              </div>
+
+            </div>
 
           </div>
 
         </div>
 
 
-        <!-- =========================
+        <!-- =================================================
+             PÁGINA 3
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <!--
+              IMAGEM OPCIONAL
+
+              <img
+                src="img/pagina3.jpg"
+                alt="Illustration Seite 3"
+                class="page-image"
+              >
+            -->
+
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <h2>Titel der Seite</h2>
+
+                <p>
+                  Hier kommt der Text der dritten Seite.
+                </p>
+
+                <p>
+                  Weitere Absätze können einfach hinzugefügt werden.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PÁGINA 4
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <!--
+              IMAGEM OPCIONAL
+
+              <img
+                src="img/pagina4.jpg"
+                alt="Illustration Seite 4"
+                class="page-image"
+              >
+            -->
+
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <h2>Titel der Seite</h2>
+
+                <p>
+                  Hier kommt der Text der vierten Seite.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PÁGINA 5
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <!--
+              IMAGEM OPCIONAL
+
+              <img
+                src="img/pagina5.jpg"
+                alt="Illustration Seite 5"
+                class="page-image"
+              >
+            -->
+
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <h2>Titel der Seite</h2>
+
+                <p>
+                  Hier kommt der Text der fünften Seite.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PÁGINA 6
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <!--
+              IMAGEM OPCIONAL
+
+              <img
+                src="img/pagina6.jpg"
+                alt="Illustration Seite 6"
+                class="page-image"
+              >
+            -->
+
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <h2>Titel der Seite</h2>
+
+                <p>
+                  Hier kommt der Text der sechsten Seite.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PÁGINA 7
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <!--
+              IMAGEM OPCIONAL
+
+              <img
+                src="img/pagina7.jpg"
+                alt="Illustration Seite 7"
+                class="page-image"
+              >
+            -->
+
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <h2>Titel der Seite</h2>
+
+                <p>
+                  Hier kommt der Text der siebten Seite.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PÁGINA 8
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <!--
+              IMAGEM OPCIONAL
+
+              <img
+                src="img/pagina8.jpg"
+                alt="Illustration Seite 8"
+                class="page-image"
+              >
+            -->
+
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <h2>Titel der Seite</h2>
+
+                <p>
+                  Hier kommt der Text der achten Seite.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
              FINAL
-        ========================== -->
+        ================================================== -->
 
         <div class="page end-page">
 
@@ -496,8 +459,7 @@
             <h2>Fortsetzung folgt...</h2>
 
             <p>
-              Das Abenteuer auf Enceladus
-              hat gerade erst begonnen.
+              Das Abenteuer hat gerade erst begonnen.
             </p>
 
           </div>
@@ -506,9 +468,11 @@
 
 
       </div>
+      <!-- FIM DO FLIPBOOK -->
 
 
-      <!-- AVANÇAR -->
+      <!-- BOTÃO: PRÓXIMA PÁGINA -->
+
       <button
         class="nav-btn next-btn"
         id="nextPage"
@@ -518,14 +482,22 @@
         ❯
       </button>
 
+
     </div>
+    <!-- FIM DO CONTAINER DO LIVRO -->
 
 
-    <!-- =========================
-         CONTROLES
-    ========================== -->
+    <!-- ===================================================
+         CONTROLES DO LIVRO
+    ==================================================== -->
 
-    <div class="book-controls">
+    <nav
+      class="book-controls"
+      aria-label="Buchsteuerung"
+    >
+
+
+      <!-- ÁUDIO -->
 
       <button
         id="audioButton"
@@ -535,6 +507,8 @@
       </button>
 
 
+      <!-- MODO DE LEITURA -->
+
       <button
         id="readingModeButton"
         type="button"
@@ -543,10 +517,24 @@
       </button>
 
 
+      <!-- ESCOLHER PÁGINA -->
+
+      <button
+        id="pageMenuButton"
+        type="button"
+      >
+        📑 Seite wählen
+      </button>
+
+
+      <!-- CONTADOR -->
+
       <span id="pageCounter">
         Seite 1
       </span>
 
+
+      <!-- TELA CHEIA -->
 
       <button
         id="fullscreenButton"
@@ -555,13 +543,78 @@
         ⛶ Vollbild
       </button>
 
-    </div>
+
+      <!-- SAIR DO LIVRO -->
+
+      <button
+        id="exitBookButton"
+        type="button"
+        data-exit-url="index.html"
+      >
+        ✕ Beenden
+      </button>
+
+
+    </nav>
+
 
   </main>
 
 
-  <!-- JAVASCRIPT GERAL DOS LIVROS -->
+  <!-- =====================================================
+       MENU: ESCOLHER PÁGINA
+  ====================================================== -->
+
+  <div
+    id="pageMenu"
+    class="page-menu"
+    aria-hidden="true"
+  >
+
+    <div
+      class="page-menu-box"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pageMenuTitle"
+    >
+
+
+      <!-- TÍTULO -->
+
+      <h2 id="pageMenuTitle">
+        Seite wählen
+      </h2>
+
+
+      <!--
+        O JAVASCRIPT CRIA
+        OS BOTÕES DAS PÁGINAS AQUI
+      -->
+
+      <div id="pageList"></div>
+
+
+      <!-- FECHAR MENU -->
+
+      <button
+        id="closePageMenu"
+        type="button"
+      >
+        Schließen
+      </button>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT GERAL DO LIVRO
+  ====================================================== -->
+
   <script src="book.js"></script>
+
 
 </body>
 
