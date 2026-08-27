@@ -1,6 +1,12 @@
-/* =========================
+/* =========================================================
+   FLIPBUCH2.CSS
+   Estilo geral dos livros Kapitänin Kapita
+========================================================= */
+
+
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 * {
   margin: 0;
@@ -16,29 +22,53 @@ body {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+
   background:
-    radial-gradient(circle at top, #24385f 0%, #111a2c 35%, #050814 100%);
+    radial-gradient(
+      circle at top,
+      #24385f 0%,
+      #111a2c 35%,
+      #050814 100%
+    );
+
   color: #18243a;
+
   overflow-x: hidden;
 }
 
 
-/* =========================
+
+/* =========================================================
    FUNDO DE ESTRELAS
-========================= */
+========================================================= */
 
 .stars {
   position: fixed;
   inset: 0;
+
   width: 100%;
   height: 100%;
+
   pointer-events: none;
+
   z-index: -1;
 
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.95) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255,255,255,0.65) 1px, transparent 1px),
-    radial-gradient(circle, rgba(190,220,255,0.5) 1px, transparent 1px);
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.95) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.65) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle,
+      rgba(190, 220, 255, 0.5) 1px,
+      transparent 1px
+    );
 
   background-size:
     90px 90px,
@@ -52,9 +82,10 @@ body {
 }
 
 
-/* =========================
+
+/* =========================================================
    ÁREA PRINCIPAL
-========================= */
+========================================================= */
 
 .book-area {
   width: 100%;
@@ -68,33 +99,46 @@ body {
 }
 
 
-/* =========================
+
+/* =========================================================
    CABEÇALHO
-========================= */
+========================================================= */
 
 .book-header {
-  text-align: center;
   margin-bottom: 18px;
-  color: white;
+
+  text-align: center;
+
+  color: #ffffff;
 }
 
 .book-header h1 {
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  letter-spacing: 1px;
   margin-bottom: 4px;
+
+  font-size: clamp(
+    1.5rem,
+    4vw,
+    2.2rem
+  );
+
+  letter-spacing: 1px;
 }
 
 .book-header p {
   font-size: 0.95rem;
-  opacity: 0.8;
+
   letter-spacing: 2px;
+
   text-transform: uppercase;
+
+  opacity: 0.8;
 }
 
 
-/* =========================
+
+/* =========================================================
    CONTAINER DO LIVRO
-========================= */
+========================================================= */
 
 .book-container {
   width: 100%;
@@ -110,28 +154,31 @@ body {
 }
 
 
-/* =========================
+
+/* =========================================================
    FLIPBOOK
-========================= */
+========================================================= */
 
 #flipbook {
   margin: 0 auto;
 }
 
 
-/* =========================
-   PÁGINA GERAL
-========================= */
+
+/* =========================================================
+   PÁGINAS
+========================================================= */
 
 .page {
+  position: relative;
+
   background: #ffffff;
 
   overflow: hidden;
 
   box-shadow:
-    inset 0 0 18px rgba(30, 48, 80, 0.08);
-
-  position: relative;
+    inset 0 0 18px
+    rgba(30, 48, 80, 0.08);
 }
 
 .page img {
@@ -139,9 +186,10 @@ body {
 }
 
 
-/* =========================
+
+/* =========================================================
    CAPA
-========================= */
+========================================================= */
 
 .cover {
   background: #07152e;
@@ -150,13 +198,15 @@ body {
 .cover img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 }
 
 
-/* =========================
+
+/* =========================================================
    PÁGINA DE LEITURA
-========================= */
+========================================================= */
 
 .reading-page {
   background:
@@ -167,38 +217,46 @@ body {
     );
 }
 
+
 .page-content {
   width: 100%;
   height: 100%;
 
   display: flex;
   flex-direction: column;
+
+  overflow: hidden;
 }
 
 
-/* =========================
-   IMAGEM DA PÁGINA
-========================= */
+
+/* =========================================================
+   IMAGEM
+========================================================= */
 
 .page-image {
   width: 100%;
   height: 47%;
+
   object-fit: cover;
 
   flex-shrink: 0;
 }
 
 
-/* =========================
-   TEXTO
-========================= */
+
+/* =========================================================
+   ÁREA NORMAL DE TEXTO
+========================================================= */
 
 .reading-text {
   flex: 1;
+  min-height: 0;
 
   padding: 24px 30px 28px;
 
   overflow-y: auto;
+  overflow-x: hidden;
 
   font-family:
     "Trebuchet MS",
@@ -206,22 +264,31 @@ body {
     sans-serif;
 
   font-size: 1.13rem;
+
   line-height: 1.7;
 
   letter-spacing: 0.01em;
 
   color: #1d2d48;
+
+  user-select: text;
+  -webkit-user-select: text;
+
+  -webkit-overflow-scrolling: touch;
 }
 
 
-/* PARÁGRAFOS */
+
+/* =========================================================
+   PARÁGRAFOS
+========================================================= */
 
 .reading-text p {
   margin-bottom: 17px;
 
-  border-radius: 7px;
-
   padding: 3px 4px;
+
+  border-radius: 7px;
 
   transition:
     background 0.2s ease,
@@ -229,28 +296,115 @@ body {
 }
 
 
-/* TÍTULO */
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
 
 .reading-text h2 {
+  margin-bottom: 24px;
+
   color: #243f70;
 
   font-size: 1.65rem;
-
-  margin-bottom: 24px;
 
   line-height: 1.25;
 }
 
 
-/* =========================
-   PÁGINA SÓ DE TEXTO
-========================= */
+
+/* =========================================================
+   TEXTO COM ROLAGEM AUTOMÁTICA
+========================================================= */
+
+/*
+   Quando existe .book-text dentro de .reading-text,
+   quem controla a rolagem é .book-text.
+*/
+
+.reading-text:has(.book-text) {
+  padding: 0;
+
+  overflow: hidden;
+}
+
+
+.book-text {
+  width: 100%;
+  height: 100%;
+
+  min-height: 0;
+
+  padding: 20px 22px 35px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  font-size: 1.08rem;
+
+  line-height: 1.65;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
+
+  -webkit-overflow-scrolling: touch;
+
+  touch-action: pan-y;
+
+  overscroll-behavior: contain;
+}
+
+
+.book-text h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+
+.book-text p {
+  margin-bottom: 18px;
+}
+
+
+
+/* =========================================================
+   BARRA DE ROLAGEM
+========================================================= */
+
+.reading-text::-webkit-scrollbar,
+.book-text::-webkit-scrollbar {
+  width: 6px;
+}
+
+
+.reading-text::-webkit-scrollbar-track,
+.book-text::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.reading-text::-webkit-scrollbar-thumb,
+.book-text::-webkit-scrollbar-thumb {
+  background:
+    rgba(59, 112, 161, 0.32);
+
+  border-radius: 20px;
+}
+
+
+
+/* =========================================================
+   PÁGINA SOMENTE DE TEXTO
+========================================================= */
 
 .text-page {
   padding: 0;
 }
 
+
 .full-text {
+  width: 100%;
   height: 100%;
 
   display: flex;
@@ -263,43 +417,58 @@ body {
 }
 
 
-/* =========================
+
+/* =========================================================
    LINHA DESTACADA
-========================= */
+========================================================= */
 
 .reading-line {
   background:
     rgba(255, 220, 72, 0.38);
 
   box-shadow:
-    0 0 0 2px rgba(255, 220, 72, 0.12);
+    0 0 0 2px
+    rgba(255, 220, 72, 0.12);
 
   transform: scale(1.01);
 }
 
 
-/* =========================
+
+/* =========================================================
    MODO DE LEITURA
-========================= */
+========================================================= */
 
 body.reading-mode .reading-text {
   font-size: 1.28rem;
+
   line-height: 1.95;
+
   letter-spacing: 0.02em;
 }
+
 
 body.reading-mode .reading-text p {
   margin-bottom: 22px;
 }
+
+
+body.reading-mode .book-text {
+  font-size: 1.2rem;
+
+  line-height: 1.85;
+}
+
 
 body.reading-mode .page-image {
   height: 40%;
 }
 
 
-/* =========================
+
+/* =========================================================
    MARCADOR DE LEITURA
-========================= */
+========================================================= */
 
 #readingMarker {
   position: fixed;
@@ -311,6 +480,10 @@ body.reading-mode .page-image {
 
   display: none;
 
+  pointer-events: none;
+
+  z-index: 9999;
+
   background:
     linear-gradient(
       180deg,
@@ -320,22 +493,21 @@ body.reading-mode .page-image {
     );
 
   border-top:
-    1px solid rgba(255, 205, 0, 0.25);
+    1px solid
+    rgba(255, 205, 0, 0.25);
 
   border-bottom:
-    1px solid rgba(255, 205, 0, 0.25);
-
-  pointer-events: none;
-
-  z-index: 9999;
+    1px solid
+    rgba(255, 205, 0, 0.25);
 
   backdrop-filter: blur(1px);
 }
 
 
-/* =========================
+
+/* =========================================================
    PÁGINA CIENTÍFICA
-========================= */
+========================================================= */
 
 .science-page {
   display: flex;
@@ -352,6 +524,7 @@ body.reading-mode .page-image {
     );
 }
 
+
 .science-box {
   width: 100%;
 
@@ -367,60 +540,67 @@ body.reading-mode .page-image {
     );
 
   border:
-    2px solid rgba(83, 177, 226, 0.25);
+    2px solid
+    rgba(83, 177, 226, 0.25);
 
   box-shadow:
-    0 16px 35px rgba(36, 90, 135, 0.12);
+    0 16px 35px
+    rgba(36, 90, 135, 0.12);
 }
 
+
 .science-box h2 {
+  margin-bottom: 24px;
+
   font-size: 1.7rem;
 
   color: #207ba8;
-
-  margin-bottom: 24px;
 }
 
+
 .science-box p {
+  margin-bottom: 18px;
+
   font-size: 1.15rem;
+
   line-height: 1.7;
 
   color: #213653;
-
-  margin-bottom: 18px;
 }
 
 
-/* =========================
+
+/* =========================================================
    PÁGINA DE VÍDEO
-========================= */
+========================================================= */
 
 .video-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 22px;
+
   background:
     linear-gradient(
       180deg,
       #071326,
       #0b1d36
     );
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 22px;
 }
+
 
 .video-wrapper {
   width: 100%;
 
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
 
   gap: 15px;
 }
+
 
 .video-wrapper video,
 .video-wrapper iframe {
@@ -428,18 +608,20 @@ body.reading-mode .page-image {
 
   aspect-ratio: 16 / 9;
 
-  border: none;
+  border: 0;
 
   border-radius: 14px;
 
-  background: black;
+  background: #000000;
 
   box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.38);
+    0 15px 35px
+    rgba(0, 0, 0, 0.38);
 }
 
+
 .video-title {
-  color: white;
+  color: #ffffff;
 
   font-size: 1rem;
 
@@ -447,18 +629,21 @@ body.reading-mode .page-image {
 }
 
 
-/* =========================
+
+/* =========================================================
    PÁGINA FINAL
-========================= */
+========================================================= */
 
 .end-page {
   display: flex;
   align-items: center;
   justify-content: center;
 
+  padding: 40px;
+
   text-align: center;
 
-  padding: 40px;
+  color: #ffffff;
 
   background:
     radial-gradient(
@@ -466,15 +651,15 @@ body.reading-mode .page-image {
       #1d416f,
       #0a1528 75%
     );
-
-  color: white;
 }
+
 
 .end-content h2 {
-  font-size: 2rem;
-
   margin-bottom: 20px;
+
+  font-size: 2rem;
 }
+
 
 .end-content p {
   font-size: 1.15rem;
@@ -485,31 +670,35 @@ body.reading-mode .page-image {
 }
 
 
-/* =========================
+
+/* =========================================================
    BOTÕES LATERAIS
-========================= */
+========================================================= */
 
 .nav-btn {
   width: 48px;
   height: 48px;
 
-  border-radius: 50%;
-
-  border:
-    1px solid rgba(255,255,255,0.22);
-
-  background:
-    rgba(255,255,255,0.12);
-
-  color: white;
-
-  font-size: 1.5rem;
-
-  cursor: pointer;
+  flex-shrink: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.22);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  color: #ffffff;
+
+  font-size: 1.5rem;
+
+  cursor: pointer;
 
   backdrop-filter: blur(8px);
 
@@ -518,21 +707,24 @@ body.reading-mode .page-image {
     background 0.2s ease;
 }
 
+
 .nav-btn:hover {
   background:
-    rgba(255,255,255,0.24);
+    rgba(255, 255, 255, 0.24);
 
   transform: scale(1.08);
 }
+
 
 .nav-btn:active {
   transform: scale(0.94);
 }
 
 
-/* =========================
+
+/* =========================================================
    CONTROLES INFERIORES
-========================= */
+========================================================= */
 
 .book-controls {
   margin-top: 18px;
@@ -540,37 +732,38 @@ body.reading-mode .page-image {
   display: flex;
   align-items: center;
   justify-content: center;
-
   flex-wrap: wrap;
 
   gap: 10px;
 
   padding: 10px 14px;
 
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.12);
+
   border-radius: 18px;
 
   background:
     rgba(6, 18, 39, 0.72);
 
-  border:
-    1px solid rgba(255,255,255,0.12);
-
   backdrop-filter: blur(12px);
 }
+
 
 .book-controls button {
   min-height: 40px;
 
   padding: 8px 14px;
 
-  border: none;
+  border: 0;
 
   border-radius: 12px;
 
   background:
-    rgba(255,255,255,0.12);
+    rgba(255, 255, 255, 0.12);
 
-  color: white;
+  color: #ffffff;
 
   font-size: 0.9rem;
 
@@ -581,14 +774,17 @@ body.reading-mode .page-image {
     transform 0.2s ease;
 }
 
+
 .book-controls button:hover {
   background:
-    rgba(255,255,255,0.22);
+    rgba(255, 255, 255, 0.22);
 }
+
 
 .book-controls button:active {
   transform: scale(0.96);
 }
+
 
 .book-controls button.active {
   background:
@@ -600,48 +796,34 @@ body.reading-mode .page-image {
 }
 
 
-/* CONTADOR */
+
+/* =========================================================
+   CONTADOR
+========================================================= */
 
 #pageCounter {
   min-width: 100px;
 
   text-align: center;
 
-  color: rgba(255,255,255,0.85);
+  color:
+    rgba(255, 255, 255, 0.85);
 
   font-size: 0.85rem;
 }
 
 
-/* =========================
-   SCROLL DO TEXTO
-========================= */
 
-.reading-text::-webkit-scrollbar {
-  width: 5px;
-}
-
-.reading-text::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.reading-text::-webkit-scrollbar-thumb {
-  background:
-    rgba(59, 112, 161, 0.28);
-
-  border-radius: 10px;
-}
-
-
-/* =========================
+/* =========================================================
    TABLET
-========================= */
+========================================================= */
 
 @media (max-width: 900px) {
 
   .book-container {
     gap: 6px;
   }
+
 
   .nav-btn {
     width: 42px;
@@ -650,18 +832,27 @@ body.reading-mode .page-image {
     font-size: 1.25rem;
   }
 
+
   .reading-text {
     padding: 20px 23px;
 
     font-size: 1.08rem;
   }
 
+
+  .book-text {
+    padding: 18px 20px 30px;
+
+    font-size: 1.05rem;
+  }
+
 }
 
 
-/* =========================
+
+/* =========================================================
    CELULAR
-========================= */
+========================================================= */
 
 @media (max-width: 600px) {
 
@@ -670,28 +861,29 @@ body.reading-mode .page-image {
       10px 4px 20px;
   }
 
+
   .book-header {
     margin-bottom: 10px;
   }
 
+
   .book-header h1 {
     font-size: 1.35rem;
   }
+
 
   .book-header p {
     font-size: 0.72rem;
   }
 
 
-  /* BOTÕES FICAM SOBRE O LIVRO */
+
+  /* BOTÕES SOBRE O LIVRO */
 
   .nav-btn {
     position: absolute;
 
     top: 50%;
-
-    transform:
-      translateY(-50%);
 
     z-index: 100;
 
@@ -700,20 +892,27 @@ body.reading-mode .page-image {
 
     background:
       rgba(5, 16, 36, 0.55);
+
+    transform:
+      translateY(-50%);
   }
+
 
   .nav-btn:hover {
     transform:
       translateY(-50%);
   }
 
+
   .prev-btn {
     left: 5px;
   }
 
+
   .next-btn {
     right: 5px;
   }
+
 
 
   /* IMAGEM */
@@ -721,6 +920,7 @@ body.reading-mode .page-image {
   .page-image {
     height: 43%;
   }
+
 
 
   /* TEXTO */
@@ -734,15 +934,43 @@ body.reading-mode .page-image {
     line-height: 1.62;
   }
 
+
   .reading-text p {
     margin-bottom: 13px;
   }
 
-  .reading-text h2 {
-    font-size: 1.35rem;
 
+  .reading-text h2 {
     margin-bottom: 16px;
+
+    font-size: 1.35rem;
   }
+
+
+
+  /* TEXTO COM SCROLL */
+
+  .book-text {
+    padding:
+      15px 18px 28px;
+
+    font-size: 1rem;
+
+    line-height: 1.62;
+  }
+
+
+  .book-text h2 {
+    margin-bottom: 16px;
+
+    font-size: 1.35rem;
+  }
+
+
+  .book-text p {
+    margin-bottom: 15px;
+  }
+
 
 
   /* MODO DE LEITURA */
@@ -753,9 +981,18 @@ body.reading-mode .page-image {
     line-height: 1.8;
   }
 
+
+  body.reading-mode .book-text {
+    font-size: 1.1rem;
+
+    line-height: 1.78;
+  }
+
+
   body.reading-mode .page-image {
     height: 34%;
   }
+
 
 
   /* CIÊNCIA */
@@ -764,17 +1001,21 @@ body.reading-mode .page-image {
     padding: 20px;
   }
 
+
   .science-box {
     padding: 24px 20px;
   }
+
 
   .science-box h2 {
     font-size: 1.4rem;
   }
 
+
   .science-box p {
     font-size: 1rem;
   }
+
 
 
   /* CONTROLES */
@@ -789,37 +1030,55 @@ body.reading-mode .page-image {
     border-radius: 14px;
   }
 
+
   .book-controls button {
     padding: 7px 10px;
 
     font-size: 0.78rem;
   }
 
-  #pageCounter {
-    font-size: 0.75rem;
 
+  #pageCounter {
     min-width: 80px;
+
+    font-size: 0.75rem;
   }
 
 }
 
 
-/* =========================
+
+/* =========================================================
    CELULAR PEQUENO
-========================= */
+========================================================= */
 
 @media (max-width: 390px) {
 
   .reading-text {
-    font-size: 0.94rem;
-
     padding:
       14px 17px 18px;
+
+    font-size: 0.94rem;
   }
+
+
+  .book-text {
+    padding:
+      13px 16px 25px;
+
+    font-size: 0.94rem;
+  }
+
 
   body.reading-mode .reading-text {
     font-size: 1.07rem;
   }
+
+
+  body.reading-mode .book-text {
+    font-size: 1.05rem;
+  }
+
 
   .book-controls button {
     font-size: 0.73rem;
@@ -828,9 +1087,10 @@ body.reading-mode .page-image {
 }
 
 
-/* =========================
+
+/* =========================================================
    TELA CHEIA
-========================= */
+========================================================= */
 
 :fullscreen body {
   background:
@@ -841,79 +1101,35 @@ body.reading-mode .page-image {
     );
 }
 
+
 :fullscreen .book-area {
   justify-content: center;
 }
 
 
-/* =========================
+
+/* =========================================================
    ACESSIBILIDADE
-========================= */
+========================================================= */
 
 button:focus-visible {
   outline:
-    3px solid rgba(111, 211, 255, 0.8);
+    3px solid
+    rgba(111, 211, 255, 0.8);
 
   outline-offset: 3px;
 }
 
 
-/* =========================
+
+/* =========================================================
    SELEÇÃO DE TEXTO
-========================= */
+========================================================= */
 
-.reading-text {
-  user-select: text;
-  -webkit-user-select: text;
-}
-
-.reading-text::selection {
+.reading-text::selection,
+.book-text::selection {
   background:
     rgba(255, 220, 72, 0.55);
 
   color: #162338;
-}
-.book-text {
-  height: 100%;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  padding: 20px 18px 30px;
-
-  box-sizing: border-box;
-
-  font-size: 18px;
-  line-height: 1.6;
-
-  scroll-behavior: smooth;
-
-  scrollbar-width: thin;
-}
-
-.book-text h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-.book-text p {
-  margin-bottom: 18px;
-}
-.book-text {
-  height: 100%;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  padding: 20px 18px 30px;
-  box-sizing: border-box;
-
-  font-size: 18px;
-  line-height: 1.6;
-
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
 }
