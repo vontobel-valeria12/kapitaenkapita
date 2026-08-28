@@ -452,10 +452,6 @@ if (fullscreenButton) {
    MODO DE LEITURA
 ========================================================= */
 
-/* =========================================================
-   MODO DE LEITURA
-========================================================= */
-
 let readingMode = false;
 
 
@@ -605,18 +601,9 @@ if (readingModeButton) {
 }
 
 
-
 /* =========================================================
    SELECIONAR FRASE
 ========================================================= */
-
-/*
-   Usamos CAPTURE = true.
-
-   Isso é importante porque algumas áreas do livro
-   bloqueiam o toque para impedir que o PageFlip
-   vire a página enquanto a criança lê.
-*/
 
 document.addEventListener(
   "pointerup",
@@ -641,9 +628,7 @@ document.addEventListener(
     event.preventDefault();
 
 
-    /*
-       Remove a frase anteriormente selecionada
-    */
+    /* Remove a frase anterior */
 
     document
       .querySelectorAll(
@@ -658,42 +643,18 @@ document.addEventListener(
       });
 
 
-    /*
-       Marca a nova frase
-    */
+    /* Marca somente a nova frase */
 
     sentence.classList.add(
       "reading-line"
     );
 
-
-    /*
-       Posiciona o marcador horizontal
-       exatamente na frase selecionada
-    */
-
-    if (marker) {
-
-      const rect =
-        sentence.getBoundingClientRect();
-
-
-      marker.style.display =
-        "block";
-
-
-      marker.style.top =
-        `${
-          rect.top +
-          rect.height / 2 -
-          19
-        }px`;
-
-    }
-
   },
   true
 );
+
+
+    
 
 
 
