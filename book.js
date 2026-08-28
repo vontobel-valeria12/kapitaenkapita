@@ -1,14 +1,15 @@
 /* =========================================================
    BOOK.JS
-   Configuração geral dos livros Kapitänin Kapita
+   Kapitänin Kapita – Leitor Digital
 ========================================================= */
 
 
 /* =========================================================
-   CONFIGURAÇÃO DO LIVRO
+   CONFIGURAÇÃO GERAL
 ========================================================= */
 
-const flipbook = document.getElementById("flipbook");
+const flipbook =
+  document.getElementById("flipbook");
 
 const bookId =
   document.body.dataset.bookId || "book";
@@ -16,57 +17,55 @@ const bookId =
 const progressKey =
   `${bookId}-page`;
 
+const pages =
+  document.querySelectorAll(".page");
 
 
 /* =========================================================
    PAGE FLIP
 ========================================================= */
 
-const pageFlip = new St.PageFlip(
-  flipbook,
-  {
-    width: 400,
-    height: 600,
+const pageFlip =
+  new St.PageFlip(
+    flipbook,
+    {
+      width: 400,
+      height: 600,
 
-    size: "stretch",
+      size: "stretch",
 
-    minWidth: 300,
-    maxWidth: 700,
+      minWidth: 300,
+      maxWidth: 700,
 
-    minHeight: 420,
-    maxHeight: 1000,
+      minHeight: 420,
+      maxHeight: 1000,
 
-    showCover: true,
+      showCover: true,
 
-    mobileScrollSupport: false,
+      mobileScrollSupport: false,
 
-    flippingTime: 900,
+      flippingTime: 900,
 
-    usePortrait: true,
+      usePortrait: true,
 
-    startPage: 0,
+      startPage: 0,
 
-    autoSize: true,
+      autoSize: true,
 
-    maxShadowOpacity: 0.4,
+      maxShadowOpacity: 0.4,
 
-    drawShadow: true,
+      drawShadow: true,
 
-    showPageCorners: true
-  }
-);
-
-
-const pages =
-  document.querySelectorAll(".page");
+      showPageCorners: true
+    }
+  );
 
 
 pageFlip.loadFromHTML(pages);
 
 
-
 /* =========================================================
-   ELEMENTOS
+   ELEMENTOS PRINCIPAIS
 ========================================================= */
 
 const pageCounter =
@@ -78,9 +77,6 @@ const audioButton =
 const readingModeButton =
   document.getElementById("readingModeButton");
 
-const marker =
-  document.getElementById("readingMarker");
-
 const nextPageButton =
   document.getElementById("nextPage");
 
@@ -90,6 +86,25 @@ const prevPageButton =
 const fullscreenButton =
   document.getElementById("fullscreenButton");
 
+const exitBookButton =
+  document.getElementById("exitBookButton");
+
+
+/* =========================================================
+   MENU DE PÁGINAS
+========================================================= */
+
+const pageMenuButton =
+  document.getElementById("pageMenuButton");
+
+const pageMenu =
+  document.getElementById("pageMenu");
+
+const pageList =
+  document.getElementById("pageList");
+
+const closePageMenu =
+  document.getElementById("closePageMenu");
 
 
 /* =========================================================
@@ -100,6 +115,10 @@ let currentAudio = null;
 let audioEnabled = false;
 
 
+/* =========================================================
+   PARAR ÁUDIO
+========================================================= */
+
 function stopAudio() {
 
   if (!currentAudio) {
@@ -107,6 +126,7 @@ function stopAudio() {
   }
 
   currentAudio.pause();
+
   currentAudio.currentTime = 0;
 
   currentAudio = null;
@@ -114,9 +134,14 @@ function stopAudio() {
 }
 
 
+/* =========================================================
+   TOCAR ÁUDIO DA PÁGINA
+========================================================= */
+
 function playPageAudio(pageNumber) {
 
   stopAudio();
+
 
   if (!audioEnabled) {
     return;
@@ -158,55 +183,50 @@ function playPageAudio(pageNumber) {
 }
 
 
-
 /* =========================================================
    BOTÃO DE ÁUDIO
 ========================================================= */
 
-if (audioButton) {
+audioButton?.addEventListener(
+  "click",
+  () => {
 
-  audioButton.addEventListener(
-    "click",
-    () => {
-
-      audioEnabled =
-        !audioEnabled;
+    audioEnabled =
+      !audioEnabled;
 
 
-      if (audioEnabled) {
+    if (audioEnabled) {
 
-        audioButton.textContent =
-          "🔊 Vorlesen an";
+      audioButton.textContent =
+        "🔊 Vorlesen an";
 
-        audioButton.classList.add(
-          "active"
-        );
+      audioButton.classList.add(
+        "active"
+      );
 
 
-        playPageAudio(
-          pageFlip.getCurrentPageIndex()
-        );
-
-      }
-
-      else {
-
-        audioButton.textContent =
-          "🔇 Vorlesen aus";
-
-        audioButton.classList.remove(
-          "active"
-        );
-
-        stopAudio();
-
-      }
+      playPageAudio(
+        pageFlip.getCurrentPageIndex()
+      );
 
     }
-  );
 
-}
+    else {
 
+      audioButton.textContent =
+        "🔇 Vorlesen aus";
+
+      audioButton.classList.remove(
+        "active"
+      );
+
+
+      stopAudio();
+
+    }
+
+  }
+);
 
 
 /* =========================================================
@@ -226,7 +246,6 @@ function stopVideos() {
 }
 
 
-
 /* =========================================================
    CONTADOR DE PÁGINAS
 ========================================================= */
@@ -238,14 +257,31 @@ function updatePageCounter(pageNumber) {
   }
 
 
+  const totalPages =
+    Math.max(
+      pages.length - 1,
+      0
+    );
+
+
+  /* CAPA */
+
+  if (pageNumber === 0) {
+
+    pageCounter.textContent =
+      "Cover";
+
+    return;
+
+  }
+
+
+  /* PÁGINAS INTERNAS */
+
   pageCounter.textContent =
-    `Seite ${pageNumber + 1} / ${pages.length}`;
+    `Seite ${pageNumber} / ${totalPages}`;
 
 }
-
-
-updatePageCounter(0);
-
 
 
 /* =========================================================
@@ -256,11 +292,10 @@ function saveProgress(pageNumber) {
 
   localStorage.setItem(
     progressKey,
-    pageNumber
+    String(pageNumber)
   );
 
 }
-
 
 
 /* =========================================================
@@ -285,7 +320,7 @@ function getSavedPage() {
 
 
   if (
-    Number.isNaN(pageNumber) ||
+    !Number.isInteger(pageNumber) ||
     pageNumber < 0 ||
     pageNumber >= pages.length
   ) {
@@ -299,6 +334,54 @@ function getSavedPage() {
 
 }
 
+
+/* =========================================================
+   RESETAR ROLAGEM DA LEITURA
+========================================================= */
+
+function resetReadingScroll() {
+
+  document
+    .querySelectorAll(
+      ".auto-scroll"
+    )
+    .forEach(area => {
+
+      area.scrollTop = 0;
+
+    });
+
+}
+
+
+/* =========================================================
+   ATUALIZAR PÁGINA ATUAL NO MENU
+========================================================= */
+
+function updateCurrentPageSelection(
+  pageNumber
+) {
+
+  document
+    .querySelectorAll(
+      ".page-select-button"
+    )
+    .forEach(button => {
+
+      const buttonPage =
+        Number(
+          button.dataset.page
+        );
+
+
+      button.classList.toggle(
+        "current",
+        buttonPage === pageNumber
+      );
+
+    });
+
+}
 
 
 /* =========================================================
@@ -332,6 +415,11 @@ pageFlip.on(
     );
 
 
+    updateCurrentPageSelection(
+      currentPage
+    );
+
+
     saveProgress(
       currentPage
     );
@@ -343,38 +431,28 @@ pageFlip.on(
 );
 
 
-
 /* =========================================================
    NAVEGAÇÃO
 ========================================================= */
 
-if (nextPageButton) {
+nextPageButton?.addEventListener(
+  "click",
+  () => {
 
-  nextPageButton.addEventListener(
-    "click",
-    () => {
+    pageFlip.flipNext();
 
-      pageFlip.flipNext();
-
-    }
-  );
-
-}
+  }
+);
 
 
-if (prevPageButton) {
+prevPageButton?.addEventListener(
+  "click",
+  () => {
 
-  prevPageButton.addEventListener(
-    "click",
-    () => {
+    pageFlip.flipPrev();
 
-      pageFlip.flipPrev();
-
-    }
-  );
-
-}
-
+  }
+);
 
 
 /* =========================================================
@@ -384,6 +462,35 @@ if (prevPageButton) {
 document.addEventListener(
   "keydown",
   event => {
+
+    /*
+      Se o menu lateral estiver aberto,
+      Escape fecha o menu.
+    */
+
+    if (
+      event.key === "Escape" &&
+      pageMenu?.classList.contains("open")
+    ) {
+
+      closePageSelection();
+
+      return;
+
+    }
+
+
+    /*
+      Não muda de página enquanto
+      o menu lateral estiver aberto.
+    */
+
+    if (
+      pageMenu?.classList.contains("open")
+    ) {
+      return;
+    }
+
 
     if (event.key === "ArrowRight") {
 
@@ -402,50 +509,44 @@ document.addEventListener(
 );
 
 
-
 /* =========================================================
    TELA CHEIA
 ========================================================= */
 
-if (fullscreenButton) {
+fullscreenButton?.addEventListener(
+  "click",
+  async () => {
 
-  fullscreenButton.addEventListener(
-    "click",
-    async () => {
+    try {
 
-      try {
+      if (!document.fullscreenElement) {
 
-        if (!document.fullscreenElement) {
-
-          await document
-            .documentElement
-            .requestFullscreen();
-
-        }
-
-        else {
-
-          await document
-            .exitFullscreen();
-
-        }
+        await document
+          .documentElement
+          .requestFullscreen();
 
       }
 
-      catch (error) {
+      else {
 
-        console.log(
-          "Vollbild nicht verfügbar.",
-          error
-        );
+        await document
+          .exitFullscreen();
 
       }
 
     }
-  );
 
-}
+    catch (error) {
 
+      console.log(
+        "Vollbild nicht verfügbar.",
+        error
+      );
+
+    }
+
+  }
+);
 
 
 /* =========================================================
@@ -456,39 +557,41 @@ let readingMode = false;
 
 
 /* =========================================================
-   PREPARAR TEXTO
-   Divide os parágrafos em frases
+   PREPARAR TEXTO PARA LEITURA
 ========================================================= */
 
-function prepararTextoLeitura() {
+function prepareReadingText() {
 
   document
-    .querySelectorAll(".reading-text p")
+    .querySelectorAll(
+      ".reading-text p"
+    )
     .forEach(paragraph => {
 
       if (
-        paragraph.dataset.prepared === "true"
+        paragraph.dataset.prepared ===
+        "true"
       ) {
         return;
       }
 
 
-      const texto =
+      const text =
         paragraph.textContent.trim();
 
 
-      if (!texto) {
+      if (!text) {
         return;
       }
 
 
-      const frases =
-        texto.match(
+      const sentences =
+        text.match(
           /[^.!?]+[.!?]+|[^.!?]+$/g
         );
 
 
-      if (!frases) {
+      if (!sentences) {
         return;
       }
 
@@ -496,21 +599,23 @@ function prepararTextoLeitura() {
       paragraph.innerHTML = "";
 
 
-      frases.forEach(frase => {
+      sentences.forEach(sentenceText => {
 
-        const span =
+        const sentence =
           document.createElement("span");
 
 
-        span.className =
+        sentence.className =
           "reading-sentence";
 
 
-        span.textContent =
-          frase.trim() + " ";
+        sentence.textContent =
+          `${sentenceText.trim()} `;
 
 
-        paragraph.appendChild(span);
+        paragraph.appendChild(
+          sentence
+        );
 
       });
 
@@ -523,82 +628,67 @@ function prepararTextoLeitura() {
 }
 
 
-prepararTextoLeitura();
-
+prepareReadingText();
 
 
 /* =========================================================
    LIGAR / DESLIGAR LESEMODUS
 ========================================================= */
 
-if (readingModeButton) {
+readingModeButton?.addEventListener(
+  "click",
+  event => {
 
-  readingModeButton.addEventListener(
-    "click",
-    event => {
-
-      event.stopPropagation();
+    event.stopPropagation();
 
 
-      readingMode =
-        !readingMode;
+    readingMode =
+      !readingMode;
 
 
-      document.body.classList.toggle(
-        "reading-mode",
-        readingMode
+    document.body.classList.toggle(
+      "reading-mode",
+      readingMode
+    );
+
+
+    if (readingMode) {
+
+      readingModeButton.textContent =
+        "📖 Lesemodus an";
+
+      readingModeButton.classList.add(
+        "active"
+      );
+
+    }
+
+    else {
+
+      readingModeButton.textContent =
+        "📖 Lesemodus";
+
+      readingModeButton.classList.remove(
+        "active"
       );
 
 
-      if (readingMode) {
+      document
+        .querySelectorAll(
+          ".reading-sentence.reading-line"
+        )
+        .forEach(sentence => {
 
-        readingModeButton.textContent =
-          "📖 Lesemodus an";
+          sentence.classList.remove(
+            "reading-line"
+          );
 
-
-        readingModeButton.classList.add(
-          "active"
-        );
-
-      }
-
-      else {
-
-        readingModeButton.textContent =
-          "📖 Lesemodus";
-
-
-        readingModeButton.classList.remove(
-          "active"
-        );
-
-
-        document
-          .querySelectorAll(
-            ".reading-sentence"
-          )
-          .forEach(sentence => {
-
-            sentence.classList.remove(
-              "reading-line"
-            );
-
-          });
-
-
-        if (marker) {
-
-          marker.style.display =
-            "none";
-
-        }
-
-      }
+        });
 
     }
-  );
 
-}
+  }
+);
 
 
 /* =========================================================
@@ -628,8 +718,6 @@ document.addEventListener(
     event.preventDefault();
 
 
-    /* Remove a frase anterior */
-
     document
       .querySelectorAll(
         ".reading-sentence.reading-line"
@@ -643,8 +731,6 @@ document.addEventListener(
       });
 
 
-    /* Marca somente a nova frase */
-
     sentence.classList.add(
       "reading-line"
     );
@@ -654,12 +740,8 @@ document.addEventListener(
 );
 
 
-    
-
-
-
 /* =========================================================
-   NÃO DEIXAR O PAGEFLIP ROUBAR O TOQUE
+   EVITAR QUE PAGEFLIP ROUBE O TOQUE
    DURANTE O LESEMODUS
 ========================================================= */
 
@@ -689,27 +771,23 @@ document.addEventListener(
   true
 );
 
-     
-
-
-
-
-
-
-    
 
 /* =========================================================
    ROLAGEM DO TEXTO
 ========================================================= */
 
 const readingAreas =
-  document.querySelectorAll(".auto-scroll");
+  document.querySelectorAll(
+    ".auto-scroll"
+  );
 
 
 readingAreas.forEach(area => {
 
   const readingContainer =
-    area.closest(".reading-text");
+    area.closest(
+      ".reading-text"
+    );
 
 
   const topButton =
@@ -743,14 +821,12 @@ readingAreas.forEach(area => {
 
 
   let autoScrollTimer = null;
-
   let autoScrollEnabled = false;
 
 
-
-  /* -----------------------------------------
-     EVITAR QUE PAGEFLIP ROUBE O TOQUE
-  ----------------------------------------- */
+  /* =======================================================
+     EVITAR QUE PAGEFLIP ROUBE A ROLAGEM
+  ======================================================= */
 
   [
     "pointerdown",
@@ -779,13 +855,14 @@ readingAreas.forEach(area => {
   });
 
 
-
-  /* -----------------------------------------
-     BOTÕES TAMBÉM NÃO VIRAM A PÁGINA
-  ----------------------------------------- */
+  /* =======================================================
+     BOTÕES DE ROLAGEM
+  ======================================================= */
 
   readingContainer
-    ?.querySelectorAll(".scroll-btn")
+    ?.querySelectorAll(
+      ".scroll-btn"
+    )
     .forEach(button => {
 
       [
@@ -809,14 +886,38 @@ readingAreas.forEach(area => {
     });
 
 
+  /* =======================================================
+     PARAR AUTO SCROLL
+  ======================================================= */
 
-  /* -----------------------------------------
+  function stopAutoScroll() {
+
+    autoScrollEnabled = false;
+
+
+    if (!autoScrollTimer) {
+      return;
+    }
+
+
+    clearInterval(
+      autoScrollTimer
+    );
+
+
+    autoScrollTimer = null;
+
+  }
+
+
+  /* =======================================================
      INICIAR AUTO SCROLL
-  ----------------------------------------- */
+  ======================================================= */
 
   function startAutoScroll() {
 
     stopAutoScroll();
+
 
     autoScrollEnabled = true;
 
@@ -854,33 +955,9 @@ readingAreas.forEach(area => {
   }
 
 
-
-  /* -----------------------------------------
-     PARAR AUTO SCROLL
-  ----------------------------------------- */
-
-  function stopAutoScroll() {
-
-    autoScrollEnabled = false;
-
-
-    if (autoScrollTimer) {
-
-      clearInterval(
-        autoScrollTimer
-      );
-
-      autoScrollTimer = null;
-
-    }
-
-  }
-
-
-
-  /* -----------------------------------------
+  /* =======================================================
      VOLTAR AO TOPO
-  ----------------------------------------- */
+  ======================================================= */
 
   topButton?.addEventListener(
     "click",
@@ -898,10 +975,9 @@ readingAreas.forEach(area => {
   );
 
 
-
-  /* -----------------------------------------
+  /* =======================================================
      SUBIR
-  ----------------------------------------- */
+  ======================================================= */
 
   upButton?.addEventListener(
     "click",
@@ -919,10 +995,9 @@ readingAreas.forEach(area => {
   );
 
 
-
-  /* -----------------------------------------
+  /* =======================================================
      DESCER
-  ----------------------------------------- */
+  ======================================================= */
 
   downButton?.addEventListener(
     "click",
@@ -940,10 +1015,9 @@ readingAreas.forEach(area => {
   );
 
 
-
-  /* -----------------------------------------
+  /* =======================================================
      PAUSAR
-  ----------------------------------------- */
+  ======================================================= */
 
   pauseButton?.addEventListener(
     "click",
@@ -955,10 +1029,9 @@ readingAreas.forEach(area => {
   );
 
 
-
-  /* -----------------------------------------
+  /* =======================================================
      CONTINUAR
-  ----------------------------------------- */
+  ======================================================= */
 
   playButton?.addEventListener(
     "click",
@@ -970,10 +1043,9 @@ readingAreas.forEach(area => {
   );
 
 
-
-  /* -----------------------------------------
+  /* =======================================================
      ROLAGEM MANUAL
-  ----------------------------------------- */
+  ======================================================= */
 
   area.addEventListener(
     "wheel",
@@ -1001,181 +1073,277 @@ readingAreas.forEach(area => {
   );
 
 });
-  
-
-/* =========================================================
-   RESETAR ROLAGEM AO TROCAR DE PÁGINA
-========================================================= */
-
-function resetReadingScroll() {
-
-  document
-    .querySelectorAll(
-      ".auto-scroll"
-    )
-    .forEach(area => {
-
-      area.scrollTop = 0;
-
-    });
-
-}
 
 
-
-/* =========================================================
-   INICIAR LIVRO
-========================================================= */
-
-window.addEventListener(
-  "load",
-  () => {
-
-    const savedPage =
-      getSavedPage();
-
-
-    updatePageCounter(
-      savedPage
-    );
-
-
-    if (savedPage > 0) {
-
-      console.log(
-        `Zuletzt gelesen: Seite ${
-          savedPage + 1
-        }`
-      );
-
-    }
-
-  }
-);
 /* =========================================================
    SAIR DO LIVRO
 ========================================================= */
 
-const exitBookButton =
-  document.getElementById("exitBookButton");
+exitBookButton?.addEventListener(
+  "click",
+  () => {
 
-if (exitBookButton) {
+    const exitUrl =
+      exitBookButton.dataset.exitUrl ||
+      "index.html";
 
-  exitBookButton.addEventListener(
-    "click",
-    () => {
 
-      const exitUrl =
-        exitBookButton.dataset.exitUrl || "index.html";
+    window.location.href =
+      exitUrl;
 
-      window.location.href = exitUrl;
-
-    }
-  );
-
-}
-/* =========================================================
-   ESCOLHER PÁGINA
-========================================================= */
-
-const pageMenuButton =
-  document.getElementById("pageMenuButton");
-
-const pageMenu =
-  document.getElementById("pageMenu");
-
-const pageList =
-  document.getElementById("pageList");
-
-const closePageMenu =
-  document.getElementById("closePageMenu");
+  }
+);
 
 
 /* =========================================================
-   CRIAR LISTA DE PÁGINAS
+   CRIAR MINIATURAS DAS PÁGINAS
 ========================================================= */
 
-if (
-  pageMenuButton &&
-  pageMenu &&
-  pageList
-) {
+function createPageThumbnails() {
+
+  if (!pageList) {
+    return;
+  }
+
 
   pageList.innerHTML = "";
 
 
-  pages.forEach((page, index) => {
+  pages.forEach(
+    (page, index) => {
 
-    const button =
-      document.createElement("button");
+      /* ===================================================
+         BOTÃO DA PÁGINA
+      =================================================== */
 
-    button.type = "button";
-
-    button.classList.add(
-      "page-select-button"
-    );
-
-
-    /* CAPA */
-
-    if (index === 0) {
-
-      button.textContent = "Cover";
-
-    }
-
-    /* OUTRAS PÁGINAS */
-
-    else {
-
-      button.textContent =
-        `Seite ${index}`;
-
-    }
+      const button =
+        document.createElement(
+          "button"
+        );
 
 
-    /* IR PARA A PÁGINA */
+      button.type =
+        "button";
 
-    button.addEventListener(
-      "click",
-      () => {
 
-        pageFlip.turnToPage(index);
+      button.className =
+        "page-select-button";
 
-        closePageSelection();
+
+      button.dataset.page =
+        String(index);
+
+
+      /* ===================================================
+         ÁREA DA MINIATURA
+      =================================================== */
+
+      const thumbnail =
+        document.createElement(
+          "div"
+        );
+
+
+      thumbnail.className =
+        "page-thumbnail";
+
+
+      /*
+        Procura a primeira imagem
+        existente dentro da página.
+      */
+
+      const pageImage =
+        page.querySelector("img");
+
+
+      if (pageImage) {
+
+        const image =
+          document.createElement(
+            "img"
+          );
+
+
+        image.src =
+          pageImage.src;
+
+
+        image.alt =
+          index === 0
+            ? "Cover"
+            : `Seite ${index}`;
+
+
+        image.loading =
+          "lazy";
+
+
+        thumbnail.appendChild(
+          image
+        );
 
       }
-    );
+
+      else {
+
+        /* ===============================================
+           PÁGINA SEM IMAGEM
+        =============================================== */
+
+        const placeholder =
+          document.createElement(
+            "div"
+          );
 
 
-    pageList.appendChild(button);
+        placeholder.className =
+          "page-thumbnail-placeholder";
 
-  });
+
+        const pageTitle =
+          page.querySelector(
+            "h2"
+          );
 
 
-  /* =======================================================
-     ABRIR MENU
-  ======================================================= */
+        if (pageTitle) {
 
-  pageMenuButton.addEventListener(
-    "click",
-    () => {
+          placeholder.textContent =
+            pageTitle.textContent.trim();
 
-      pageMenu.classList.add("open");
+        }
 
-      pageMenu.setAttribute(
-        "aria-hidden",
-        "false"
+        else if (index === 0) {
+
+          placeholder.textContent =
+            "Cover";
+
+        }
+
+        else {
+
+          placeholder.textContent =
+            `Seite ${index}`;
+
+        }
+
+
+        thumbnail.appendChild(
+          placeholder
+        );
+
+      }
+
+
+      /* ===================================================
+         NOME DA PÁGINA
+      =================================================== */
+
+      const label =
+        document.createElement(
+          "span"
+        );
+
+
+      label.className =
+        "page-thumbnail-label";
+
+
+      if (index === 0) {
+
+        label.textContent =
+          "Cover";
+
+      }
+
+      else {
+
+        label.textContent =
+          `Seite ${index}`;
+
+      }
+
+
+      /* ===================================================
+         MONTAR CARTÃO
+      =================================================== */
+
+      button.appendChild(
+        thumbnail
+      );
+
+
+      button.appendChild(
+        label
+      );
+
+
+      /* ===================================================
+         ABRIR PÁGINA
+      =================================================== */
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          pageFlip.turnToPage(
+            index
+          );
+
+
+          closePageSelection();
+
+        }
+      );
+
+
+      pageList.appendChild(
+        button
       );
 
     }
   );
 
+
+  updateCurrentPageSelection(
+    pageFlip.getCurrentPageIndex()
+  );
+
 }
 
 
 /* =========================================================
-   FECHAR MENU
+   ABRIR MENU DE PÁGINAS
+========================================================= */
+
+function openPageSelection() {
+
+  if (!pageMenu) {
+    return;
+  }
+
+
+  pageMenu.classList.add(
+    "open"
+  );
+
+
+  pageMenu.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+
+  updateCurrentPageSelection(
+    pageFlip.getCurrentPageIndex()
+  );
+
+}
+
+
+/* =========================================================
+   FECHAR MENU DE PÁGINAS
 ========================================================= */
 
 function closePageSelection() {
@@ -1184,7 +1352,11 @@ function closePageSelection() {
     return;
   }
 
-  pageMenu.classList.remove("open");
+
+  pageMenu.classList.remove(
+    "open"
+  );
+
 
   pageMenu.setAttribute(
     "aria-hidden",
@@ -1194,6 +1366,26 @@ function closePageSelection() {
 }
 
 
+/* =========================================================
+   BOTÃO SEITEN
+========================================================= */
+
+pageMenuButton?.addEventListener(
+  "click",
+  event => {
+
+    event.stopPropagation();
+
+    openPageSelection();
+
+  }
+);
+
+
+/* =========================================================
+   BOTÃO FECHAR MENU
+========================================================= */
+
 closePageMenu?.addEventListener(
   "click",
   closePageSelection
@@ -1201,18 +1393,73 @@ closePageMenu?.addEventListener(
 
 
 /* =========================================================
-   FECHAR AO TOCAR FORA DA JANELA
+   FECHAR TOCANDO FORA DO PAINEL
 ========================================================= */
 
 pageMenu?.addEventListener(
   "click",
   event => {
 
-    if (event.target === pageMenu) {
+    if (
+      event.target ===
+      pageMenu
+    ) {
 
       closePageSelection();
 
     }
+
+  }
+);
+
+
+/* =========================================================
+   INICIALIZAÇÃO DO LIVRO
+========================================================= */
+
+window.addEventListener(
+  "load",
+  () => {
+
+    /*
+      Cria a galeria lateral
+      das páginas.
+    */
+
+    createPageThumbnails();
+
+
+    /*
+      Recupera a última página
+      lida pelo usuário.
+    */
+
+    const savedPage =
+      getSavedPage();
+
+
+    /*
+      Agora o livro realmente
+      volta para a página salva.
+    */
+
+    if (savedPage > 0) {
+
+      pageFlip.turnToPage(
+        savedPage
+      );
+
+    }
+
+
+    updatePageCounter(
+      savedPage
+    );
+
+
+    updateCurrentPageSelection(
+      savedPage
+    );
 
   }
 );
