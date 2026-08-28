@@ -706,50 +706,38 @@ body.reading-mode .page-image {
 ========================================================= */
 
 .nav-btn {
-  width: 48px;
-  height: 48px;
+  position: absolute;
 
-  flex-shrink: 0;
+  /* Mantém as setas sobre a imagem,
+     evitando cobrir o texto */
+  top: 32%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 100;
 
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.22);
-
-  border-radius: 50%;
+  width: 38px;
+  height: 38px;
 
   background:
-    rgba(255, 255, 255, 0.12);
+    rgba(5, 16, 36, 0.48);
 
   color: #ffffff;
 
-  font-size: 1.5rem;
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.35);
 
-  cursor: pointer;
+  transform:
+    translateY(-50%);
 
-  backdrop-filter: blur(8px);
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease;
+  opacity: 0.82;
+}
+.prev-btn {
+  left: 5px;
 }
 
-
-.nav-btn:hover {
-  background:
-    rgba(255, 255, 255, 0.24);
-
-  transform: scale(1.08);
+.next-btn {
+  right: 5px;
 }
-
-
-.nav-btn:active {
-  transform: scale(0.94);
-}
-
 
 /* =========================================================
    CONTROLES INFERIORES
