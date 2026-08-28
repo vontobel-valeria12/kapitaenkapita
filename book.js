@@ -126,11 +126,8 @@ function stopAudio() {
   }
 
   currentAudio.pause();
-
   currentAudio.currentTime = 0;
-
   currentAudio = null;
-
 }
 
 
@@ -142,33 +139,26 @@ function playPageAudio(pageNumber) {
 
   stopAudio();
 
-
   if (!audioEnabled) {
     return;
   }
 
-
   const currentPage =
     pages[pageNumber];
-
 
   if (!currentPage) {
     return;
   }
 
-
   const audioSource =
     currentPage.dataset.audio;
-
 
   if (!audioSource) {
     return;
   }
 
-
   currentAudio =
     new Audio(audioSource);
-
 
   currentAudio
     .play()
@@ -179,7 +169,6 @@ function playPageAudio(pageNumber) {
       );
 
     });
-
 }
 
 
@@ -194,7 +183,6 @@ audioButton?.addEventListener(
     audioEnabled =
       !audioEnabled;
 
-
     if (audioEnabled) {
 
       audioButton.textContent =
@@ -203,7 +191,6 @@ audioButton?.addEventListener(
       audioButton.classList.add(
         "active"
       );
-
 
       playPageAudio(
         pageFlip.getCurrentPageIndex()
@@ -220,9 +207,7 @@ audioButton?.addEventListener(
         "active"
       );
 
-
       stopAudio();
-
     }
 
   }
@@ -242,7 +227,6 @@ function stopVideos() {
       video.pause();
 
     });
-
 }
 
 
@@ -256,15 +240,11 @@ function updatePageCounter(pageNumber) {
     return;
   }
 
-
   const totalPages =
     Math.max(
       pages.length - 1,
       0
     );
-
-
-  /* CAPA */
 
   if (pageNumber === 0) {
 
@@ -272,15 +252,10 @@ function updatePageCounter(pageNumber) {
       "Cover";
 
     return;
-
   }
-
-
-  /* PÁGINAS INTERNAS */
 
   pageCounter.textContent =
     `Seite ${pageNumber} / ${totalPages}`;
-
 }
 
 
@@ -294,7 +269,6 @@ function saveProgress(pageNumber) {
     progressKey,
     String(pageNumber)
   );
-
 }
 
 
@@ -309,15 +283,12 @@ function getSavedPage() {
       progressKey
     );
 
-
   if (savedPage === null) {
     return 0;
   }
 
-
   const pageNumber =
     Number(savedPage);
-
 
   if (
     !Number.isInteger(pageNumber) ||
@@ -326,12 +297,9 @@ function getSavedPage() {
   ) {
 
     return 0;
-
   }
 
-
   return pageNumber;
-
 }
 
 
@@ -350,7 +318,6 @@ function resetReadingScroll() {
       area.scrollTop = 0;
 
     });
-
 }
 
 
@@ -358,9 +325,7 @@ function resetReadingScroll() {
    ATUALIZAR PÁGINA ATUAL NO MENU
 ========================================================= */
 
-function updateCurrentPageSelection(
-  pageNumber
-) {
+function updateCurrentPageSelection(pageNumber) {
 
   document
     .querySelectorAll(
@@ -373,14 +338,12 @@ function updateCurrentPageSelection(
           button.dataset.page
         );
 
-
       button.classList.toggle(
         "current",
         buttonPage === pageNumber
       );
 
     });
-
 }
 
 
@@ -395,11 +358,8 @@ pageFlip.on(
     const currentPage =
       event.data;
 
-
     stopAudio();
-
     stopVideos();
-
 
     if (audioEnabled) {
 
@@ -409,24 +369,19 @@ pageFlip.on(
 
     }
 
-
     updatePageCounter(
       currentPage
     );
-
 
     updateCurrentPageSelection(
       currentPage
     );
 
-
     saveProgress(
       currentPage
     );
 
-
     resetReadingScroll();
-
   }
 );
 
@@ -463,27 +418,14 @@ document.addEventListener(
   "keydown",
   event => {
 
-    /*
-      Se o menu lateral estiver aberto,
-      Escape fecha o menu.
-    */
-
     if (
       event.key === "Escape" &&
       pageMenu?.classList.contains("open")
     ) {
 
       closePageSelection();
-
       return;
-
     }
-
-
-    /*
-      Não muda de página enquanto
-      o menu lateral estiver aberto.
-    */
 
     if (
       pageMenu?.classList.contains("open")
@@ -491,13 +433,11 @@ document.addEventListener(
       return;
     }
 
-
     if (event.key === "ArrowRight") {
 
       pageFlip.flipNext();
 
     }
-
 
     if (event.key === "ArrowLeft") {
 
@@ -575,43 +515,34 @@ function prepareReadingText() {
         return;
       }
 
-
       const text =
         paragraph.textContent.trim();
-
 
       if (!text) {
         return;
       }
-
 
       const sentences =
         text.match(
           /[^.!?]+[.!?]+|[^.!?]+$/g
         );
 
-
       if (!sentences) {
         return;
       }
 
-
       paragraph.innerHTML = "";
-
 
       sentences.forEach(sentenceText => {
 
         const sentence =
           document.createElement("span");
 
-
         sentence.className =
           "reading-sentence";
 
-
         sentence.textContent =
           `${sentenceText.trim()} `;
-
 
         paragraph.appendChild(
           sentence
@@ -619,12 +550,10 @@ function prepareReadingText() {
 
       });
 
-
       paragraph.dataset.prepared =
         "true";
 
     });
-
 }
 
 
@@ -641,16 +570,13 @@ readingModeButton?.addEventListener(
 
     event.stopPropagation();
 
-
     readingMode =
       !readingMode;
-
 
     document.body.classList.toggle(
       "reading-mode",
       readingMode
     );
-
 
     if (readingMode) {
 
@@ -672,7 +598,6 @@ readingModeButton?.addEventListener(
         "active"
       );
 
-
       document
         .querySelectorAll(
           ".reading-sentence.reading-line"
@@ -684,7 +609,6 @@ readingModeButton?.addEventListener(
           );
 
         });
-
     }
 
   }
@@ -703,20 +627,16 @@ document.addEventListener(
       return;
     }
 
-
     const sentence =
       event.target.closest(
         ".reading-sentence"
       );
 
-
     if (!sentence) {
       return;
     }
 
-
     event.preventDefault();
-
 
     document
       .querySelectorAll(
@@ -730,7 +650,6 @@ document.addEventListener(
 
       });
 
-
     sentence.classList.add(
       "reading-line"
     );
@@ -741,8 +660,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   EVITAR QUE PAGEFLIP ROUBE O TOQUE
-   DURANTE O LESEMODUS
+   EVITAR PAGEFLIP DURANTE LESEMODUS
 ========================================================= */
 
 document.addEventListener(
@@ -753,17 +671,14 @@ document.addEventListener(
       return;
     }
 
-
     const sentence =
       event.target.closest(
         ".reading-sentence"
       );
 
-
     if (!sentence) {
       return;
     }
-
 
     event.stopPropagation();
 
@@ -789,36 +704,30 @@ readingAreas.forEach(area => {
       ".reading-text"
     );
 
-
   const topButton =
     readingContainer?.querySelector(
       ".scroll-top"
     );
-
 
   const upButton =
     readingContainer?.querySelector(
       ".scroll-up"
     );
 
-
   const downButton =
     readingContainer?.querySelector(
       ".scroll-down"
     );
-
 
   const pauseButton =
     readingContainer?.querySelector(
       ".scroll-pause"
     );
 
-
   const playButton =
     readingContainer?.querySelector(
       ".scroll-play"
     );
-
 
   let autoScrollTimer = null;
   let autoScrollEnabled = false;
@@ -856,7 +765,7 @@ readingAreas.forEach(area => {
 
 
   /* =======================================================
-     BOTÕES DE ROLAGEM
+     EVITAR PAGEFLIP NOS BOTÕES DE ROLAGEM
   ======================================================= */
 
   readingContainer
@@ -894,19 +803,15 @@ readingAreas.forEach(area => {
 
     autoScrollEnabled = false;
 
-
     if (!autoScrollTimer) {
       return;
     }
-
 
     clearInterval(
       autoScrollTimer
     );
 
-
     autoScrollTimer = null;
-
   }
 
 
@@ -918,9 +823,7 @@ readingAreas.forEach(area => {
 
     stopAutoScroll();
 
-
     autoScrollEnabled = true;
-
 
     autoScrollTimer =
       setInterval(
@@ -930,28 +833,22 @@ readingAreas.forEach(area => {
             return;
           }
 
-
           const reachedBottom =
             area.scrollTop +
             area.clientHeight >=
             area.scrollHeight - 2;
 
-
           if (reachedBottom) {
 
             stopAutoScroll();
-
             return;
-
           }
-
 
           area.scrollTop += 1;
 
         },
         80
       );
-
   }
 
 
@@ -964,7 +861,6 @@ readingAreas.forEach(area => {
     () => {
 
       stopAutoScroll();
-
 
       area.scrollTo({
         top: 0,
@@ -985,7 +881,6 @@ readingAreas.forEach(area => {
 
       stopAutoScroll();
 
-
       area.scrollBy({
         top: -180,
         behavior: "smooth"
@@ -1004,7 +899,6 @@ readingAreas.forEach(area => {
     () => {
 
       stopAutoScroll();
-
 
       area.scrollBy({
         top: 180,
@@ -1087,7 +981,6 @@ exitBookButton?.addEventListener(
       exitBookButton.dataset.exitUrl ||
       "index.html";
 
-
     window.location.href =
       exitUrl;
 
@@ -1105,53 +998,35 @@ function createPageThumbnails() {
     return;
   }
 
-
   pageList.innerHTML = "";
-
 
   pages.forEach(
     (page, index) => {
-
-      /* ===================================================
-         BOTÃO DA PÁGINA
-      =================================================== */
 
       const button =
         document.createElement(
           "button"
         );
 
-
       button.type =
         "button";
 
-
       button.className =
         "page-select-button";
-
 
       button.dataset.page =
         String(index);
 
 
-      /* ===================================================
-         ÁREA DA MINIATURA
-      =================================================== */
+      /* MINIATURA */
 
       const thumbnail =
         document.createElement(
           "div"
         );
 
-
       thumbnail.className =
         "page-thumbnail";
-
-
-      /*
-        Procura a primeira imagem
-        existente dentro da página.
-      */
 
       const pageImage =
         page.querySelector("img");
@@ -1164,20 +1039,16 @@ function createPageThumbnails() {
             "img"
           );
 
-
         image.src =
           pageImage.src;
-
 
         image.alt =
           index === 0
             ? "Cover"
             : `Seite ${index}`;
 
-
         image.loading =
           "lazy";
-
 
         thumbnail.appendChild(
           image
@@ -1187,25 +1058,18 @@ function createPageThumbnails() {
 
       else {
 
-        /* ===============================================
-           PÁGINA SEM IMAGEM
-        =============================================== */
-
         const placeholder =
           document.createElement(
             "div"
           );
 
-
         placeholder.className =
           "page-thumbnail-placeholder";
-
 
         const pageTitle =
           page.querySelector(
             "h2"
           );
-
 
         if (pageTitle) {
 
@@ -1228,60 +1092,40 @@ function createPageThumbnails() {
 
         }
 
-
         thumbnail.appendChild(
           placeholder
         );
-
       }
 
 
-      /* ===================================================
-         NOME DA PÁGINA
-      =================================================== */
+      /* NOME DA PÁGINA */
 
       const label =
         document.createElement(
           "span"
         );
 
-
       label.className =
         "page-thumbnail-label";
 
-
-      if (index === 0) {
-
-        label.textContent =
-          "Cover";
-
-      }
-
-      else {
-
-        label.textContent =
-          `Seite ${index}`;
-
-      }
+      label.textContent =
+        index === 0
+          ? "Cover"
+          : `Seite ${index}`;
 
 
-      /* ===================================================
-         MONTAR CARTÃO
-      =================================================== */
+      /* MONTAR */
 
       button.appendChild(
         thumbnail
       );
-
 
       button.appendChild(
         label
       );
 
 
-      /* ===================================================
-         ABRIR PÁGINA
-      =================================================== */
+      /* ABRIR PÁGINA */
 
       button.addEventListener(
         "click",
@@ -1290,7 +1134,6 @@ function createPageThumbnails() {
           pageFlip.turnToPage(
             index
           );
-
 
           closePageSelection();
 
@@ -1304,12 +1147,6 @@ function createPageThumbnails() {
 
     }
   );
-
-
-  updateCurrentPageSelection(
-    pageFlip.getCurrentPageIndex()
-  );
-
 }
 
 
@@ -1323,22 +1160,14 @@ function openPageSelection() {
     return;
   }
 
-
   pageMenu.classList.add(
     "open"
   );
-
 
   pageMenu.setAttribute(
     "aria-hidden",
     "false"
   );
-
-
-  updateCurrentPageSelection(
-    pageFlip.getCurrentPageIndex()
-  );
-
 }
 
 
@@ -1352,29 +1181,24 @@ function closePageSelection() {
     return;
   }
 
-
   pageMenu.classList.remove(
     "open"
   );
-
 
   pageMenu.setAttribute(
     "aria-hidden",
     "true"
   );
-
 }
 
 
 /* =========================================================
-   BOTÃO SEITEN
+   BOTÃO ABRIR MENU
 ========================================================= */
 
 pageMenuButton?.addEventListener(
   "click",
-  event => {
-
-    event.stopPropagation();
+  () => {
 
     openPageSelection();
 
@@ -1388,12 +1212,16 @@ pageMenuButton?.addEventListener(
 
 closePageMenu?.addEventListener(
   "click",
-  closePageSelection
+  () => {
+
+    closePageSelection();
+
+  }
 );
 
 
 /* =========================================================
-   FECHAR TOCANDO FORA DO PAINEL
+   FECHAR CLICANDO FORA
 ========================================================= */
 
 pageMenu?.addEventListener(
@@ -1401,8 +1229,7 @@ pageMenu?.addEventListener(
   event => {
 
     if (
-      event.target ===
-      pageMenu
+      event.target === pageMenu
     ) {
 
       closePageSelection();
@@ -1414,52 +1241,31 @@ pageMenu?.addEventListener(
 
 
 /* =========================================================
-   INICIALIZAÇÃO DO LIVRO
+   INICIALIZAÇÃO
 ========================================================= */
 
-window.addEventListener(
-  "load",
-  () => {
-
-    /*
-      Cria a galeria lateral
-      das páginas.
-    */
-
-    createPageThumbnails();
+createPageThumbnails();
 
 
-    /*
-      Recupera a última página
-      lida pelo usuário.
-    */
-
-    const savedPage =
-      getSavedPage();
+const savedPage =
+  getSavedPage();
 
 
-    /*
-      Agora o livro realmente
-      volta para a página salva.
-    */
+if (
+  savedPage > 0
+) {
 
-    if (savedPage > 0) {
-
-      pageFlip.turnToPage(
-        savedPage
-      );
-
-    }
+  pageFlip.turnToPage(
+    savedPage
+  );
+}
 
 
-    updatePageCounter(
-      savedPage
-    );
+updatePageCounter(
+  savedPage
+);
 
 
-    updateCurrentPageSelection(
-      savedPage
-    );
-
-  }
+updateCurrentPageSelection(
+  savedPage
 );
