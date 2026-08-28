@@ -452,14 +452,97 @@ if (fullscreenButton) {
    MODO DE LEITURA
 ========================================================= */
 
+/* =========================================================
+   MODO DE LEITURA
+========================================================= */
+
 let readingMode = false;
 
+
+/* =========================================================
+   PREPARAR TEXTO
+   Divide os parágrafos em frases
+========================================================= */
+
+function prepararTextoLeitura() {
+
+  document
+    .querySelectorAll(".reading-text p")
+    .forEach(paragraph => {
+
+      if (
+        paragraph.dataset.prepared === "true"
+      ) {
+        return;
+      }
+
+
+      const texto =
+        paragraph.textContent.trim();
+
+
+      if (!texto) {
+        return;
+      }
+
+
+      const frases =
+        texto.match(
+          /[^.!?]+[.!?]+|[^.!?]+$/g
+        );
+
+
+      if (!frases) {
+        return;
+      }
+
+
+      paragraph.innerHTML = "";
+
+
+      frases.forEach(frase => {
+
+        const span =
+          document.createElement("span");
+
+
+        span.className =
+          "reading-sentence";
+
+
+        span.textContent =
+          frase.trim() + " ";
+
+
+        paragraph.appendChild(span);
+
+      });
+
+
+      paragraph.dataset.prepared =
+        "true";
+
+    });
+
+}
+
+
+prepararTextoLeitura();
+
+
+
+/* =========================================================
+   LIGAR / DESLIGAR LESEMODUS
+========================================================= */
 
 if (readingModeButton) {
 
   readingModeButton.addEventListener(
     "click",
-    () => {
+    event => {
+
+      event.stopPropagation();
+
 
       readingMode =
         !readingMode;
@@ -476,6 +559,7 @@ if (readingModeButton) {
         readingModeButton.textContent =
           "📖 Lesemodus an";
 
+
         readingModeButton.classList.add(
           "active"
         );
@@ -487,9 +571,23 @@ if (readingModeButton) {
         readingModeButton.textContent =
           "📖 Lesemodus";
 
+
         readingModeButton.classList.remove(
           "active"
         );
+
+
+        document
+          .querySelectorAll(
+            ".reading-sentence"
+          )
+          .forEach(sentence => {
+
+            sentence.classList.remove(
+              "reading-line"
+            );
+
+          });
 
 
         if (marker) {
@@ -509,131 +607,103 @@ if (readingModeButton) {
 
 
 /* =========================================================
-   MARCAR PARÁGRAFO
+   SELECIONAR FRASE
 ========================================================= */
 
-document
-  .querySelectorAll(".reading-text p")
-  .forEach(paragraph => {
+/*
+   Usamos CAPTURE = true.
 
-    paragraph.addEventListener(
-      "click",
-      event => {
+   Isso é importante porque algumas áreas do livro
+   bloqueiam o toque para impedir que o PageFlip
+   vire a página enquanto a criança lê.
+*/
 
-        if (!readingMode) {
-          return;
-        }
+document.addEventListener(
+  "pointerup",
+  event => {
 
-
-        event.stopPropagation();
-
-
-        document
-          .querySelectorAll(
-            ".reading-text p"
-          )
-          .forEach(p => {
-
-            p.classList.remove(
-              "reading-line"
-            );
-
-          });
+    if (!readingMode) {
+      return;
+    }
 
 
-        paragraph.classList.add(
+    const sentence =
+      event.target.closest(
+        ".reading-sentence"
+      );
+
+
+    if (!sentence) {
+      return;
+    }
+
+
+    event.preventDefault();
+
+
+    /*
+       Remove a frase anteriormente selecionada
+    */
+
+    document
+      .querySelectorAll(
+        ".reading-sentence.reading-line"
+      )
+      .forEach(item => {
+
+        item.classList.remove(
           "reading-line"
         );
-
-      }
-    );
-
-  });
-
-
-
-
-/* =========================================================
-   PREPARAR TEXTO PARA LEITURA
-   Divide automaticamente os parágrafos em frases
-========================================================= */
-
-function prepararTextoLeitura() {
-
-  document
-    .querySelectorAll(".reading-text p")
-    .forEach(paragraph => {
-
-      // Evita dividir novamente
-      if (paragraph.dataset.prepared === "true") {
-        return;
-      }
-
-      const texto =
-        paragraph.textContent.trim();
-
-      if (!texto) {
-        return;
-      }
-
-
-      /*
-        Divide o texto depois de:
-        .
-        !
-        ?
-
-        Mantém a pontuação na frase.
-      */
-
-      const frases =
-        texto.match(/[^.!?]+[.!?]+|[^.!?]+$/g);
-
-
-      if (!frases) {
-        return;
-      }
-
-
-      paragraph.innerHTML = "";
-
-
-      frases.forEach(frase => {
-
-        const span =
-          document.createElement("span");
-
-        span.className =
-          "reading-sentence";
-
-        span.textContent =
-          frase.trim() + " ";
-
-        paragraph.appendChild(span);
 
       });
 
 
-      paragraph.dataset.prepared =
-        "true";
+    /*
+       Marca a nova frase
+    */
 
-    });
+    sentence.classList.add(
+      "reading-line"
+    );
 
-}
+
+    /*
+       Posiciona o marcador horizontal
+       exatamente na frase selecionada
+    */
+
+    if (marker) {
+
+      const rect =
+        sentence.getBoundingClientRect();
 
 
-/* Executa quando a página carrega */
+      marker.style.display =
+        "block";
 
-prepararTextoLeitura();
+
+      marker.style.top =
+        `${
+          rect.top +
+          rect.height / 2 -
+          19
+        }px`;
+
+    }
+
+  },
+  true
+);
 
 
 
 /* =========================================================
-   MARCAR FRASE
+   NÃO DEIXAR O PAGEFLIP ROUBAR O TOQUE
+   DURANTE O LESEMODUS
 ========================================================= */
 
 document.addEventListener(
-  "click",
+  "pointerdown",
   event => {
 
     if (!readingMode) {
@@ -654,80 +724,18 @@ document.addEventListener(
 
     event.stopPropagation();
 
-
-    /*
-      Remove destaque da frase anterior
-    */
-
-    document
-      .querySelectorAll(
-        ".reading-sentence"
-      )
-      .forEach(item => {
-
-        item.classList.remove(
-          "reading-line"
-        );
-
-      });
-
-
-    /*
-      Destaca somente a frase escolhida
-    */
-
-    sentence.classList.add(
-      "reading-line"
-    );
-
-  }
+  },
+  true
 );
 
-   
+     
+
+
+
+
 
 
     
-
-/* =========================================================
-   MARCADOR COM MOUSE
-========================================================= */
-
-document.addEventListener(
-  "mousemove",
-  event => {
-
-    if (
-      !readingMode ||
-      !marker
-    ) {
-      return;
-    }
-
-
-    if (
-      !event.target.closest(
-        ".reading-text"
-      )
-    ) {
-
-      marker.style.display =
-        "none";
-
-      return;
-
-    }
-
-
-    marker.style.display =
-      "block";
-
-
-    marker.style.top =
-      `${event.clientY - 18}px`;
-
-  }
-);
-
 
 /* =========================================================
    ROLAGEM DO TEXTO
