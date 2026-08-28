@@ -37,7 +37,6 @@ body {
 }
 
 
-
 /* =========================================================
    FUNDO DE ESTRELAS
 ========================================================= */
@@ -82,7 +81,6 @@ body {
 }
 
 
-
 /* =========================================================
    ÁREA PRINCIPAL
 ========================================================= */
@@ -97,7 +95,6 @@ body {
 
   padding: 20px 15px 30px;
 }
-
 
 
 /* =========================================================
@@ -135,7 +132,6 @@ body {
 }
 
 
-
 /* =========================================================
    CONTAINER DO LIVRO
 ========================================================= */
@@ -154,7 +150,6 @@ body {
 }
 
 
-
 /* =========================================================
    FLIPBOOK
 ========================================================= */
@@ -162,7 +157,6 @@ body {
 #flipbook {
   margin: 0 auto;
 }
-
 
 
 /* =========================================================
@@ -186,7 +180,6 @@ body {
 }
 
 
-
 /* =========================================================
    CAPA
 ========================================================= */
@@ -203,7 +196,6 @@ body {
 }
 
 
-
 /* =========================================================
    PÁGINA DE LEITURA
 ========================================================= */
@@ -217,7 +209,6 @@ body {
     );
 }
 
-
 .page-content {
   width: 100%;
   height: 100%;
@@ -229,9 +220,8 @@ body {
 }
 
 
-
 /* =========================================================
-   IMAGEM
+   IMAGEM DA PÁGINA
 ========================================================= */
 
 .page-image {
@@ -244,9 +234,8 @@ body {
 }
 
 
-
 /* =========================================================
-   ÁREA NORMAL DE TEXTO
+   ÁREA DE TEXTO
 ========================================================= */
 
 .reading-text {
@@ -278,7 +267,6 @@ body {
 }
 
 
-
 /* =========================================================
    PARÁGRAFOS
 ========================================================= */
@@ -289,12 +277,7 @@ body {
   padding: 3px 4px;
 
   border-radius: 7px;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
 }
-
 
 
 /* =========================================================
@@ -312,17 +295,18 @@ body {
 }
 
 
-
 /* =========================================================
-   TEXTO COM ROLAGEM AUTOMÁTICA
+   TEXTO COM ROLAGEM
 ========================================================= */
 
 /*
    Quando existe .book-text dentro de .reading-text,
-   quem controla a rolagem é .book-text.
+   a rolagem é controlada por .book-text.
 */
 
 .reading-text:has(.book-text) {
+  position: relative;
+
   padding: 0;
 
   overflow: hidden;
@@ -335,7 +319,11 @@ body {
 
   min-height: 0;
 
-  padding: 20px 22px 35px;
+  padding:
+    20px
+    50px
+    35px
+    22px;
 
   overflow-y: auto;
   overflow-x: hidden;
@@ -358,6 +346,7 @@ body {
 
 .book-text h2 {
   margin-top: 0;
+
   margin-bottom: 20px;
 }
 
@@ -365,7 +354,6 @@ body {
 .book-text p {
   margin-bottom: 18px;
 }
-
 
 
 /* =========================================================
@@ -393,29 +381,59 @@ body {
 }
 
 
-
 /* =========================================================
-   PÁGINA SOMENTE DE TEXTO
+   CONTROLES DE ROLAGEM
 ========================================================= */
 
-.text-page {
-  padding: 0;
-}
+.scroll-controls {
+  position: absolute;
 
+  top: 50%;
+  right: 5px;
 
-.full-text {
-  width: 100%;
-  height: 100%;
+  transform: translateY(-50%);
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
-  padding: 45px 38px;
+  gap: 6px;
 
-  font-size: 1.2rem;
+  z-index: 50;
 }
 
+
+.scroll-btn {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 2px 8px
+    rgba(0, 0, 0, 0.18);
+
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  touch-action: manipulation;
+}
+
+
+.scroll-btn:active {
+  transform: scale(0.9);
+}
 
 
 /* =========================================================
@@ -431,14 +449,19 @@ body {
 }
 
 
-/* Quando o modo de leitura estiver ligado */
+/*
+   Mostra que a frase pode ser tocada
+   somente quando o Lesemodus estiver ligado.
+*/
 
 body.reading-mode .reading-sentence {
   cursor: pointer;
 }
 
 
-/* Frase selecionada */
+/*
+   Frase atualmente selecionada.
+*/
 
 .reading-sentence.reading-line {
   background:
@@ -448,7 +471,6 @@ body.reading-mode .reading-sentence {
     0 0 0 2px
     rgba(255, 220, 72, 0.12);
 }
-
 
 
 /* =========================================================
@@ -479,7 +501,6 @@ body.reading-mode .book-text {
 body.reading-mode .page-image {
   height: 40%;
 }
-
 
 
 /* =========================================================
@@ -519,6 +540,28 @@ body.reading-mode .page-image {
   backdrop-filter: blur(1px);
 }
 
+
+/* =========================================================
+   PÁGINA SOMENTE DE TEXTO
+========================================================= */
+
+.text-page {
+  padding: 0;
+}
+
+
+.full-text {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 45px 38px;
+
+  font-size: 1.2rem;
+}
 
 
 /* =========================================================
@@ -585,7 +628,6 @@ body.reading-mode .page-image {
 }
 
 
-
 /* =========================================================
    PÁGINA DE VÍDEO
 ========================================================= */
@@ -645,7 +687,6 @@ body.reading-mode .page-image {
 }
 
 
-
 /* =========================================================
    PÁGINA FINAL
 ========================================================= */
@@ -684,7 +725,6 @@ body.reading-mode .page-image {
 
   opacity: 0.85;
 }
-
 
 
 /* =========================================================
@@ -735,7 +775,6 @@ body.reading-mode .page-image {
 .nav-btn:active {
   transform: scale(0.94);
 }
-
 
 
 /* =========================================================
@@ -812,7 +851,6 @@ body.reading-mode .page-image {
 }
 
 
-
 /* =========================================================
    CONTADOR
 ========================================================= */
@@ -827,7 +865,6 @@ body.reading-mode .page-image {
 
   font-size: 0.85rem;
 }
-
 
 
 /* =========================================================
@@ -857,13 +894,16 @@ body.reading-mode .page-image {
 
 
   .book-text {
-    padding: 18px 20px 30px;
+    padding:
+      18px
+      48px
+      30px
+      20px;
 
     font-size: 1.05rem;
   }
 
 }
-
 
 
 /* =========================================================
@@ -891,7 +931,6 @@ body.reading-mode .page-image {
   .book-header p {
     font-size: 0.72rem;
   }
-
 
 
   /* BOTÕES SOBRE O LIVRO */
@@ -930,13 +969,11 @@ body.reading-mode .page-image {
   }
 
 
-
   /* IMAGEM */
 
   .page-image {
     height: 43%;
   }
-
 
 
   /* TEXTO */
@@ -963,12 +1000,14 @@ body.reading-mode .page-image {
   }
 
 
-
-  /* TEXTO COM SCROLL */
+  /* TEXTO COM ROLAGEM */
 
   .book-text {
     padding:
-      15px 18px 28px;
+      15px
+      48px
+      28px
+      18px;
 
     font-size: 1rem;
 
@@ -987,6 +1026,22 @@ body.reading-mode .page-image {
     margin-bottom: 15px;
   }
 
+
+  /* BOTÕES DA ROLAGEM */
+
+  .scroll-controls {
+    right: 4px;
+
+    gap: 5px;
+  }
+
+
+  .scroll-btn {
+    width: 34px;
+    height: 34px;
+
+    font-size: 0.9rem;
+  }
 
 
   /* MODO DE LEITURA */
@@ -1010,7 +1065,6 @@ body.reading-mode .page-image {
   }
 
 
-
   /* CIÊNCIA */
 
   .science-page {
@@ -1031,7 +1085,6 @@ body.reading-mode .page-image {
   .science-box p {
     font-size: 1rem;
   }
-
 
 
   /* CONTROLES */
@@ -1063,7 +1116,6 @@ body.reading-mode .page-image {
 }
 
 
-
 /* =========================================================
    CELULAR PEQUENO
 ========================================================= */
@@ -1080,7 +1132,10 @@ body.reading-mode .page-image {
 
   .book-text {
     padding:
-      13px 16px 25px;
+      13px
+      46px
+      25px
+      16px;
 
     font-size: 0.94rem;
   }
@@ -1103,7 +1158,6 @@ body.reading-mode .page-image {
 }
 
 
-
 /* =========================================================
    TELA CHEIA
 ========================================================= */
@@ -1123,7 +1177,6 @@ body.reading-mode .page-image {
 }
 
 
-
 /* =========================================================
    ACESSIBILIDADE
 ========================================================= */
@@ -1137,7 +1190,6 @@ button:focus-visible {
 }
 
 
-
 /* =========================================================
    SELEÇÃO DE TEXTO
 ========================================================= */
@@ -1148,125 +1200,4 @@ button:focus-visible {
     rgba(255, 220, 72, 0.55);
 
   color: #162338;
-}
-/* =========================================================
-   CONTROLES DE ROLAGEM
-========================================================= */
-
-.reading-text:has(.book-text) {
-  position: relative;
-
-  padding: 0;
-
-  overflow: hidden;
-}
-
-
-.book-text {
-  width: 100%;
-  height: 100%;
-
-  min-height: 0;
-
-  padding:
-    20px
-    50px
-    35px
-    22px;
-
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  touch-action: pan-y;
-
-  overscroll-behavior: contain;
-
-  -webkit-overflow-scrolling: touch;
-
-  scroll-behavior: smooth;
-}
-
-
-
-/* BARRA LATERAL */
-
-.scroll-controls {
-  position: absolute;
-
-  top: 50%;
-  right: 5px;
-
-  transform: translateY(-50%);
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 6px;
-
-  z-index: 50;
-}
-
-
-.scroll-btn {
-  width: 38px;
-  height: 38px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  border: none;
-
-  border-radius: 50%;
-
-  background:
-    rgba(255, 255, 255, 0.9);
-
-  box-shadow:
-    0 2px 8px
-    rgba(0, 0, 0, 0.18);
-
-  font-size: 1rem;
-
-  cursor: pointer;
-
-  touch-action: manipulation;
-}
-
-
-.scroll-btn:active {
-  transform: scale(0.9);
-}
-
-
-
-/* CELULAR */
-
-@media (max-width: 600px) {
-
-  .book-text {
-    padding:
-      15px
-      48px
-      28px
-      18px;
-  }
-
-
-  .scroll-controls {
-    right: 4px;
-
-    gap: 5px;
-  }
-
-
-  .scroll-btn {
-    width: 34px;
-    height: 34px;
-
-    font-size: 0.9rem;
-  }
-
 }
