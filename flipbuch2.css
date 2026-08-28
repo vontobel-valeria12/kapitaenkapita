@@ -299,11 +299,6 @@ body {
    TEXTO COM ROLAGEM
 ========================================================= */
 
-/*
-   Quando existe .book-text dentro de .reading-text,
-   a rolagem é controlada por .book-text.
-*/
-
 .reading-text:has(.book-text) {
   position: relative;
 
@@ -311,7 +306,6 @@ body {
 
   overflow: hidden;
 }
-
 
 .book-text {
   width: 100%;
@@ -343,13 +337,10 @@ body {
   overscroll-behavior: contain;
 }
 
-
 .book-text h2 {
   margin-top: 0;
-
   margin-bottom: 20px;
 }
-
 
 .book-text p {
   margin-bottom: 18px;
@@ -365,12 +356,10 @@ body {
   width: 6px;
 }
 
-
 .reading-text::-webkit-scrollbar-track,
 .book-text::-webkit-scrollbar-track {
   background: transparent;
 }
-
 
 .reading-text::-webkit-scrollbar-thumb,
 .book-text::-webkit-scrollbar-thumb {
@@ -401,7 +390,6 @@ body {
   z-index: 50;
 }
 
-
 .scroll-btn {
   width: 38px;
   height: 38px;
@@ -430,7 +418,6 @@ body {
   touch-action: manipulation;
 }
 
-
 .scroll-btn:active {
   transform: scale(0.9);
 }
@@ -441,13 +428,11 @@ body {
 ========================================================= */
 
 .reading-sentence {
-  border-radius: 6px;
+  border-radius: 4px;
 
   transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+    background 0.2s ease;
 }
-
 
 body.reading-mode .reading-text,
 body.reading-mode .book-text {
@@ -456,7 +441,6 @@ body.reading-mode .book-text {
 
   -webkit-touch-callout: none;
 }
-
 
 body.reading-mode .reading-sentence {
   cursor: pointer;
@@ -469,20 +453,16 @@ body.reading-mode .reading-sentence {
   touch-action: manipulation;
 }
 
-
 body.reading-mode
 .reading-sentence.reading-line {
-
   background:
-    rgba(255, 220, 72, 0.55);
+    rgba(255, 225, 105, 0.30);
 
-  box-shadow:
-    0 0 0 2px
-    rgba(255, 190, 0, 0.20);
+  box-shadow: none;
+
+  border-radius: 4px;
 }
-  
 
-  
 
 /* =========================================================
    MODO DE LEITURA
@@ -496,11 +476,9 @@ body.reading-mode .reading-text {
   letter-spacing: 0.02em;
 }
 
-
 body.reading-mode .reading-text p {
   margin-bottom: 22px;
 }
-
 
 body.reading-mode .book-text {
   font-size: 1.2rem;
@@ -508,11 +486,9 @@ body.reading-mode .book-text {
   line-height: 1.85;
 }
 
-
 body.reading-mode .page-image {
   height: 40%;
 }
-
 
 
 /* =========================================================
@@ -522,7 +498,6 @@ body.reading-mode .page-image {
 .text-page {
   padding: 0;
 }
-
 
 .full-text {
   width: 100%;
@@ -557,7 +532,6 @@ body.reading-mode .page-image {
     );
 }
 
-
 .science-box {
   width: 100%;
 
@@ -581,7 +555,6 @@ body.reading-mode .page-image {
     rgba(36, 90, 135, 0.12);
 }
 
-
 .science-box h2 {
   margin-bottom: 24px;
 
@@ -589,7 +562,6 @@ body.reading-mode .page-image {
 
   color: #207ba8;
 }
-
 
 .science-box p {
   margin-bottom: 18px;
@@ -621,7 +593,6 @@ body.reading-mode .page-image {
     );
 }
 
-
 .video-wrapper {
   width: 100%;
 
@@ -632,7 +603,6 @@ body.reading-mode .page-image {
 
   gap: 15px;
 }
-
 
 .video-wrapper video,
 .video-wrapper iframe {
@@ -650,7 +620,6 @@ body.reading-mode .page-image {
     0 15px 35px
     rgba(0, 0, 0, 0.38);
 }
-
 
 .video-title {
   color: #ffffff;
@@ -684,13 +653,11 @@ body.reading-mode .page-image {
     );
 }
 
-
 .end-content h2 {
   margin-bottom: 20px;
 
   font-size: 2rem;
 }
-
 
 .end-content p {
   font-size: 1.15rem;
@@ -706,38 +673,49 @@ body.reading-mode .page-image {
 ========================================================= */
 
 .nav-btn {
-  position: absolute;
+  width: 48px;
+  height: 48px;
 
-  /* Mantém as setas sobre a imagem,
-     evitando cobrir o texto */
-  top: 32%;
+  flex-shrink: 0;
 
-  z-index: 100;
-
-  width: 38px;
-  height: 38px;
-
-  background:
-    rgba(5, 16, 36, 0.48);
-
-  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.35);
+    rgba(255, 255, 255, 0.22);
 
-  transform:
-    translateY(-50%);
+  border-radius: 50%;
 
-  opacity: 0.82;
-}
-.prev-btn {
-  left: 5px;
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  color: #ffffff;
+
+  font-size: 1.5rem;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(8px);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
 }
 
-.next-btn {
-  right: 5px;
+.nav-btn:hover {
+  background:
+    rgba(255, 255, 255, 0.24);
+
+  transform: scale(1.08);
 }
+
+.nav-btn:active {
+  transform: scale(0.94);
+}
+
 
 /* =========================================================
    CONTROLES INFERIORES
@@ -767,7 +745,6 @@ body.reading-mode .page-image {
   backdrop-filter: blur(12px);
 }
 
-
 .book-controls button {
   min-height: 40px;
 
@@ -791,17 +768,14 @@ body.reading-mode .page-image {
     transform 0.2s ease;
 }
 
-
 .book-controls button:hover {
   background:
     rgba(255, 255, 255, 0.22);
 }
 
-
 .book-controls button:active {
   transform: scale(0.96);
 }
-
 
 .book-controls button.active {
   background:
@@ -839,7 +813,6 @@ body.reading-mode .page-image {
     gap: 6px;
   }
 
-
   .nav-btn {
     width: 42px;
     height: 42px;
@@ -847,13 +820,11 @@ body.reading-mode .page-image {
     font-size: 1.25rem;
   }
 
-
   .reading-text {
     padding: 20px 23px;
 
     font-size: 1.08rem;
   }
-
 
   .book-text {
     padding:
@@ -880,27 +851,29 @@ body.reading-mode .page-image {
   }
 
 
+  /* CABEÇALHO */
+
   .book-header {
     margin-bottom: 10px;
   }
 
-
   .book-header h1 {
     font-size: 1.35rem;
   }
-
 
   .book-header p {
     font-size: 0.72rem;
   }
 
 
-  /* BOTÕES SOBRE O LIVRO */
+  /* =====================================================
+     BOTÕES LATERAIS SOBRE A IMAGEM
+  ===================================================== */
 
   .nav-btn {
     position: absolute;
 
-    top: 50%;
+    top: 32%;
 
     z-index: 100;
 
@@ -908,23 +881,34 @@ body.reading-mode .page-image {
     height: 38px;
 
     background:
-      rgba(5, 16, 36, 0.55);
+      rgba(5, 16, 36, 0.48);
+
+    color: #ffffff;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.35);
 
     transform:
       translateY(-50%);
-  }
 
+    opacity: 0.82;
+  }
 
   .nav-btn:hover {
     transform:
       translateY(-50%);
   }
 
+  .nav-btn:active {
+    transform:
+      translateY(-50%)
+      scale(0.94);
+  }
 
   .prev-btn {
     left: 5px;
   }
-
 
   .next-btn {
     right: 5px;
@@ -949,11 +933,9 @@ body.reading-mode .page-image {
     line-height: 1.62;
   }
 
-
   .reading-text p {
     margin-bottom: 13px;
   }
-
 
   .reading-text h2 {
     margin-bottom: 16px;
@@ -976,13 +958,11 @@ body.reading-mode .page-image {
     line-height: 1.62;
   }
 
-
   .book-text h2 {
     margin-bottom: 16px;
 
     font-size: 1.35rem;
   }
-
 
   .book-text p {
     margin-bottom: 15px;
@@ -996,7 +976,6 @@ body.reading-mode .page-image {
 
     gap: 5px;
   }
-
 
   .scroll-btn {
     width: 34px;
@@ -1014,13 +993,11 @@ body.reading-mode .page-image {
     line-height: 1.8;
   }
 
-
   body.reading-mode .book-text {
     font-size: 1.1rem;
 
     line-height: 1.78;
   }
-
 
   body.reading-mode .page-image {
     height: 34%;
@@ -1033,23 +1010,20 @@ body.reading-mode .page-image {
     padding: 20px;
   }
 
-
   .science-box {
     padding: 24px 20px;
   }
 
-
   .science-box h2 {
     font-size: 1.4rem;
   }
-
 
   .science-box p {
     font-size: 1rem;
   }
 
 
-  /* CONTROLES */
+  /* CONTROLES INFERIORES */
 
   .book-controls {
     margin-top: 12px;
@@ -1061,13 +1035,11 @@ body.reading-mode .page-image {
     border-radius: 14px;
   }
 
-
   .book-controls button {
     padding: 7px 10px;
 
     font-size: 0.78rem;
   }
-
 
   #pageCounter {
     min-width: 80px;
@@ -1091,7 +1063,6 @@ body.reading-mode .page-image {
     font-size: 0.94rem;
   }
 
-
   .book-text {
     padding:
       13px
@@ -1102,16 +1073,13 @@ body.reading-mode .page-image {
     font-size: 0.94rem;
   }
 
-
   body.reading-mode .reading-text {
     font-size: 1.07rem;
   }
 
-
   body.reading-mode .book-text {
     font-size: 1.05rem;
   }
-
 
   .book-controls button {
     font-size: 0.73rem;
@@ -1133,7 +1101,6 @@ body.reading-mode .page-image {
     );
 }
 
-
 :fullscreen .book-area {
   justify-content: center;
 }
@@ -1153,7 +1120,7 @@ button:focus-visible {
 
 
 /* =========================================================
-   SELEÇÃO DE TEXTO
+   SELEÇÃO NORMAL DE TEXTO
 ========================================================= */
 
 .reading-text::selection,
@@ -1163,6 +1130,8 @@ button:focus-visible {
 
   color: #162338;
 }
+
+
 /* =========================================================
    JANELA - ESCOLHER PÁGINA
 ========================================================= */
@@ -1213,20 +1182,18 @@ button:focus-visible {
 
   border-radius: 22px;
 
-  background:
-    #ffffff;
+  background: #ffffff;
 
   box-shadow:
     0 20px 60px
     rgba(0, 0, 0, 0.45);
 
-  color:
-    #18243a;
+  color: #18243a;
 }
 
 
 /* =========================================================
-   TÍTULO
+   TÍTULO DO MENU
 ========================================================= */
 
 #pageMenu h2 {
@@ -1236,8 +1203,7 @@ button:focus-visible {
 
   font-size: 1.4rem;
 
-  color:
-    #243f70;
+  color: #243f70;
 }
 
 
@@ -1274,33 +1240,25 @@ button:focus-visible {
     1px solid
     #d4deeb;
 
-  border-radius:
-    10px;
+  border-radius: 10px;
 
-  background:
-    #f5f8fc;
+  background: #f5f8fc;
 
-  color:
-    #243f70;
+  color: #243f70;
 
-  font-size:
-    0.95rem;
+  font-size: 0.95rem;
 
-  cursor:
-    pointer;
+  cursor: pointer;
 
   transition:
     background 0.2s ease,
     transform 0.15s ease;
 }
 
-
 .page-select-button:active {
-  background:
-    #dceeff;
+  background: #dceeff;
 
-  transform:
-    scale(0.96);
+  transform: scale(0.96);
 }
 
 
@@ -1319,22 +1277,18 @@ button:focus-visible {
 
   border-radius: 12px;
 
-  background:
-    #243f70;
+  background: #243f70;
 
-  color:
-    #ffffff;
+  color: #ffffff;
 
-  font-size:
-    1rem;
+  font-size: 1rem;
 
-  cursor:
-    pointer;
+  cursor: pointer;
 }
 
 
 /* =========================================================
-   CELULAR
+   MENU DE PÁGINAS NO CELULAR
 ========================================================= */
 
 @media (max-width: 600px) {
@@ -1343,15 +1297,15 @@ button:focus-visible {
     padding: 15px;
   }
 
-
   #pageMenu > div {
     width: 100%;
 
     max-height: 75vh;
 
-    padding: 20px 16px;
+    padding:
+      20px
+      16px;
   }
-
 
   #pageList {
     grid-template-columns:
@@ -1363,15 +1317,13 @@ button:focus-visible {
     gap: 8px;
   }
 
-
   .page-select-button {
     min-height: 43px;
 
     padding:
       7px 5px;
 
-    font-size:
-      0.85rem;
+    font-size: 0.85rem;
   }
 
 }
