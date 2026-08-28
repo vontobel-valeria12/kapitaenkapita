@@ -25,13 +25,6 @@
 
 
   <!-- =====================================================
-       MARCADOR DE LEITURA
-  ====================================================== -->
-
-  <div id="readingMarker"></div>
-
-
-  <!-- =====================================================
        ÁREA PRINCIPAL
   ====================================================== -->
 
@@ -56,18 +49,6 @@
     ==================================================== -->
 
     <div class="book-container">
-
-
-      <!-- BOTÃO: PÁGINA ANTERIOR -->
-
-      <button
-        class="nav-btn prev-btn"
-        id="prevPage"
-        type="button"
-        aria-label="Vorherige Seite"
-      >
-        ❮
-      </button>
 
 
       <!-- =================================================
@@ -103,16 +84,12 @@
 
           <div class="page-content">
 
-            <!-- IMAGEM DA PÁGINA -->
-
             <img
               src="img/IMG_20260827_160900.png"
               alt="Kapitänin Kapita im Weltraum"
               class="page-image"
             >
 
-
-            <!-- ÁREA DE LEITURA -->
 
             <div class="reading-text">
 
@@ -182,17 +159,6 @@
 
           <div class="page-content">
 
-            <!--
-              IMAGEM OPCIONAL
-
-              <img
-                src="img/pagina2.jpg"
-                alt="Illustration Seite 2"
-                class="page-image"
-              >
-            -->
-
-
             <div class="reading-text">
 
               <div class="book-text auto-scroll">
@@ -223,17 +189,6 @@
         <div class="page reading-page">
 
           <div class="page-content">
-
-            <!--
-              IMAGEM OPCIONAL
-
-              <img
-                src="img/pagina3.jpg"
-                alt="Illustration Seite 3"
-                class="page-image"
-              >
-            -->
-
 
             <div class="reading-text">
 
@@ -266,17 +221,6 @@
 
           <div class="page-content">
 
-            <!--
-              IMAGEM OPCIONAL
-
-              <img
-                src="img/pagina4.jpg"
-                alt="Illustration Seite 4"
-                class="page-image"
-              >
-            -->
-
-
             <div class="reading-text">
 
               <div class="book-text auto-scroll">
@@ -303,17 +247,6 @@
         <div class="page reading-page">
 
           <div class="page-content">
-
-            <!--
-              IMAGEM OPCIONAL
-
-              <img
-                src="img/pagina5.jpg"
-                alt="Illustration Seite 5"
-                class="page-image"
-              >
-            -->
-
 
             <div class="reading-text">
 
@@ -342,17 +275,6 @@
 
           <div class="page-content">
 
-            <!--
-              IMAGEM OPCIONAL
-
-              <img
-                src="img/pagina6.jpg"
-                alt="Illustration Seite 6"
-                class="page-image"
-              >
-            -->
-
-
             <div class="reading-text">
 
               <div class="book-text auto-scroll">
@@ -380,17 +302,6 @@
 
           <div class="page-content">
 
-            <!--
-              IMAGEM OPCIONAL
-
-              <img
-                src="img/pagina7.jpg"
-                alt="Illustration Seite 7"
-                class="page-image"
-              >
-            -->
-
-
             <div class="reading-text">
 
               <div class="book-text auto-scroll">
@@ -417,17 +328,6 @@
         <div class="page reading-page">
 
           <div class="page-content">
-
-            <!--
-              IMAGEM OPCIONAL
-
-              <img
-                src="img/pagina8.jpg"
-                alt="Illustration Seite 8"
-                class="page-image"
-              >
-            -->
-
 
             <div class="reading-text">
 
@@ -471,18 +371,6 @@
       <!-- FIM DO FLIPBOOK -->
 
 
-      <!-- BOTÃO: PRÓXIMA PÁGINA -->
-
-      <button
-        class="nav-btn next-btn"
-        id="nextPage"
-        type="button"
-        aria-label="Nächste Seite"
-      >
-        ❯
-      </button>
-
-
     </div>
     <!-- FIM DO CONTAINER DO LIVRO -->
 
@@ -517,21 +405,48 @@
       </button>
 
 
-      <!-- ESCOLHER PÁGINA -->
+      <!-- VISÃO GERAL DAS PÁGINAS -->
 
       <button
         id="pageMenuButton"
         type="button"
+        aria-label="Seitenübersicht öffnen"
       >
-        📑 Seite wählen
+        ▦ Seiten
       </button>
 
 
-      <!-- CONTADOR -->
+      <!-- =================================================
+           NAVEGAÇÃO
+      ================================================== -->
 
-      <span id="pageCounter">
-        Seite 1
-      </span>
+      <div class="page-navigation">
+
+        <button
+          id="prevPage"
+          class="page-nav-btn"
+          type="button"
+          aria-label="Vorherige Seite"
+        >
+          ‹
+        </button>
+
+
+        <span id="pageCounter">
+          Seite 1
+        </span>
+
+
+        <button
+          id="nextPage"
+          class="page-nav-btn"
+          type="button"
+          aria-label="Nächste Seite"
+        >
+          ›
+        </button>
+
+      </div>
 
 
       <!-- TELA CHEIA -->
@@ -562,49 +477,59 @@
 
 
   <!-- =====================================================
-       MENU: ESCOLHER PÁGINA
+       PAINEL LATERAL DE PÁGINAS
   ====================================================== -->
 
   <div
     id="pageMenu"
-    class="page-menu"
+    class="page-sidebar"
     aria-hidden="true"
   >
 
-    <div
-      class="page-menu-box"
+
+    <aside
+      class="page-sidebar-panel"
       role="dialog"
       aria-modal="true"
       aria-labelledby="pageMenuTitle"
     >
 
 
-      <!-- TÍTULO -->
+      <!-- CABEÇALHO DO PAINEL -->
 
-      <h2 id="pageMenuTitle">
-        Seite wählen
-      </h2>
+      <div class="page-sidebar-header">
+
+        <h2 id="pageMenuTitle">
+          Seiten
+        </h2>
+
+
+        <button
+          id="closePageMenu"
+          class="close-page-menu"
+          type="button"
+          aria-label="Seitenübersicht schließen"
+        >
+          ✕
+        </button>
+
+      </div>
 
 
       <!--
-        O JAVASCRIPT CRIA
-        OS BOTÕES DAS PÁGINAS AQUI
+        O JAVASCRIPT VAI CRIAR
+        AS MINIATURAS DAS PÁGINAS AQUI
       -->
 
-      <div id="pageList"></div>
-
-
-      <!-- FECHAR MENU -->
-
-      <button
-        id="closePageMenu"
-        type="button"
+      <div
+        id="pageList"
+        class="page-thumbnail-list"
       >
-        Schließen
-      </button>
+      </div>
 
 
-    </div>
+    </aside>
+
 
   </div>
 
