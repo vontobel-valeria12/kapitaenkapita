@@ -2,64 +2,101 @@
 <html lang="de">
 
 <head>
+
+  <!-- =====================================================
+       1. META-DATEN
+  ====================================================== -->
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Kapitänin Kapita – Die Olympischen Spiele. Ein interaktives Kinderbuch."
+  >
 
   <title>Kapitänin Kapita – Die Olympischen Spiele</title>
 
-  <!-- CSS DO LIVRO -->
-  <link rel="stylesheet" href="flipbuch2.css">
 
-  <!-- BIBLIOTECA PAGE FLIP -->
-  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+  <!-- =====================================================
+       2. STYLESHEET
+  ====================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="flipbuch2.css"
+  >
+
+
+  <!-- =====================================================
+       3. PAGE-FLIP-BIBLIOTHEK
+  ====================================================== -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"
+  ></script>
+
 </head>
 
 
 <body data-book-id="olympische-spiele">
 
+
   <!-- =====================================================
-       FUNDO
+       4. HINTERGRUND
   ====================================================== -->
 
-  <div class="stars"></div>
+  <div
+    class="stars"
+    aria-hidden="true"
+  ></div>
 
 
   <!-- =====================================================
-       ÁREA PRINCIPAL
+       5. HAUPTBEREICH DES BUCHES
   ====================================================== -->
 
   <main class="book-area">
 
 
     <!-- ===================================================
-         CABEÇALHO
+         5.1 BUCHKOPF
     ==================================================== -->
 
     <header class="book-header">
 
-      <h1>Kapitänin Kapita</h1>
+      <h1>
+        Kapitänin Kapita
+      </h1>
 
-      <p>Die Olympischen Spiele</p>
+      <p>
+        Die Olympischen Spiele
+      </p>
 
     </header>
 
 
     <!-- ===================================================
-         CONTAINER DO LIVRO
+         5.2 BUCHCONTAINER
     ==================================================== -->
 
     <div class="book-container">
 
 
       <!-- =================================================
-           FLIPBOOK
+           5.2.1 FLIPBOOK
       ================================================== -->
 
       <div id="flipbook">
 
 
         <!-- =================================================
-             CAPA
+             SEITE 0
+             TITELSEITE
         ================================================== -->
 
         <div class="page cover">
@@ -70,9 +107,13 @@
 
               <div class="book-text">
 
-                <h1>Kapitänin Kapita</h1>
+                <h1>
+                  Kapitänin Kapita
+                </h1>
 
-                <h2>Die Olympischen Spiele</h2>
+                <h2>
+                  Die Olympischen Spiele
+                </h2>
 
               </div>
 
@@ -84,8 +125,42 @@
 
 
         <!-- =================================================
-             PÁGINA 1
-             CAPÍTULO 1 – O RETORNO
+             SEITE 1
+             KAPITEL 1 – DIE RÜCKKEHR
+             GROSSE ILLUSTRATION
+        ================================================== -->
+
+        <div class="page image-page chapter-opening-page">
+
+          <div class="page-content">
+
+            <figure class="book-illustration book-illustration-large">
+
+              <img
+                src="img/kapitel1-erde.png"
+                alt="Kapitänin Kapita sieht nach einer langen Reise die Erde wieder."
+                loading="eager"
+              >
+
+            </figure>
+
+            <div class="chapter-image-title">
+
+              <h2>
+                Kapitel 1 – Die Rückkehr
+              </h2>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 2
+             KAPITEL 1 – DIE RÜCKKEHR
+             ANKUNFT AN DER ERDE
         ================================================== -->
 
         <div class="page reading-page">
@@ -94,9 +169,23 @@
 
             <div class="reading-text">
 
-              <div class="book-text auto-scroll">
 
-                <h2>Kapitel 1 – Die Rückkehr</h2>
+              <!-- Kleine Kapitelillustration -->
+
+              <figure class="book-illustration book-illustration-small">
+
+                <img
+                  src="img/kapitel1-erde-detail.png"
+                  alt="Die Erde wird vor Kapitas Raumschiff langsam größer."
+                  loading="lazy"
+                >
+
+              </figure>
+
+
+              <!-- Lesetext -->
+
+              <div class="book-text auto-scroll">
 
                 <p>
                   Nach einer langen Reise durch das Sonnensystem
@@ -115,32 +204,60 @@
                   wieder in die Erdatmosphäre einzutreten.
                 </p>
 
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 3
+             KAPITEL 1 – DIE RÜCKKEHR
+             HEIMWEH
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+
+              <!-- Kleine Kapitelillustration -->
+
+              <figure class="book-illustration book-illustration-small">
+
+                <img
+                  src="img/kapitel1-erde-detail.png"
+                  alt="Kapitänin Kapita nähert sich der Erde."
+                  loading="lazy"
+                >
+
+              </figure>
+
+
+              <!-- Lesetext -->
+
+              <div class="book-text auto-scroll">
+
                 <p>
                   Nach so langer Zeit im Weltraum vermisste sie Dinge,
                   die ihr früher ganz selbstverständlich erschienen waren.
-                  Sie vermisste ihre Familie, ihre Freunde und all das,
-                  was für sie bedeutete, zu Hause zu sein.
                 </p>
 
                 <p>
-                  Doch noch musste sie sich ein wenig gedulden.
+                  Sie vermisste ihre Familie,
+                  ihre Freunde und all das,
+                  was für sie bedeutete,
+                  zu Hause zu sein.
                 </p>
 
                 <p>
-                  Bevor sie mit der Landung beginnen konnte,
-                  mussten alle Systeme des Raumschiffs überprüft werden.
-                </p>
-
-                <p>
-                  Kapita kannte die Regeln genau:
-                  Es spielte keine Rolle, wie müde sie war
-                  oder wie sehr sie sich danach sehnte, endlich anzukommen.
-                  Eine Weltraumreise war erst dann beendet,
-                  wenn das Raumschiff sicher gelandet war.
-                </p>
-
-                <p>
-                  Und diese Reise war lang und anstrengend gewesen.
+                  Doch noch musste sie sich
+                  ein wenig gedulden.
                 </p>
 
               </div>
@@ -153,8 +270,56 @@
 
 
         <!-- =================================================
-             PÁGINA 2
-             CAPÍTULO 1 – O RETORNO
+             SEITE 4
+             KAPITEL 1 – DIE RÜCKKEHR
+             SICHERHEIT VOR DER LANDUNG
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <p>
+                  Bevor sie mit der Landung beginnen konnte,
+                  mussten alle Systeme des Raumschiffs
+                  überprüft werden.
+                </p>
+
+                <p>
+                  Kapita kannte die Regeln genau:
+                  Es spielte keine Rolle,
+                  wie müde sie war
+                  oder wie sehr sie sich danach sehnte,
+                  endlich anzukommen.
+                </p>
+
+                <p>
+                  Eine Weltraumreise war erst dann beendet,
+                  wenn das Raumschiff sicher gelandet war.
+                </p>
+
+                <p>
+                  Und diese Reise war lang
+                  und anstrengend gewesen.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 5
+             KAPITEL 1 – DIE RÜCKKEHR
+             VERÄNDERT ZURÜCK
         ================================================== -->
 
         <div class="page reading-page">
@@ -172,12 +337,42 @@
 
                 <p>
                   Während ihrer Reise durch das Sonnensystem
-                  hatte sie außergewöhnliche Orte kennengelernt,
-                  Dinge gelernt, die sie sich früher niemals
-                  hätte vorstellen können,
-                  und unglaubliche Freundschaften geschlossen,
+                  hatte sie außergewöhnliche Orte kennengelernt.
+                </p>
+
+                <p>
+                  Sie hatte Dinge gelernt,
+                  die sie sich früher niemals
+                  hätte vorstellen können.
+                </p>
+
+                <p>
+                  Und sie hatte unglaubliche Freundschaften geschlossen,
                   die sie niemals vergessen würde.
                 </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 6
+             KAPITEL 1 – DIE RÜCKKEHR
+             DIE ERDE VOR AUGEN
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
 
                 <p>
                   Nun war sie endlich wieder da.
@@ -185,7 +380,8 @@
 
                 <p>
                   Kapita stand vor dem Fenster ihrer Kabine
-                  und beobachtete, wie die Erde vor ihren Augen
+                  und beobachtete,
+                  wie die Erde vor ihren Augen
                   langsam größer wurde.
                 </p>
 
@@ -202,9 +398,37 @@
                 </p>
 
                 <p>
-                  Sie lächelte und blieb einen Moment lang
-                  einfach dort stehen,
-                  den Blick fest auf den Planeten gerichtet.
+                  Sie lächelte
+                  und blieb einen Moment lang
+                  einfach dort stehen.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 7
+             KAPITEL 1 – DIE RÜCKKEHR
+             DAS SELTSAME GEFÜHL
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <p>
+                  Ihr Blick blieb fest
+                  auf den Planeten gerichtet.
                 </p>
 
                 <p>
@@ -224,12 +448,41 @@
                 </p>
 
                 <p>
-                  <strong>viel zu still.</strong>
+                  <strong>
+                    viel zu still.
+                  </strong>
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 8
+             KAPITEL 1 – DIE RÜCKKEHR
+             SCHLUSS
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <p>
+                  Kapita wusste ganz genau:
                 </p>
 
                 <p>
-                  Und Kapita wusste ganz genau:
-                  Manchmal, wenn alles viel zu still erscheint ...
+                  Manchmal,
+                  wenn alles viel zu still erscheint ...
                 </p>
 
                 <p>
@@ -248,8 +501,9 @@
 
 
         <!-- =================================================
-             PÁGINA 3
-             CONTINUAÇÃO DO CAPÍTULO 1
+             SEITE 9
+             KAPITEL 2 – DIE ENTDECKUNG DES PROBLEMS
+             ALARMSIGNAL
         ================================================== -->
 
         <div class="page reading-page">
@@ -260,10 +514,26 @@
 
               <div class="book-text auto-scroll">
 
-                <h2>Kapitel 1 – Die Rückkehr</h2>
+                <h2>
+                  Kapitel 2 – Die Entdeckung des Problems
+                </h2>
 
                 <p>
-                  Fortsetzung folgt ...
+                  Im Kontrollzentrum der Raumstation
+                  schlugen plötzlich die Sensoren Alarm.
+                </p>
+
+                <p>
+                  Zoe empfing ein Warnsignal von der Erde.
+                </p>
+
+                <p>
+                  Irgendetwas war aus dem Gleichgewicht geraten.
+                </p>
+
+                <p>
+                  Sie überprüfte die Daten noch einmal,
+                  doch das Signal blieb bestehen.
                 </p>
 
               </div>
@@ -276,7 +546,9 @@
 
 
         <!-- =================================================
-             PÁGINA 4
+             SEITE 10
+             KAPITEL 2 – DIE ENTDECKUNG DES PROBLEMS
+             ZOE RUFT KAPITA
         ================================================== -->
 
         <div class="page reading-page">
@@ -287,7 +559,388 @@
 
               <div class="book-text auto-scroll">
 
-                <h2>Nächste Seite</h2>
+                <p>
+                  Kapita musste zurückkommen.
+                </p>
+
+                <p>
+                  Zoe rief sie sofort.
+                </p>
+
+                <p>
+                  Kapita meldete sich kurze Zeit später.
+                </p>
+
+                <p>
+                  Zoe, was ist los?
+                </p>
+
+                <p>
+                  Zoe antwortete sofort.
+                </p>
+
+                <p>
+                  Ich empfange ein Gefahrensignal von der Erde.
+                </p>
+
+                <p>
+                  Irgendetwas stimmt nicht.
+                  Wir müssen herausfinden,
+                  was passiert.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 11
+             KAPITEL 2 – DIE ENTDECKUNG DES PROBLEMS
+             KAPITA KEHRT ZURÜCK
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <p>
+                  Kapita zögerte nicht lange.
+                </p>
+
+                <p>
+                  Sie verabschiedete sich
+                  von ihrer Familie und ihren Freunden.
+                </p>
+
+                <p>
+                  Sofort machte sie sich
+                  auf den Weg zurück zum Raumschiff.
+                </p>
+
+                <p>
+                  Alles ging so schnell,
+                  dass es ihr beinahe vorkam,
+                  als wäre sie gar nicht richtig
+                  zu Hause gewesen.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 12
+             KAPITEL 2 – DIE ENTDECKUNG DES PROBLEMS
+             UNRUHE AUF DEM RÜCKWEG
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <p>
+                  Unterwegs musste sie immer wieder
+                  an Zoes Worte denken.
+                </p>
+
+                <p>
+                  <strong>
+                    Ein Gefahrensignal.
+                  </strong>
+                </p>
+
+                <p>
+                  Was konnte so dringend sein?
+                </p>
+
+                <p>
+                  Ein ungutes Gefühl
+                  machte sich in ihr breit.
+                </p>
+
+                <p>
+                  Was, wenn wirklich
+                  etwas Schlimmes passiert war?
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 13
+             KAPITEL 2 – ILLUSTRATION
+        ================================================== -->
+
+        <div class="page image-page">
+
+          <div class="page-content">
+
+            <figure class="book-illustration book-illustration-large">
+
+              <img
+                src="img/kapitel2-kontrollzentrum.png"
+                alt="Kapitänin Kapita und Zoe untersuchen ungewöhnliche Daten von der Erde im Kontrollzentrum."
+                loading="lazy"
+              >
+
+            </figure>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 14
+             KAPITEL 2 – DIE ENTDECKUNG DES PROBLEMS
+             IM KONTROLLZENTRUM
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <p>
+                  Kurze Zeit später
+                  war Kapita wieder an Bord.
+                </p>
+
+                <p>
+                  Sie ging direkt
+                  ins Kontrollzentrum.
+                </p>
+
+                <p>
+                  Zoe, was ist passiert?
+                </p>
+
+                <p>
+                  Kapitas Stimme klang besorgt.
+                </p>
+
+                <p>
+                  Zoe blickte auf die Bildschirme.
+                </p>
+
+                <p>
+                  Genau das versuche ich herauszufinden.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 15
+             KAPITEL 2 – DIE ENTDECKUNG DES PROBLEMS
+             DIE DATEN
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <p>
+                  Auf den großen Bildschirmen
+                  erschienen verschiedene Daten
+                  von der Erde.
+                </p>
+
+                <p>
+                  Einige Werte
+                  waren ungewöhnlich niedrig.
+                </p>
+
+                <p>
+                  Die Linien in den Grafiken
+                  sanken immer weiter.
+                </p>
+
+                <p>
+                  Kapita trat näher
+                  an die Bildschirme.
+                </p>
+
+                <p>
+                  Was bedeutet das?
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 16
+             KAPITEL 2 – DIE ENTDECKUNG DES PROBLEMS
+             DAS RÄTSEL
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <p>
+                  Zoe antwortete nicht sofort.
+                </p>
+
+                <p>
+                  Sie prüfte die Daten erneut.
+                </p>
+
+                <p>
+                  Das ist das Seltsame.
+                </p>
+
+                <p>
+                  Kapita runzelte die Stirn.
+                </p>
+
+                <p>
+                  Was meinst du?
+                </p>
+
+                <p>
+                  Zoe zeigte auf die fallenden Linien.
+                </p>
+
+                <p>
+                  Ich kann sehen,
+                  dass sich etwas verändert hat.
+                </p>
+
+                <p>
+                  Aber ich kann noch nicht erkennen,
+                  warum.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 17
+             KAPITEL 2 – DIE ENTDECKUNG DES PROBLEMS
+             SCHLUSS
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <p>
+                  Kapita betrachtete
+                  die fallenden Linien.
+                </p>
+
+                <p>
+                  Dann müssen wir es herausfinden.
+                </p>
+
+                <p>
+                  Zoe nickte.
+                </p>
+
+                <p>
+                  Auf den Bildschirmen
+                  blinkte das Warnsignal weiter.
+                </p>
+
+                <p>
+                  Irgendetwas geschah
+                  auf der Erde.
+                </p>
+
+                <p>
+                  Doch was dahintersteckte,
+                  wussten sie noch nicht.
+                </p>
+
+                <p>
+                  <strong>
+                    Noch nicht.
+                  </strong>
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SEITE 18
+             PLATZHALTER – NÄCHSTES KAPITEL
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <h2>
+                  Nächste Seite
+                </h2>
 
                 <p>
                   Der Text wird später eingefügt.
@@ -303,7 +956,8 @@
 
 
         <!-- =================================================
-             PÁGINA 5
+             SEITE 19
+             PLATZHALTER – NÄCHSTES KAPITEL
         ================================================== -->
 
         <div class="page reading-page">
@@ -314,7 +968,9 @@
 
               <div class="book-text auto-scroll">
 
-                <h2>Nächste Seite</h2>
+                <h2>
+                  Nächste Seite
+                </h2>
 
                 <p>
                   Der Text wird später eingefügt.
@@ -330,95 +986,16 @@
 
 
         <!-- =================================================
-             PÁGINA 6
-        ================================================== -->
-
-        <div class="page reading-page">
-
-          <div class="page-content">
-
-            <div class="reading-text">
-
-              <div class="book-text auto-scroll">
-
-                <h2>Nächste Seite</h2>
-
-                <p>
-                  Der Text wird später eingefügt.
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- =================================================
-             PÁGINA 7
-        ================================================== -->
-
-        <div class="page reading-page">
-
-          <div class="page-content">
-
-            <div class="reading-text">
-
-              <div class="book-text auto-scroll">
-
-                <h2>Nächste Seite</h2>
-
-                <p>
-                  Der Text wird später eingefügt.
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- =================================================
-             PÁGINA 8
-        ================================================== -->
-
-        <div class="page reading-page">
-
-          <div class="page-content">
-
-            <div class="reading-text">
-
-              <div class="book-text auto-scroll">
-
-                <h2>Nächste Seite</h2>
-
-                <p>
-                  Der Text wird später eingefügt.
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- =================================================
-             FINAL
+             LETZTE SEITE
         ================================================== -->
 
         <div class="page end-page">
 
           <div class="end-content">
 
-            <h2>Fortsetzung folgt ...</h2>
+            <h2>
+              Fortsetzung folgt ...
+            </h2>
 
             <p>
               Kapitas Abenteuer hat gerade erst begonnen.
@@ -430,15 +1007,15 @@
 
 
       </div>
-      <!-- FIM DO FLIPBOOK -->
+      <!-- ENDE: FLIPBOOK -->
 
 
     </div>
-    <!-- FIM DO CONTAINER DO LIVRO -->
+    <!-- ENDE: BUCHCONTAINER -->
 
 
     <!-- ===================================================
-         CONTROLES DO LIVRO
+         5.3 BUCHSTEUERUNG
     ==================================================== -->
 
     <nav
@@ -447,7 +1024,9 @@
     >
 
 
-      <!-- ÁUDIO -->
+      <!-- =================================================
+           5.3.1 AUDIO
+      ================================================== -->
 
       <button
         id="audioButton"
@@ -457,7 +1036,9 @@
       </button>
 
 
-      <!-- MODO DE LEITURA -->
+      <!-- =================================================
+           5.3.2 LESEMODUS
+      ================================================== -->
 
       <button
         id="readingModeButton"
@@ -467,7 +1048,9 @@
       </button>
 
 
-      <!-- VISÃO GERAL DAS PÁGINAS -->
+      <!-- =================================================
+           5.3.3 SEITENÜBERSICHT
+      ================================================== -->
 
       <button
         id="pageMenuButton"
@@ -479,7 +1062,7 @@
 
 
       <!-- =================================================
-           NAVEGAÇÃO
+           5.3.4 SEITENNAVIGATION
       ================================================== -->
 
       <div class="page-navigation">
@@ -494,7 +1077,10 @@
         </button>
 
 
-        <span id="pageCounter">
+        <span
+          id="pageCounter"
+          aria-live="polite"
+        >
           Seite 1
         </span>
 
@@ -511,7 +1097,9 @@
       </div>
 
 
-      <!-- TELA CHEIA -->
+      <!-- =================================================
+           5.3.5 VOLLBILD
+      ================================================== -->
 
       <button
         id="fullscreenButton"
@@ -521,7 +1109,9 @@
       </button>
 
 
-      <!-- SAIR DO LIVRO -->
+      <!-- =================================================
+           5.3.6 BUCH BEENDEN
+      ================================================== -->
 
       <button
         id="exitBookButton"
@@ -539,7 +1129,7 @@
 
 
   <!-- =====================================================
-       PAINEL LATERAL DE PÁGINAS
+       6. SEITENÜBERSICHT
   ====================================================== -->
 
   <div
@@ -549,6 +1139,10 @@
   >
 
 
+    <!-- ===================================================
+         6.1 SEITENPANEL
+    ==================================================== -->
+
     <aside
       class="page-sidebar-panel"
       role="dialog"
@@ -557,7 +1151,9 @@
     >
 
 
-      <!-- CABEÇALHO DO PAINEL -->
+      <!-- =================================================
+           6.1.1 PANELKOPF
+      ================================================== -->
 
       <div class="page-sidebar-header">
 
@@ -578,16 +1174,15 @@
       </div>
 
 
-      <!--
-        O JAVASCRIPT VAI CRIAR
-        AS MINIATURAS DAS PÁGINAS AQUI
-      -->
+      <!-- =================================================
+           6.1.2 SEITENLISTE
+           WIRD DURCH BOOK.JS ERZEUGT
+      ================================================== -->
 
       <div
         id="pageList"
         class="page-thumbnail-list"
-      >
-      </div>
+      ></div>
 
 
     </aside>
@@ -597,7 +1192,7 @@
 
 
   <!-- =====================================================
-       JAVASCRIPT GERAL DO LIVRO
+       7. JAVASCRIPT
   ====================================================== -->
 
   <script src="book.js"></script>
