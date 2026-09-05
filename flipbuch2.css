@@ -1,11 +1,100 @@
 /* =========================================================
    FLIPBUCH2.CSS
    Kapitänin Kapita – Leitor Digital
+
+   Estrutura:
+   01. Variáveis globais
+   02. Reset e documento
+   03. Fundo
+   04. Estrutura principal
+   05. Cabeçalho
+   06. Flipbook e páginas
+   07. Ilustrações
+   08. Tipografia e leitura
+   09. Rolagem interna
+   10. Modo de leitura
+   11. Tipos especiais de página
+   12. Controles do leitor
+   13. Navegação de páginas
+   14. Painel lateral
+   15. Miniaturas
+   16. Responsividade
+   17. Tela cheia
+   18. Acessibilidade
 ========================================================= */
 
 
 /* =========================================================
-   RESET
+   01. VARIÁVEIS GLOBAIS
+========================================================= */
+
+:root {
+
+  /* Cores principais */
+
+  --color-space-dark: #050814;
+  --color-space-medium: #111a2c;
+  --color-space-light: #24385f;
+
+  --color-page: #ffffff;
+  --color-page-soft: #fbfdff;
+
+  --color-text: #1d2d48;
+  --color-heading: #243f70;
+
+  --color-accent: #4b83b6;
+  --color-accent-light: #59b6e7;
+
+
+  /* Tipografia */
+
+  --font-interface:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  --font-reading:
+    "Trebuchet MS",
+    Arial,
+    sans-serif;
+
+
+  /* Texto do livro */
+
+  --book-font-size: 1.26rem;
+  --book-line-height: 1.82;
+
+  --book-heading-size: 1.72rem;
+  --book-heading-line-height: 1.3;
+
+  --paragraph-spacing: 1.45rem;
+
+
+  /* Espaçamento da página */
+
+  --page-padding-top: 28px;
+  --page-padding-right: 52px;
+  --page-padding-bottom: 38px;
+  --page-padding-left: 28px;
+
+
+  /* Bordas */
+
+  --radius-small: 8px;
+  --radius-medium: 14px;
+  --radius-large: 20px;
+
+
+  /* Transições */
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+
+}
+
+
+/* =========================================================
+   02. RESET E DOCUMENTO
 ========================================================= */
 
 * {
@@ -23,27 +112,37 @@ body {
 
 
 body {
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  overflow-x: hidden;
+
+  font-family: var(--font-interface);
+
+  color: var(--color-text);
 
   background:
     radial-gradient(
       circle at top,
-      #24385f 0%,
-      #111a2c 35%,
-      #050814 100%
+      var(--color-space-light) 0%,
+      var(--color-space-medium) 35%,
+      var(--color-space-dark) 100%
     );
+}
 
-  color: #18243a;
 
-  overflow-x: hidden;
+img {
+  max-width: 100%;
+}
+
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 
 /* =========================================================
-   FUNDO DE ESTRELAS
+   03. FUNDO DE ESTRELAS
 ========================================================= */
 
 .stars {
@@ -54,9 +153,9 @@ body {
   width: 100%;
   height: 100%;
 
-  pointer-events: none;
-
   z-index: -1;
+
+  pointer-events: none;
 
   background-image:
     radial-gradient(
@@ -88,7 +187,7 @@ body {
 
 
 /* =========================================================
-   ÁREA PRINCIPAL
+   04. ESTRUTURA PRINCIPAL
 ========================================================= */
 
 .book-area {
@@ -106,8 +205,20 @@ body {
 }
 
 
+.book-container {
+  position: relative;
+
+  width: 100%;
+  max-width: 1100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 /* =========================================================
-   CABEÇALHO
+   05. CABEÇALHO DO LIVRO
 ========================================================= */
 
 .book-header {
@@ -120,7 +231,7 @@ body {
 
 
 .book-header h1 {
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 
   font-size:
     clamp(
@@ -145,23 +256,7 @@ body {
 
 
 /* =========================================================
-   CONTAINER DO LIVRO
-========================================================= */
-
-.book-container {
-  width: 100%;
-  max-width: 1100px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  position: relative;
-}
-
-
-/* =========================================================
-   FLIPBOOK
+   06. FLIPBOOK E PÁGINAS
 ========================================================= */
 
 #flipbook {
@@ -169,56 +264,16 @@ body {
 }
 
 
-/* =========================================================
-   PÁGINAS
-========================================================= */
-
 .page {
   position: relative;
 
-  background: #ffffff;
-
   overflow: hidden;
+
+  background: var(--color-page);
 
   box-shadow:
     inset 0 0 18px
     rgba(30, 48, 80, 0.08);
-}
-
-
-.page img {
-  display: block;
-}
-
-
-/* =========================================================
-   CAPA
-========================================================= */
-
-.cover {
-  background: #07152e;
-}
-
-
-.cover img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-}
-
-
-/* =========================================================
-   PÁGINA DE LEITURA
-========================================================= */
-
-.reading-page {
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #fbfdff 100%
-    );
 }
 
 
@@ -233,49 +288,197 @@ body {
 }
 
 
+.reading-page {
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-page) 0%,
+      var(--color-page-soft) 100%
+    );
+}
+
+
 /* =========================================================
-   IMAGEM DA PÁGINA
+   07. CAPA E ILUSTRAÇÕES
 ========================================================= */
+
+
+/* ---------------------------------------------------------
+   07.1 CAPA
+--------------------------------------------------------- */
+
+.cover {
+  background: #07152e;
+}
+
+
+.cover img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ---------------------------------------------------------
+   07.2 IMAGEM PADRÃO DE PÁGINA
+--------------------------------------------------------- */
 
 .page-image {
   width: 100%;
   height: 47%;
 
+  flex-shrink: 0;
+
   object-fit: cover;
+}
+
+
+/* ---------------------------------------------------------
+   07.3 PÁGINA DE ILUSTRAÇÃO
+--------------------------------------------------------- */
+
+.image-page {
+  background: #ffffff;
+}
+
+
+.image-page .page-content {
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ---------------------------------------------------------
+   07.4 FIGURA DO LIVRO
+--------------------------------------------------------- */
+
+.book-illustration {
+  width: 100%;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+
+.book-illustration img {
+  width: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* ---------------------------------------------------------
+   07.5 ILUSTRAÇÃO GRANDE
+--------------------------------------------------------- */
+
+.book-illustration-large {
+  width: 100%;
+  height: 100%;
+}
+
+
+.book-illustration-large img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ---------------------------------------------------------
+   07.6 ILUSTRAÇÃO PEQUENA
+   Utilizada acima do texto
+--------------------------------------------------------- */
+
+.book-illustration-small {
+  width: 100%;
+  height: 30%;
 
   flex-shrink: 0;
 }
 
 
+.book-illustration-small img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ---------------------------------------------------------
+   07.7 ABERTURA DE CAPÍTULO
+--------------------------------------------------------- */
+
+.chapter-opening-page {
+  position: relative;
+}
+
+
+.chapter-image-title {
+  position: absolute;
+
+  left: 20px;
+  right: 20px;
+  bottom: 22px;
+
+  padding:
+    14px
+    18px;
+
+  border-radius: var(--radius-medium);
+
+  color: #ffffff;
+
+  text-align: center;
+
+  background:
+    rgba(5, 12, 28, 0.72);
+
+  backdrop-filter:
+    blur(8px);
+}
+
+
+.chapter-image-title h2 {
+  margin: 0;
+
+  font-size: 1.6rem;
+  line-height: 1.25;
+}
+
+
 /* =========================================================
-   ÁREA DE TEXTO
+   08. TIPOGRAFIA E ÁREA DE LEITURA
 ========================================================= */
+
+
+/* ---------------------------------------------------------
+   08.1 CONTAINER DE LEITURA
+--------------------------------------------------------- */
 
 .reading-text {
   flex: 1;
 
   min-height: 0;
 
-  padding:
-    24px
-    30px
-    28px;
-
   overflow-y: auto;
   overflow-x: hidden;
 
-  font-family:
-    "Trebuchet MS",
-    Arial,
-    sans-serif;
+  font-family: var(--font-reading);
 
-  font-size: 1.13rem;
+  font-size: var(--book-font-size);
+  line-height: var(--book-line-height);
 
-  line-height: 1.7;
+  letter-spacing: 0.012em;
 
-  letter-spacing: 0.01em;
-
-  color: #1d2d48;
+  color: var(--color-text);
 
   user-select: text;
   -webkit-user-select: text;
@@ -284,39 +487,9 @@ body {
 }
 
 
-/* =========================================================
-   PARÁGRAFOS
-========================================================= */
-
-.reading-text p {
-  margin-bottom: 17px;
-
-  padding:
-    3px
-    4px;
-
-  border-radius: 7px;
-}
-
-
-/* =========================================================
-   TÍTULOS
-========================================================= */
-
-.reading-text h2 {
-  margin-bottom: 24px;
-
-  color: #243f70;
-
-  font-size: 1.65rem;
-
-  line-height: 1.25;
-}
-
-
-/* =========================================================
-   TEXTO COM ROLAGEM
-========================================================= */
+/* ---------------------------------------------------------
+   08.2 TEXTO INTERNO DO LIVRO
+--------------------------------------------------------- */
 
 .reading-text:has(.book-text) {
   position: relative;
@@ -334,17 +507,22 @@ body {
   min-height: 0;
 
   padding:
-    20px
-    50px
-    35px
-    22px;
+    var(--page-padding-top)
+    var(--page-padding-right)
+    var(--page-padding-bottom)
+    var(--page-padding-left);
 
   overflow-y: auto;
   overflow-x: hidden;
 
-  font-size: 1.08rem;
+  font-family: var(--font-reading);
 
-  line-height: 1.65;
+  font-size: var(--book-font-size);
+  line-height: var(--book-line-height);
+
+  letter-spacing: 0.012em;
+
+  color: var(--color-text);
 
   scroll-behavior: smooth;
 
@@ -358,21 +536,60 @@ body {
 }
 
 
-.book-text h2 {
-  margin-top: 0;
+/* ---------------------------------------------------------
+   08.3 PARÁGRAFOS
+--------------------------------------------------------- */
 
-  margin-bottom: 20px;
+.reading-text p,
+.book-text p {
+  margin: 0 0 var(--paragraph-spacing);
 }
 
 
-.book-text p {
-  margin-bottom: 18px;
+.reading-text p:last-child,
+.book-text p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------------------------------------------------------
+   08.4 TÍTULOS
+--------------------------------------------------------- */
+
+.reading-text h2,
+.book-text h2 {
+  margin:
+    0
+    0
+    1.75rem;
+
+  color: var(--color-heading);
+
+  font-size: var(--book-heading-size);
+  line-height: var(--book-heading-line-height);
+}
+
+
+/* ---------------------------------------------------------
+   08.5 ÊNFASE
+--------------------------------------------------------- */
+
+.book-text strong,
+.reading-text strong {
+  font-weight: 700;
+
+  color: #172b4d;
 }
 
 
 /* =========================================================
-   BARRA DE ROLAGEM
+   09. ROLAGEM INTERNA
 ========================================================= */
+
+
+/* ---------------------------------------------------------
+   09.1 BARRA DE ROLAGEM
+--------------------------------------------------------- */
 
 .reading-text::-webkit-scrollbar,
 .book-text::-webkit-scrollbar {
@@ -388,16 +605,16 @@ body {
 
 .reading-text::-webkit-scrollbar-thumb,
 .book-text::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+
   background:
     rgba(59, 112, 161, 0.32);
-
-  border-radius: 20px;
 }
 
 
-/* =========================================================
-   CONTROLES DA ROLAGEM INTERNA
-========================================================= */
+/* ---------------------------------------------------------
+   09.2 CONTROLES DE ROLAGEM
+--------------------------------------------------------- */
 
 .scroll-controls {
   position: absolute;
@@ -405,15 +622,15 @@ body {
   top: 50%;
   right: 5px;
 
-  transform:
-    translateY(-50%);
+  z-index: 50;
 
   display: flex;
   flex-direction: column;
 
   gap: 6px;
 
-  z-index: 50;
+  transform:
+    translateY(-50%);
 }
 
 
@@ -421,13 +638,13 @@ body {
   width: 38px;
   height: 38px;
 
+  padding: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 0;
-
-  border: none;
+  border: 0;
 
   border-radius: 50%;
 
@@ -447,19 +664,25 @@ body {
 
 
 .scroll-btn:active {
-  transform: scale(0.9);
+  transform:
+    scale(0.9);
 }
 
 
 /* =========================================================
-   FRASES DO MODO DE LEITURA
+   10. MODO DE LEITURA
 ========================================================= */
+
+
+/* ---------------------------------------------------------
+   10.1 FRASES INTERATIVAS
+--------------------------------------------------------- */
 
 .reading-sentence {
   border-radius: 4px;
 
   transition:
-    background 0.2s ease;
+    background var(--transition-fast);
 }
 
 
@@ -486,37 +709,30 @@ body.reading-mode .reading-sentence {
 
 body.reading-mode
 .reading-sentence.reading-line {
+  border-radius: 4px;
+
   background:
     rgba(255, 225, 105, 0.30);
-
-  box-shadow: none;
-
-  border-radius: 4px;
 }
 
 
-/* =========================================================
-   MODO DE LEITURA
-========================================================= */
+/* ---------------------------------------------------------
+   10.2 TIPOGRAFIA DO MODO DE LEITURA
+--------------------------------------------------------- */
 
-body.reading-mode .reading-text {
-  font-size: 1.28rem;
+body.reading-mode .reading-text,
+body.reading-mode .book-text {
+  font-size: 1.38rem;
 
   line-height: 1.95;
 
-  letter-spacing: 0.02em;
+  letter-spacing: 0.018em;
 }
 
 
-body.reading-mode .reading-text p {
-  margin-bottom: 22px;
-}
-
-
-body.reading-mode .book-text {
-  font-size: 1.2rem;
-
-  line-height: 1.85;
+body.reading-mode .reading-text p,
+body.reading-mode .book-text p {
+  margin-bottom: 1.65rem;
 }
 
 
@@ -525,9 +741,19 @@ body.reading-mode .page-image {
 }
 
 
+body.reading-mode .book-illustration-small {
+  height: 25%;
+}
+
+
 /* =========================================================
-   PÁGINA SOMENTE DE TEXTO
+   11. TIPOS ESPECIAIS DE PÁGINA
 ========================================================= */
+
+
+/* ---------------------------------------------------------
+   11.1 PÁGINA SOMENTE DE TEXTO
+--------------------------------------------------------- */
 
 .text-page {
   padding: 0;
@@ -546,13 +772,17 @@ body.reading-mode .page-image {
     45px
     38px;
 
-  font-size: 1.2rem;
+  font-family: var(--font-reading);
+
+  font-size: 1.3rem;
+
+  line-height: 1.8;
 }
 
 
-/* =========================================================
-   PÁGINA CIENTÍFICA
-========================================================= */
+/* ---------------------------------------------------------
+   11.2 PÁGINA CIENTÍFICA
+--------------------------------------------------------- */
 
 .science-page {
   display: flex;
@@ -577,6 +807,10 @@ body.reading-mode .page-image {
     32px
     28px;
 
+  border:
+    2px solid
+    rgba(83, 177, 226, 0.25);
+
   border-radius: 22px;
 
   background:
@@ -585,10 +819,6 @@ body.reading-mode .page-image {
       #ecf9ff,
       #f6fbff
     );
-
-  border:
-    2px solid
-    rgba(83, 177, 226, 0.25);
 
   box-shadow:
     0 16px 35px
@@ -599,26 +829,26 @@ body.reading-mode .page-image {
 .science-box h2 {
   margin-bottom: 24px;
 
-  font-size: 1.7rem;
-
   color: #207ba8;
+
+  font-size: 1.75rem;
 }
 
 
 .science-box p {
-  margin-bottom: 18px;
-
-  font-size: 1.15rem;
-
-  line-height: 1.7;
+  margin-bottom: 22px;
 
   color: #213653;
+
+  font-size: 1.22rem;
+
+  line-height: 1.8;
 }
 
 
-/* =========================================================
-   PÁGINA DE VÍDEO
-========================================================= */
+/* ---------------------------------------------------------
+   11.3 PÁGINA DE VÍDEO
+--------------------------------------------------------- */
 
 .video-page {
   display: flex;
@@ -657,7 +887,7 @@ body.reading-mode .page-image {
 
   border: 0;
 
-  border-radius: 14px;
+  border-radius: var(--radius-medium);
 
   background: #000000;
 
@@ -676,9 +906,9 @@ body.reading-mode .page-image {
 }
 
 
-/* =========================================================
-   PÁGINA FINAL
-========================================================= */
+/* ---------------------------------------------------------
+   11.4 PÁGINA FINAL
+--------------------------------------------------------- */
 
 .end-page {
   display: flex;
@@ -701,23 +931,23 @@ body.reading-mode .page-image {
 
 
 .end-content h2 {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 
   font-size: 2rem;
 }
 
 
 .end-content p {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
 
-  line-height: 1.6;
+  line-height: 1.7;
 
-  opacity: 0.85;
+  opacity: 0.88;
 }
 
 
 /* =========================================================
-   CONTROLES INFERIORES DO LEITOR
+   12. CONTROLES DO LEITOR
 ========================================================= */
 
 .book-controls {
@@ -769,8 +999,8 @@ body.reading-mode .page-image {
   cursor: pointer;
 
   transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+    background var(--transition-normal),
+    transform var(--transition-fast);
 }
 
 
@@ -797,7 +1027,7 @@ body.reading-mode .page-image {
 
 
 /* =========================================================
-   NAVEGAÇÃO ENTRE PÁGINAS
+   13. NAVEGAÇÃO DE PÁGINAS
 ========================================================= */
 
 .page-navigation {
@@ -813,12 +1043,10 @@ body.reading-mode .page-image {
 }
 
 
-.book-controls
-.page-nav-btn {
+.book-controls .page-nav-btn {
   width: 42px;
   min-width: 42px;
   height: 42px;
-
   min-height: 42px;
 
   padding: 0;
@@ -840,40 +1068,34 @@ body.reading-mode .page-image {
 }
 
 
-.book-controls
-.page-nav-btn:hover {
+.book-controls .page-nav-btn:hover {
   background:
     rgba(255, 255, 255, 0.26);
 }
 
 
-.book-controls
-.page-nav-btn:active {
+.book-controls .page-nav-btn:active {
   transform:
     scale(0.92);
 }
 
 
-/* =========================================================
-   CONTADOR
-========================================================= */
-
 #pageCounter {
   min-width: 100px;
-
-  text-align: center;
 
   color:
     rgba(255, 255, 255, 0.88);
 
   font-size: 0.85rem;
 
+  text-align: center;
+
   white-space: nowrap;
 }
 
 
 /* =========================================================
-   PAINEL LATERAL DE PÁGINAS
+   14. PAINEL LATERAL DE PÁGINAS
 ========================================================= */
 
 #pageMenu {
@@ -881,36 +1103,30 @@ body.reading-mode .page-image {
 
   inset: 0;
 
+  z-index: 20000;
+
   visibility: hidden;
+
+  pointer-events: none;
 
   background:
     rgba(3, 9, 20, 0);
 
-  pointer-events: none;
-
-  z-index: 20000;
-
   transition:
-    background 0.25s ease,
-    visibility 0.25s ease;
+    background var(--transition-normal),
+    visibility var(--transition-normal);
 }
 
-
-/* MENU ABERTO */
 
 #pageMenu.open {
   visibility: visible;
 
+  pointer-events: auto;
+
   background:
     rgba(3, 9, 20, 0.62);
-
-  pointer-events: auto;
 }
 
-
-/* =========================================================
-   PAINEL QUE ENTRA PELA ESQUERDA
-========================================================= */
 
 .page-sidebar-panel {
   position: absolute;
@@ -929,9 +1145,9 @@ body.reading-mode .page-image {
   display: flex;
   flex-direction: column;
 
-  background: #f7f9fc;
-
   color: #18243a;
+
+  background: #f7f9fc;
 
   box-shadow:
     12px 0 35px
@@ -945,18 +1161,15 @@ body.reading-mode .page-image {
 }
 
 
-/* PAINEL ABERTO */
-
-#pageMenu.open
-.page-sidebar-panel {
+#pageMenu.open .page-sidebar-panel {
   transform:
     translateX(0);
 }
 
 
-/* =========================================================
-   CABEÇALHO DO PAINEL
-========================================================= */
+/* ---------------------------------------------------------
+   14.1 CABEÇALHO DO PAINEL
+--------------------------------------------------------- */
 
 .page-sidebar-header {
   min-height: 68px;
@@ -982,15 +1195,11 @@ body.reading-mode .page-image {
 .page-sidebar-header h2 {
   margin: 0;
 
-  color: #243f70;
+  color: var(--color-heading);
 
   font-size: 1.35rem;
 }
 
-
-/* =========================================================
-   BOTÃO FECHAR DO PAINEL
-========================================================= */
 
 .close-page-menu {
   width: 42px;
@@ -1006,7 +1215,7 @@ body.reading-mode .page-image {
 
   background: #edf2f8;
 
-  color: #243f70;
+  color: var(--color-heading);
 
   font-size: 1.2rem;
 
@@ -1021,7 +1230,7 @@ body.reading-mode .page-image {
 
 
 /* =========================================================
-   LISTA DE MINIATURAS
+   15. MINIATURAS DAS PÁGINAS
 ========================================================= */
 
 .page-thumbnail-list {
@@ -1050,9 +1259,9 @@ body.reading-mode .page-image {
 }
 
 
-/* =========================================================
-   CARTÃO DE CADA PÁGINA
-========================================================= */
+/* ---------------------------------------------------------
+   15.1 CARTÃO DA PÁGINA
+--------------------------------------------------------- */
 
 .page-select-button {
   width: 100%;
@@ -1073,7 +1282,7 @@ body.reading-mode .page-image {
 
   background: #ffffff;
 
-  color: #243f70;
+  color: var(--color-heading);
 
   cursor: pointer;
 
@@ -1082,9 +1291,9 @@ body.reading-mode .page-image {
     rgba(34, 54, 82, 0.08);
 
   transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    border-color 0.15s ease;
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 
@@ -1101,13 +1310,9 @@ body.reading-mode .page-image {
 }
 
 
-/* =========================================================
-   PÁGINA ATUAL NO PAINEL
-========================================================= */
-
 .page-select-button.current {
   border-color:
-    #4b83b6;
+    var(--color-accent);
 
   box-shadow:
     0 0 0 2px
@@ -1115,9 +1320,9 @@ body.reading-mode .page-image {
 }
 
 
-/* =========================================================
-   MINIATURA DA PÁGINA
-========================================================= */
+/* ---------------------------------------------------------
+   15.2 IMAGEM DA MINIATURA
+--------------------------------------------------------- */
 
 .page-thumbnail {
   width: 100%;
@@ -1135,7 +1340,7 @@ body.reading-mode .page-image {
     1px solid
     #e3e8ef;
 
-  border-radius: 8px;
+  border-radius: var(--radius-small);
 
   background: #ffffff;
 }
@@ -1149,9 +1354,9 @@ body.reading-mode .page-image {
 }
 
 
-/* =========================================================
-   PÁGINAS SEM IMAGEM
-========================================================= */
+/* ---------------------------------------------------------
+   15.3 MINIATURA SEM IMAGEM
+--------------------------------------------------------- */
 
 .page-thumbnail-placeholder {
   width: 100%;
@@ -1166,36 +1371,34 @@ body.reading-mode .page-image {
 
   padding: 10px;
 
+  color: #74839a;
+
+  font-size: 0.78rem;
+  line-height: 1.3;
+
+  text-align: center;
+
   background:
     linear-gradient(
       180deg,
       #ffffff,
       #eef4fa
     );
-
-  color: #74839a;
-
-  font-size: 0.78rem;
-
-  line-height: 1.3;
-
-  text-align: center;
 }
 
 
-/* =========================================================
-   TEXTO ABAIXO DA MINIATURA
-========================================================= */
+/* ---------------------------------------------------------
+   15.4 RÓTULO DA MINIATURA
+--------------------------------------------------------- */
 
 .page-thumbnail-label {
   width: 100%;
 
   overflow: hidden;
 
-  color: #243f70;
+  color: var(--color-heading);
 
   font-size: 0.82rem;
-
   font-weight: 600;
 
   text-align: center;
@@ -1207,28 +1410,29 @@ body.reading-mode .page-image {
 
 
 /* =========================================================
-   TABLET
+   16. RESPONSIVIDADE
 ========================================================= */
+
+
+/* ---------------------------------------------------------
+   16.1 TABLET
+--------------------------------------------------------- */
 
 @media (max-width: 900px) {
 
-  .reading-text {
-    padding:
-      20px
-      23px;
+  :root {
+    --book-font-size: 1.22rem;
 
-    font-size: 1.08rem;
-  }
+    --book-line-height: 1.8;
 
+    --book-heading-size: 1.62rem;
 
-  .book-text {
-    padding:
-      18px
-      48px
-      30px
-      20px;
+    --paragraph-spacing: 1.35rem;
 
-    font-size: 1.05rem;
+    --page-padding-top: 24px;
+    --page-padding-right: 48px;
+    --page-padding-bottom: 32px;
+    --page-padding-left: 24px;
   }
 
 
@@ -1243,11 +1447,29 @@ body.reading-mode .page-image {
 }
 
 
-/* =========================================================
-   CELULAR
-========================================================= */
+/* ---------------------------------------------------------
+   16.2 CELULAR
+--------------------------------------------------------- */
 
 @media (max-width: 600px) {
+
+  :root {
+    --book-font-size: 1.14rem;
+
+    --book-line-height: 1.78;
+
+    --book-heading-size: 1.45rem;
+
+    --paragraph-spacing: 1.25rem;
+
+    --page-padding-top: 21px;
+    --page-padding-right: 48px;
+    --page-padding-bottom: 28px;
+    --page-padding-left: 20px;
+  }
+
+
+  /* Estrutura */
 
   .book-area {
     padding:
@@ -1257,7 +1479,7 @@ body.reading-mode .page-image {
   }
 
 
-  /* CABEÇALHO */
+  /* Cabeçalho */
 
   .book-header {
     margin-bottom: 10px;
@@ -1274,67 +1496,35 @@ body.reading-mode .page-image {
   }
 
 
-  /* IMAGEM */
+  /* Imagens */
 
   .page-image {
-    height: 43%;
+    height: 42%;
   }
 
 
-  /* TEXTO */
+  .book-illustration-small {
+    height: 27%;
+  }
 
-  .reading-text {
+
+  .chapter-image-title {
+    left: 12px;
+    right: 12px;
+    bottom: 14px;
+
     padding:
-      17px
-      20px
-      22px;
-
-    font-size: 1rem;
-
-    line-height: 1.62;
+      11px
+      12px;
   }
 
 
-  .reading-text p {
-    margin-bottom: 13px;
-  }
-
-
-  .reading-text h2 {
-    margin-bottom: 16px;
-
+  .chapter-image-title h2 {
     font-size: 1.35rem;
   }
 
 
-  /* TEXTO COM ROLAGEM */
-
-  .book-text {
-    padding:
-      15px
-      48px
-      28px
-      18px;
-
-    font-size: 1rem;
-
-    line-height: 1.62;
-  }
-
-
-  .book-text h2 {
-    margin-bottom: 16px;
-
-    font-size: 1.35rem;
-  }
-
-
-  .book-text p {
-    margin-bottom: 15px;
-  }
-
-
-  /* BOTÕES DA ROLAGEM */
+  /* Rolagem */
 
   .scroll-controls {
     right: 4px;
@@ -1351,28 +1541,33 @@ body.reading-mode .page-image {
   }
 
 
-  /* MODO DE LEITURA */
+  /* Modo de leitura */
 
-  body.reading-mode .reading-text {
-    font-size: 1.13rem;
+  body.reading-mode .reading-text,
+  body.reading-mode .book-text {
+    font-size: 1.27rem;
 
-    line-height: 1.8;
+    line-height: 1.9;
   }
 
 
-  body.reading-mode .book-text {
-    font-size: 1.1rem;
-
-    line-height: 1.78;
+  body.reading-mode .reading-text p,
+  body.reading-mode .book-text p {
+    margin-bottom: 1.45rem;
   }
 
 
   body.reading-mode .page-image {
-    height: 34%;
+    height: 33%;
   }
 
 
-  /* CIÊNCIA */
+  body.reading-mode .book-illustration-small {
+    height: 22%;
+  }
+
+
+  /* Ciência */
 
   .science-page {
     padding: 20px;
@@ -1387,16 +1582,16 @@ body.reading-mode .page-image {
 
 
   .science-box h2 {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
   }
 
 
   .science-box p {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
 
-  /* CONTROLES INFERIORES */
+  /* Controles */
 
   .book-controls {
     width:
@@ -1421,19 +1616,17 @@ body.reading-mode .page-image {
   }
 
 
-  /* NAVEGAÇÃO */
+  /* Navegação */
 
   .page-navigation {
     gap: 5px;
   }
 
 
-  .book-controls
-  .page-nav-btn {
+  .book-controls .page-nav-btn {
     width: 38px;
     min-width: 38px;
     height: 38px;
-
     min-height: 38px;
 
     padding: 0;
@@ -1449,7 +1642,7 @@ body.reading-mode .page-image {
   }
 
 
-  /* PAINEL LATERAL */
+  /* Painel lateral */
 
   .page-sidebar-panel {
     width:
@@ -1496,40 +1689,31 @@ body.reading-mode .page-image {
 }
 
 
-/* =========================================================
-   CELULAR PEQUENO
-========================================================= */
+/* ---------------------------------------------------------
+   16.3 CELULAR PEQUENO
+--------------------------------------------------------- */
 
 @media (max-width: 390px) {
 
-  .reading-text {
-    padding:
-      14px
-      17px
-      18px;
+  :root {
+    --book-font-size: 1.08rem;
 
-    font-size: 0.94rem;
+    --book-line-height: 1.74;
+
+    --paragraph-spacing: 1.15rem;
+
+    --page-padding-top: 18px;
+    --page-padding-right: 45px;
+    --page-padding-bottom: 25px;
+    --page-padding-left: 18px;
   }
 
 
-  .book-text {
-    padding:
-      13px
-      46px
-      25px
-      16px;
-
-    font-size: 0.94rem;
-  }
-
-
-  body.reading-mode .reading-text {
-    font-size: 1.07rem;
-  }
-
-
+  body.reading-mode .reading-text,
   body.reading-mode .book-text {
-    font-size: 1.05rem;
+    font-size: 1.2rem;
+
+    line-height: 1.86;
   }
 
 
@@ -1550,15 +1734,15 @@ body.reading-mode .page-image {
 
 
 /* =========================================================
-   TELA CHEIA
+   17. TELA CHEIA
 ========================================================= */
 
 :fullscreen body {
   background:
     radial-gradient(
       circle at top,
-      #24385f,
-      #050814 70%
+      var(--color-space-light),
+      var(--color-space-dark) 70%
     );
 }
 
@@ -1569,8 +1753,13 @@ body.reading-mode .page-image {
 
 
 /* =========================================================
-   ACESSIBILIDADE
+   18. ACESSIBILIDADE
 ========================================================= */
+
+
+/* ---------------------------------------------------------
+   18.1 FOCO DE TECLADO
+--------------------------------------------------------- */
 
 button:focus-visible {
   outline:
@@ -1581,14 +1770,35 @@ button:focus-visible {
 }
 
 
-/* =========================================================
-   SELEÇÃO NORMAL DE TEXTO
-========================================================= */
+/* ---------------------------------------------------------
+   18.2 SELEÇÃO DE TEXTO
+--------------------------------------------------------- */
 
 .reading-text::selection,
-.book-text::selection {
+.book-text::selection,
+.reading-text *::selection,
+.book-text *::selection {
+  color: #162338;
+
   background:
     rgba(255, 220, 72, 0.55);
+}
 
-  color: #162338;
+
+/* ---------------------------------------------------------
+   18.3 REDUÇÃO DE MOVIMENTO
+--------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
 }
