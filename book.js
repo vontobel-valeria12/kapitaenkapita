@@ -218,16 +218,29 @@ audioButton?.addEventListener(
    VÍDEOS
 ========================================================= */
 
-function stopVideos() {
+function controlarVideosDaPagina(indiceAtual) {
+  document.querySelectorAll(".chapter-video iframe").forEach(iframe => {
+    const pagina = iframe.closest("[data-page-index]");
+    const indiceVideo = Number(pagina.dataset.pageIndex);
 
-  document
-    .querySelectorAll("video")
-    .forEach(video => {
+    const comando = indiceVideo === Number(indiceAtual)
+      ? "playVideo"
+      : "stopVideo";
 
-      video.pause();
-
-    });
+    iframe.contentWindow.postMessage(
+      JSON.stringify({
+        event: "command",
+        func: comando,
+        args: ""
+      }),
+      "*"
+    );
+  });
 }
+
+pageFlip.on("flip", evento => {
+  controlarVideosDaPagina(evento.data);
+});
 
 
 /* =========================================================
