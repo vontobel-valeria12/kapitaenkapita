@@ -1811,6 +1811,34 @@ body.reading-mode .book-illustration-small {
   display: block;
 }
 
+.chapter-opening-page .page-content {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.chapter-opening-page .book-illustration-large {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.chapter-opening-page .chapter-video {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000000;
+}
+
+.chapter-opening-page .chapter-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
 
 /* ---------------------------------------------------------
    18.1 FOCO DE TECLADO
