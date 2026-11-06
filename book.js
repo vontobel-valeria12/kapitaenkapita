@@ -230,7 +230,7 @@ function stopVideos() {
         func: "stopVideo",
         args: []
       }),
-      
+      "https://www.youtube.com"
     );
   });
 }
