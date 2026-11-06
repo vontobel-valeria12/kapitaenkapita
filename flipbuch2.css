@@ -389,6 +389,45 @@ select {
 
   object-fit: cover;
 }
+.chapter-opening-page .page-content {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.chapter-opening-page .book-illustration-large {
+  flex: 1;
+  min-height: 0;
+  margin: 0 0 12px;
+  padding: 10px;             /* espaço da moldura branca */
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #e6e1da;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chapter-opening-page .book-illustration-large img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* mostra a imagem toda, sem cortar */
+  object-position: center;
+}
+
+.chapter-opening-page .chapter-image-title {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.chapter-opening-page .chapter-image-title h2 {
+  margin: 0;
+}
 
 
 /* ---------------------------------------------------------
