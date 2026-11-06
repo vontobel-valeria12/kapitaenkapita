@@ -219,17 +219,20 @@ audioButton?.addEventListener(
 ========================================================= */
 
 function stopVideos() {
- 
-document
-.querySelectorAll("video")
-.forEach(video => {
- 
-```
-  video.pause();  
+  document.querySelectorAll("video").forEach(video => {
+    video.pause();
+  });
 
-});  
-```
- 
+  document.querySelectorAll(".chapter-video iframe").forEach(iframe => {
+    iframe.contentWindow?.postMessage(
+      JSON.stringify({
+        event: "command",
+        func: "stopVideo",
+        args: []
+      }),
+      
+    );
+  });
 }
 
 /* =========================================================
