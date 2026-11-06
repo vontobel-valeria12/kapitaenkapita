@@ -218,29 +218,34 @@ audioButton?.addEventListener(
    VÍDEOS
 ========================================================= */
 
+
 function controlarVideosDaPagina(indiceAtual) {
   document.querySelectorAll(".chapter-video iframe").forEach(iframe => {
-    const pagina = iframe.closest("[data-page-index]");
-    const indiceVideo = Number(pagina.dataset.pageIndex);
+    const pagina = iframe.closest(".page[data-page-index]");
 
-    const comando = indiceVideo === Number(indiceAtual)
-      ? "playVideo"
-      : "stopVideo";
+    if (!pagina || !iframe.contentWindow) return;
+
+    const indiceVideo = Number(pagina.dataset.pageIndex);
+    const indice = Number(indiceAtual);
+
+    if (!Number.isInteger(indiceVideo) || !Number.isInteger(indice)) return;
+
+    const comando = indiceVideo === indice ? "playVideo" : "stopVideo";
 
     iframe.contentWindow.postMessage(
       JSON.stringify({
         event: "command",
         func: comando,
-        args: ""
+        args: []
       }),
-      "*"
+      "https://www.youtube.com"
     );
   });
 }
 
-
+pageFlip.on("flip", evento => {
+  controlarVideosDaPagina(evento.data);
 });
-
 
 /* =========================================================
    CONTADOR DE PÁGINAS
