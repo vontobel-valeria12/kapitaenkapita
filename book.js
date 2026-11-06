@@ -238,8 +238,7 @@ function controlarVideosDaPagina(indiceAtual) {
   });
 }
 
-pageFlip.on("flip", evento => {
-  controlarVideosDaPagina(evento.data);
+
 });
 
 
