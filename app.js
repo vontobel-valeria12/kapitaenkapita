@@ -1,32 +1,5 @@
-<script>
 /* =====================================================
-   VALERIA BOOKS - INDEX APP
-===================================================== */
-
-
-/* =====================================================
-   ELEMENTOS
-===================================================== */
-
-const categoryButtons = document.querySelectorAll(".category-card");
-const bookCards = document.querySelectorAll(".book-card");
-const navItems = document.querySelectorAll(".nav-item");
-
-const searchButtons = document.querySelectorAll(
-  '.icon-button, .nav-item:nth-child(3)'
-);
-
-const shopButtons = document.querySelectorAll(
-  '.product-card button, .nav-item:nth-child(4)'
-);
-
-const premiumButtons = document.querySelectorAll(
-  '.premium-main-button, .premium-button'
-);
-
-
-/* =====================================================
-   DADOS DOS LIVROS
+   VALERIA BOOKS — APP.JS
 ===================================================== */
 
 const books = [
@@ -34,352 +7,321 @@ const books = [
     id: "olympia",
     title: "Die Olympischen Spiele",
     series: "Kapitän Kapita",
-    category: "kinder",
-    genres: ["kinder", "abenteuer"],
-    status: "free",
-    url: "flipbook.html"
+    genres: ["abenteuer"],
+    status: "available",
+    url: "olympiade.html"
   },
-
   {
     id: "enceladus",
     title: "In Enceladus",
     series: "Kapitän Kapita",
-    category: "kinder",
-    genres: ["kinder", "abenteuer"],
-    status: "premium",
-    url: "flipbuch2.html"
+    genres: ["abenteuer"],
+    status: "soon",
+    preview: true
   },
-
   {
     id: "eisriesen",
     title: "Die Eisriesen",
     series: "Kapitän Kapita",
-    category: "kinder",
-    genres: ["kinder", "abenteuer"],
-    status: "soon",
-    url: ""
+    genres: ["abenteuer"],
+    status: "soon"
   },
-
   {
     id: "dunkle-zone",
     title: "Die Dunkle Zone",
     series: "Kapitän Kapita",
-    category: "kinder",
-    genres: ["kinder", "abenteuer"],
-    status: "soon",
-    url: ""
+    genres: ["abenteuer"],
+    status: "soon"
   },
-
   {
     id: "zurueck-erde",
     title: "Zurück zur Erde",
     series: "Kapitän Kapita",
-    category: "kinder",
-    genres: ["kinder", "abenteuer"],
-    status: "soon",
-    url: ""
+    genres: ["abenteuer"],
+    status: "soon"
   }
 ];
 
+const categoryButtons = document.querySelectorAll(".category-card");
+const bookCards = document.querySelectorAll(".book-card");
+const bookSections = document.querySelectorAll("[data-section-category]");
+const navItems = document.querySelectorAll(".nav-item");
 
 /* =====================================================
-   PROGRESSO DE LEITURA
+   CARROSSEL AUTOMÁTICO DO BANNER
 ===================================================== */
 
-const readingProgress = {
-  olympia: {
-    storageKey: "kapitaOlympiaPage"
-  },
+function initBannerCarousel() {
+  const carousel = document.querySelector("[data-banner-carousel]");
+  if (!carousel) return;
 
-  enceladus: {
-    storageKey: "kapitaEnceladusPage"
-  }
-};
+  const slides = [...carousel.querySelectorAll("[data-banner-slide]")];
+  const indicators = [...carousel.querySelectorAll("[data-banner-to]")];
+  const previousButton = carousel.querySelector("[data-banner-previous]");
+  const nextButton = carousel.querySelector("[data-banner-next]");
 
+  if (slides.length === 0) return;
 
-/* =====================================================
-   CONTINUE LENDO
-===================================================== */
+  let activeIndex = 0;
+  let timerId;
 
-function loadContinueReading() {
+  function showSlide(index) {
+    activeIndex = (index + slides.length) % slides.length;
 
-  const continueSection =
-    document.querySelector(".continue-section");
+    slides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === activeIndex;
 
-  if (!continueSection) return;
-
-
-  const enceladusProgress =
-    localStorage.getItem(
-      readingProgress.enceladus.storageKey
-    );
-
-
-  const olympiaProgress =
-    localStorage.getItem(
-      readingProgress.olympia.storageKey
-    );
-
-
-  let selectedBook = null;
-  let savedPage = 0;
-
-
-  if (enceladusProgress !== null) {
-
-    selectedBook =
-      books.find(book => book.id === "enceladus");
-
-    savedPage =
-      Number(enceladusProgress);
-
-  }
-
-  else if (olympiaProgress !== null) {
-
-    selectedBook =
-      books.find(book => book.id === "olympia");
-
-    savedPage =
-      Number(olympiaProgress);
-
-  }
-
-
-  if (!selectedBook) {
-
-    return;
-
-  }
-
-
-  const title =
-    continueSection.querySelector("h3");
-
-  const subtitle =
-    continueSection.querySelector("p");
-
-  const button =
-    continueSection.querySelector(".continue-button");
-
-  const progress =
-    continueSection.querySelector(".progress");
-
-  const progressText =
-    continueSection.querySelector(".progress-text");
-
-
-  if (title) {
-    title.textContent =
-      selectedBook.series;
-  }
-
-
-  if (subtitle) {
-    subtitle.textContent =
-      selectedBook.title;
-  }
-
-
-  if (button) {
-    button.href =
-      selectedBook.url;
-  }
-
-
-  /*
-    Como ainda não sabemos exatamente
-    quantas páginas cada livro terá,
-    usamos uma estimativa.
-  */
-
-  const estimatedPages = 30;
-
-  const percentage =
-    Math.min(
-      100,
-      Math.round(
-        ((savedPage + 1) / estimatedPages) * 100
-      )
-    );
-
-
-  if (progress) {
-    progress.style.width =
-      `${percentage}%`;
-  }
-
-
-  if (progressText) {
-    progressText.textContent =
-      `Seite ${savedPage + 1}`;
-  }
-
-}
-
-
-
-/* =====================================================
-   FILTRO POR CATEGORIA
-===================================================== */
-
-categoryButtons.forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    categoryButtons.forEach(btn => {
-      btn.classList.remove("active");
+      slide.hidden = !isActive;
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", String(!isActive));
     });
 
+    indicators.forEach((indicator, indicatorIndex) => {
+      const isActive = indicatorIndex === activeIndex;
 
-    button.classList.add("active");
-
-
-    const category =
-      button.textContent
-        .trim()
-        .toLowerCase();
-
-
-    if (
-      category.includes("alle")
-    ) {
-
-      showAllBooks();
-      return;
-
-    }
-
-
-    if (
-      category.includes("kinder")
-    ) {
-
-      filterBooks("kinder");
-      return;
-
-    }
-
-
-    if (
-      category.includes("fantasy")
-    ) {
-
-      filterBooks("fantasy");
-      return;
-
-    }
-
-
-    if (
-      category.includes("romantik")
-    ) {
-
-      filterBooks("romantik");
-      return;
-
-    }
-
-
-    if (
-      category.includes("abenteuer")
-    ) {
-
-      filterBooks("abenteuer");
-      return;
-
-    }
-
-  });
-
-});
-
-
-function filterBooks(category) {
-
-  bookCards.forEach((card, index) => {
-
-    const book =
-      books[index];
-
-
-    if (!book) {
-      return;
-    }
-
-
-    if (
-      book.genres.includes(category)
-    ) {
-
-      card.style.display = "";
-
-    }
-
-    else {
-
-      card.style.display = "none";
-
-    }
-
-  });
-
-}
-
-
-function showAllBooks() {
-
-  bookCards.forEach(card => {
-
-    card.style.display = "";
-
-  });
-
-}
-
-
-
-/* =====================================================
-   BUSCA
-===================================================== */
-
-function openSearch() {
-
-  const existingOverlay =
-    document.getElementById("searchOverlay");
-
-
-  if (existingOverlay) {
-
-    existingOverlay.remove();
-
+      indicator.classList.toggle("is-active", isActive);
+      indicator.setAttribute("aria-current", isActive ? "true" : "false");
+    });
   }
 
+  function stopAutomaticChange() {
+    window.clearInterval(timerId);
+  }
 
-  const overlay =
-    document.createElement("div");
+  function startAutomaticChange() {
+    stopAutomaticChange();
 
+    const reducedMotion =
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-  overlay.id =
-    "searchOverlay";
+    if (slides.length > 1 && !reducedMotion) {
+      timerId = window.setInterval(() => {
+        showSlide(activeIndex + 1);
+      }, 5000);
+    }
+  }
 
+  previousButton?.addEventListener("click", () => {
+    showSlide(activeIndex - 1);
+    startAutomaticChange();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    showSlide(activeIndex + 1);
+    startAutomaticChange();
+  });
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener("click", () => {
+      showSlide(index);
+      startAutomaticChange();
+    });
+  });
+
+  carousel.addEventListener("mouseenter", stopAutomaticChange);
+  carousel.addEventListener("mouseleave", startAutomaticChange);
+  carousel.addEventListener("focusin", stopAutomaticChange);
+  carousel.addEventListener("focusout", startAutomaticChange);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopAutomaticChange();
+    } else {
+      startAutomaticChange();
+    }
+  });
+
+  showSlide(0);
+  startAutomaticChange();
+}
+
+/* =====================================================
+   MENSAGENS
+===================================================== */
+
+function showMessage(message) {
+  document.querySelector(".app-message")?.remove();
+
+  const toast = document.createElement("div");
+  toast.className = "app-message";
+  toast.textContent = message;
+  document.body.appendChild(toast);
+
+  requestAnimationFrame(() => {
+    toast.classList.add("show");
+  });
+
+  window.setTimeout(() => {
+    toast.classList.remove("show");
+    window.setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+
+/* =====================================================
+   PRÉVIA DE ENCÉLADO
+===================================================== */
+
+function openEnceladusPreview() {
+  document.getElementById("previewOverlay")?.remove();
+
+  const overlay = document.createElement("div");
+  overlay.id = "previewOverlay";
 
   overlay.innerHTML = `
-    <div class="search-modal">
-
+    <div
+      class="preview-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="previewTitle"
+    >
       <div class="search-top">
-
-        <h2>Bücher suchen</h2>
-
+        <h2 id="previewTitle">In Enceladus</h2>
         <button
-          id="closeSearch"
+          id="closePreview"
+          type="button"
           aria-label="Schließen"
         >
           ✕
         </button>
-
       </div>
 
+      <img
+        class="preview-cover"
+        src="img/file_000000001e9c8210babea2265572063b.png"
+        alt="Kapitän Kapita – In Enceladus"
+      >
+
+      <p>Vorschau</p>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  overlay
+    .querySelector("#closePreview")
+    .addEventListener("click", () => overlay.remove());
+
+  overlay.addEventListener("click", event => {
+    if (event.target === overlay) {
+      overlay.remove();
+    }
+  });
+
+  function closeOnEscape(event) {
+    if (event.key === "Escape") {
+      overlay.remove();
+      document.removeEventListener("keydown", closeOnEscape);
+    }
+  }
+
+  document.addEventListener("keydown", closeOnEscape);
+}
+
+document
+  .querySelectorAll('[data-action="enceladus-preview"]')
+  .forEach(button => {
+    button.addEventListener("click", openEnceladusPreview);
+  });
+
+/* =====================================================
+   CATEGORIAS
+===================================================== */
+
+function setActiveCategory(category) {
+  categoryButtons.forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.category === category
+    );
+  });
+}
+
+function showAllBooks() {
+  bookSections.forEach(section => {
+    section.hidden = false;
+  });
+
+  bookCards.forEach(card => {
+    card.hidden = false;
+  });
+
+  setActiveCategory("alle");
+}
+
+function filterByCategory(category) {
+  if (category === "alle") {
+    showAllBooks();
+    return;
+  }
+
+  bookSections.forEach(section => {
+    section.hidden = section.dataset.sectionCategory !== category;
+  });
+
+  bookCards.forEach(card => {
+    const genres = (card.dataset.genres || "").split(/\s+/);
+    card.hidden = !genres.includes(category);
+  });
+
+  setActiveCategory(category);
+}
+
+categoryButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    filterByCategory(button.dataset.category);
+  });
+});
+
+document
+  .querySelector('[data-action="show-all-books"]')
+  ?.addEventListener("click", showAllBooks);
+
+/* =====================================================
+   BUSCA E ABERTURA DOS LIVROS
+===================================================== */
+
+function openBook(book) {
+  if (book.id === "enceladus" && book.preview) {
+    openEnceladusPreview();
+    return;
+  }
+
+  if (book.status === "available" && book.url) {
+    window.location.href = book.url;
+    return;
+  }
+
+  showMessage("Dieses Buch ist noch nicht verfügbar.");
+}
+
+function closeOverlay(overlay) {
+  overlay?.remove();
+}
+
+function openSearch() {
+  document.getElementById("searchOverlay")?.remove();
+
+  const overlay = document.createElement("div");
+  overlay.id = "searchOverlay";
+
+  overlay.innerHTML = `
+    <div
+      class="search-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="searchTitle"
+    >
+      <div class="search-top">
+        <h2 id="searchTitle">Bücher suchen</h2>
+
+        <button
+          id="closeSearch"
+          type="button"
+          aria-label="Schließen"
+        >
+          ✕
+        </button>
+      </div>
 
       <input
         type="search"
@@ -388,663 +330,107 @@ function openSearch() {
         autocomplete="off"
       >
 
-
-      <div id="searchResults">
-      </div>
-
+      <div id="searchResults"></div>
     </div>
   `;
 
-
   document.body.appendChild(overlay);
 
-
-  const input =
-    document.getElementById(
-      "bookSearchInput"
-    );
-
-
-  const results =
-    document.getElementById(
-      "searchResults"
-    );
-
-
-  const closeButton =
-    document.getElementById(
-      "closeSearch"
-    );
-
-
-  input.focus();
-
-
-  renderSearchResults(
-    books,
-    results
-  );
-
-
-  input.addEventListener(
-    "input",
-    () => {
-
-      const query =
-        input.value
-          .trim()
-          .toLowerCase();
-
-
-      const filtered =
-        books.filter(book => {
-
-          return (
-
-            book.title
-              .toLowerCase()
-              .includes(query)
-
-            ||
-
-            book.series
-              .toLowerCase()
-              .includes(query)
-
-            ||
-
-            book.genres
-              .join(" ")
-              .includes(query)
-
-          );
-
-        });
-
-
-      renderSearchResults(
-        filtered,
-        results
-      );
-
-    }
-  );
-
-
-  closeButton.addEventListener(
-    "click",
-    () => {
-
-      overlay.remove();
-
-    }
-  );
-
-
-  overlay.addEventListener(
-    "click",
-    event => {
-
-      if (
-        event.target === overlay
-      ) {
-
-        overlay.remove();
-
-      }
-
-    }
-  );
-
-}
-
-
-
-/* =====================================================
-   RESULTADO DA BUSCA
-===================================================== */
-
-function renderSearchResults(
-  list,
-  container
-) {
-
-  container.innerHTML = "";
-
-
-  if (
-    list.length === 0
-  ) {
-
-    container.innerHTML = `
-      <p class="no-results">
-        Keine Bücher gefunden.
-      </p>
-    `;
-
-    return;
-
-  }
-
-
-  list.forEach(book => {
-
-    const item =
-      document.createElement("button");
-
-
-    item.className =
-      "search-result-item";
-
-
-    let badge = "";
-
-
-    if (
-      book.status === "free"
-    ) {
-
-      badge =
-        "Kostenlos";
-
-    }
-
-
-    if (
-      book.status === "premium"
-    ) {
-
-      badge =
-        "👑 Premium";
-
-    }
-
-
-    if (
-      book.status === "soon"
-    ) {
-
-      badge =
-        "Demnächst";
-
-    }
-
-
-    item.innerHTML = `
-
-      <div>
-
-        <strong>
-          ${book.title}
-        </strong>
-
-        <span>
-          ${book.series}
-        </span>
-
-      </div>
-
-      <small>
-        ${badge}
-      </small>
-    `;
-
-
-    item.addEventListener(
-      "click",
-      () => {
-
-        handleBookOpen(book);
-
-      }
-    );
-
-
-    container.appendChild(item);
-
-  });
-
-}
-
-
-
-/* =====================================================
-   ABRIR LIVRO
-===================================================== */
-
-function handleBookOpen(book) {
-
-  if (
-    book.status === "soon"
-  ) {
-
-    showMessage(
-      "Dieses Buch ist noch nicht verfügbar."
-    );
-
-    return;
-
-  }
-
-
-  if (
-    book.status === "premium"
-  ) {
-
-    const premium =
-      localStorage.getItem(
-        "valeriaBooksPremium"
-      );
-
-
-    if (
-      premium !== "true"
-    ) {
-
-      openPremiumModal();
-
+  const input = overlay.querySelector("#bookSearchInput");
+  const results = overlay.querySelector("#searchResults");
+
+  function renderResults(query = "") {
+    const normalizedQuery = query.trim().toLowerCase();
+
+    const matches = books.filter(book => {
+      const searchableText = [
+        book.title,
+        book.series,
+        ...book.genres
+      ]
+        .join(" ")
+        .toLowerCase();
+
+      return searchableText.includes(normalizedQuery);
+    });
+
+    results.replaceChildren();
+
+    if (matches.length === 0) {
+      const message = document.createElement("p");
+      message.className = "no-results";
+      message.textContent = "Keine Bücher gefunden.";
+      results.appendChild(message);
       return;
-
     }
 
+    matches.forEach(book => {
+      const item = document.createElement("button");
+      item.className = "search-result-item";
+      item.type = "button";
+
+      const info = document.createElement("div");
+
+      const title = document.createElement("strong");
+      title.textContent = book.title;
+
+      const series = document.createElement("span");
+      series.textContent = book.series;
+
+      info.append(title, series);
+
+      const status = document.createElement("small");
+      status.textContent =
+        book.status === "available" ? "Kostenlos" : "Demnächst";
+
+      item.append(info, status);
+
+      item.addEventListener("click", () => {
+        closeOverlay(overlay);
+        openBook(book);
+      });
+
+      results.appendChild(item);
+    });
   }
 
+  input.addEventListener("input", () => {
+    renderResults(input.value);
+  });
 
-  window.location.href =
-    book.url;
+  overlay
+    .querySelector("#closeSearch")
+    .addEventListener("click", () => closeOverlay(overlay));
 
+  overlay.addEventListener("click", event => {
+    if (event.target === overlay) {
+      closeOverlay(overlay);
+    }
+  });
+
+  renderResults();
+  input.focus();
 }
-
-
-
-/* =====================================================
-   LIVROS PREMIUM
-===================================================== */
 
 document
-  .querySelectorAll(".premium-button")
+  .querySelectorAll('[data-action="search"]')
   .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      event => {
-
-        const premium =
-          localStorage.getItem(
-            "valeriaBooksPremium"
-          );
-
-
-        if (
-          premium !== "true"
-        ) {
-
-          event.preventDefault();
-
-          openPremiumModal();
-
-        }
-
-      }
-    );
-
+    button.addEventListener("click", openSearch);
   });
 
-
-
 /* =====================================================
-   MODAL PREMIUM
-===================================================== */
-
-function openPremiumModal() {
-
-  const existing =
-    document.getElementById(
-      "premiumOverlay"
-    );
-
-
-  if (existing) {
-    existing.remove();
-  }
-
-
-  const overlay =
-    document.createElement("div");
-
-
-  overlay.id =
-    "premiumOverlay";
-
-
-  overlay.innerHTML = `
-
-    <div class="premium-modal">
-
-      <button
-        class="modal-close"
-        id="closePremium"
-      >
-        ✕
-      </button>
-
-
-      <div class="premium-modal-icon">
-        👑
-      </div>
-
-
-      <span class="premium-small">
-        VALERIA BOOKS PREMIUM
-      </span>
-
-
-      <h2>
-        Alle Geschichten entdecken
-      </h2>
-
-
-      <p>
-        Mit der Jahresmitgliedschaft erhältst du
-        Zugang zu exklusiven Büchern,
-        Hörgeschichten, Videos und neuen
-        Veröffentlichungen.
-      </p>
-
-
-      <div class="premium-features">
-
-        <div>
-          ✓ Premium-Bücher lesen
-        </div>
-
-        <div>
-          ✓ Hörgeschichten
-        </div>
-
-        <div>
-          ✓ Videos und Extras
-        </div>
-
-        <div>
-          ✓ Neue Geschichten
-        </div>
-
-      </div>
-
-
-      <button
-        class="premium-subscribe-button"
-        id="subscribePremium"
-      >
-        Jahresabo entdecken
-      </button>
-
-
-      <small>
-        Die Bezahlung wird später aktiviert.
-      </small>
-
-    </div>
-  `;
-
-
-  document.body.appendChild(overlay);
-
-
-  document
-    .getElementById(
-      "closePremium"
-    )
-    .addEventListener(
-      "click",
-      () => {
-
-        overlay.remove();
-
-      }
-    );
-
-
-  document
-    .getElementById(
-      "subscribePremium"
-    )
-    .addEventListener(
-      "click",
-      () => {
-
-        showMessage(
-          "Die Premium-Mitgliedschaft wird bald verfügbar sein."
-        );
-
-      }
-    );
-
-}
-
-
-
-/* =====================================================
-   BOTÃO PREMIUM DA HOME
-===================================================== */
-
-document
-  .querySelectorAll(
-    ".premium-main-button"
-  )
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        openPremiumModal();
-
-      }
-    );
-
-  });
-
-
-
-/* =====================================================
-   LOJA
-===================================================== */
-
-function openShop() {
-
-  const shopSection =
-    document.querySelector(
-      ".shop-section"
-    );
-
-
-  if (!shopSection) {
-    return;
-  }
-
-
-  shopSection.scrollIntoView({
-    behavior: "smooth"
-  });
-
-
-  setActiveNavigation(
-    "shop"
-  );
-
-}
-
-
-shopButtons.forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      openShop();
-
-    }
-  );
-
-});
-
-
-
-/* =====================================================
-   BUSCA - BOTÕES
-===================================================== */
-
-searchButtons.forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      openSearch();
-
-    }
-  );
-
-});
-
-
-
-/* =====================================================
-   MENU INFERIOR
+   NAVEGAÇÃO INFERIOR
 ===================================================== */
 
 navItems.forEach(item => {
+  item.addEventListener("click", () => {
+    navItems.forEach(navItem => {
+      navItem.classList.remove("active");
+    });
 
-  item.addEventListener(
-    "click",
-    () => {
-
-      navItems.forEach(nav => {
-
-        nav.classList.remove(
-          "active"
-        );
-
-      });
-
-
-      item.classList.add(
-        "active"
-      );
-
-    }
-  );
-
+    item.classList.add("active");
+  });
 });
 
-
-function setActiveNavigation(type) {
-
-  navItems.forEach(item => {
-
-    item.classList.remove(
-      "active"
-    );
-
-  });
-
-
-  if (
-    type === "shop" &&
-    navItems[3]
-  ) {
-
-    navItems[3]
-      .classList
-      .add("active");
-
-  }
-
-}
-
-
-
-/* =====================================================
-   MENSAGEM
-===================================================== */
-
-function showMessage(message) {
-
-  const oldMessage =
-    document.querySelector(
-      ".app-message"
-    );
-
-
-  if (oldMessage) {
-    oldMessage.remove();
-  }
-
-
-  const toast =
-    document.createElement(
-      "div"
-    );
-
-
-  toast.className =
-    "app-message";
-
-
-  toast.textContent =
-    message;
-
-
-  document.body.appendChild(
-    toast
-  );
-
-
-  requestAnimationFrame(
-    () => {
-
-      toast.classList.add(
-        "show"
-      );
-
-    }
-  );
-
-
-  setTimeout(
-    () => {
-
-      toast.classList.remove(
-        "show"
-      );
-
-
-      setTimeout(
-        () => toast.remove(),
-        300
-      );
-
-    },
-    3000
-  );
-
-}
-
-
-
-/* =====================================================
-   INICIAR APP
-===================================================== */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
-
-    loadContinueReading();
-
-  }
-);
-
-</script>
+/* Inicia o carrossel */
+initBannerCarousel();
