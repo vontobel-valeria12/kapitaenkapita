@@ -1,4 +1,3 @@
-
 /* =========================
    RESET
 ========================= */
@@ -45,7 +44,6 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-
   padding: 18px 22px;
 
   display: flex;
@@ -58,7 +56,6 @@ body {
 
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
-
   border-bottom: 1px solid rgba(20, 40, 70, 0.07);
 }
 
@@ -77,9 +74,7 @@ body {
   justify-content: center;
 
   border-radius: 14px;
-
   background: #eef5ff;
-
   font-size: 1.5rem;
 }
 
@@ -106,11 +101,9 @@ body {
 
   border: none;
   border-radius: 50%;
-
   background: #f0f4f8;
 
   cursor: pointer;
-
   font-size: 1.05rem;
 }
 
@@ -121,10 +114,89 @@ body {
 .app-container {
   width: 100%;
   max-width: 1200px;
-
   margin: 0 auto;
-
   padding: 22px 20px 120px;
+}
+
+/* =========================
+   CARROSSEL DO BANNER
+========================= */
+
+.banner-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 12px 30px rgba(33, 53, 85, 0.08);
+}
+
+.banner-slide {
+  display: block;
+  width: 100%;
+}
+
+.banner-slide[hidden] {
+  display: none;
+}
+
+.banner-slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  object-fit: cover;
+}
+
+.banner-controls {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  pointer-events: none;
+}
+
+.banner-controls > button,
+.banner-indicator {
+  pointer-events: auto;
+  border: 0;
+  cursor: pointer;
+}
+
+.banner-controls > button {
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1f3761;
+
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.banner-indicators {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.banner-indicator {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.banner-indicator.is-active {
+  background: #1f3761;
 }
 
 /* =========================
@@ -133,9 +205,7 @@ body {
 
 .hero-section {
   min-height: 300px;
-
   border-radius: 28px;
-
   overflow: hidden;
 
   display: flex;
@@ -151,7 +221,6 @@ body {
     );
 
   color: white;
-
   box-shadow: 0 18px 45px rgba(26, 48, 88, 0.16);
 }
 
@@ -161,16 +230,12 @@ body {
 
 .hero-label {
   display: inline-block;
-
   padding: 6px 11px;
-
   border-radius: 999px;
-
   background: rgba(255, 255, 255, 0.16);
 
   font-size: 0.72rem;
   font-weight: 700;
-
   letter-spacing: 1px;
 
   margin-bottom: 16px;
@@ -179,34 +244,27 @@ body {
 .hero-content h2 {
   font-size: clamp(2rem, 6vw, 3.5rem);
   line-height: 1.05;
-
   margin-bottom: 16px;
 }
 
 .hero-content p {
+  max-width: 540px;
+  margin-bottom: 24px;
+
   font-size: 1rem;
   line-height: 1.7;
-
-  max-width: 540px;
-
   opacity: 0.9;
-
-  margin-bottom: 24px;
 }
 
 .hero-button {
   display: inline-flex;
-
   padding: 12px 18px;
-
   border-radius: 12px;
 
   background: white;
-
   color: #1a3158;
 
   text-decoration: none;
-
   font-weight: 700;
 }
 
@@ -222,9 +280,7 @@ section {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-
   gap: 12px;
-
   margin-bottom: 18px;
 }
 
@@ -234,26 +290,20 @@ section {
 
 .section-label {
   display: block;
-
-  font-size: 0.72rem;
-  font-weight: 700;
+  margin-bottom: 4px;
 
   color: #72809a;
-
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-
-  margin-bottom: 4px;
 }
 
 .text-button {
   border: none;
   background: transparent;
-
   color: #486fa9;
-
   font-weight: 700;
-
   cursor: pointer;
 }
 
@@ -264,11 +314,8 @@ section {
 .category-scroll {
   display: flex;
   gap: 12px;
-
   overflow-x: auto;
-
   padding-bottom: 6px;
-
   scrollbar-width: none;
 }
 
@@ -278,25 +325,19 @@ section {
 
 .category-card {
   min-width: 105px;
-
-  border: 1px solid #e4eaf2;
-
-  background: white;
-
-  border-radius: 16px;
-
   padding: 14px 16px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 8px;
 
-  cursor: pointer;
-
+  border: 1px solid #e4eaf2;
+  border-radius: 16px;
+  background: white;
   box-shadow: 0 8px 20px rgba(30, 50, 80, 0.05);
 
+  cursor: pointer;
   transition: 0.2s ease;
 }
 
@@ -305,9 +346,9 @@ section {
 }
 
 .category-card.active {
+  border-color: transparent;
   background: #1f3761;
   color: white;
-  border-color: transparent;
 }
 
 .category-icon {
@@ -321,11 +362,8 @@ section {
 .books-scroll {
   display: flex;
   gap: 18px;
-
   overflow-x: auto;
-
   padding: 4px 2px 12px;
-
   scrollbar-width: none;
 }
 
@@ -334,15 +372,12 @@ section {
 }
 
 .book-card {
-  min-width: 190px;
   width: 190px;
-
-  background: white;
-
-  border-radius: 18px;
+  min-width: 190px;
 
   overflow: hidden;
-
+  border-radius: 18px;
+  background: white;
   box-shadow: 0 12px 30px rgba(33, 53, 85, 0.08);
 
   transition: transform 0.2s ease;
@@ -357,22 +392,18 @@ section {
 }
 
 .book-cover {
+  display: block;
   width: 100%;
   height: 270px;
-
   object-fit: cover;
-
-  display: block;
 }
 
 .book-badge {
   position: absolute;
-
   top: 10px;
   left: 10px;
 
   padding: 6px 9px;
-
   border-radius: 999px;
 
   font-size: 0.67rem;
@@ -394,56 +425,44 @@ section {
 }
 
 .book-series {
+  color: #6f7e91;
   font-size: 0.65rem;
   font-weight: 700;
-
   letter-spacing: 0.7px;
-
-  color: #6f7e91;
 }
 
 .book-info h3 {
+  margin-top: 6px;
   font-size: 1rem;
   line-height: 1.25;
-
-  margin-top: 6px;
 }
 
 .book-info p {
   margin-top: 7px;
-
-  font-size: 0.76rem;
   color: #7a8797;
+  font-size: 0.76rem;
 }
 
 .book-button {
   display: block;
-
   width: 100%;
-
   margin-top: 14px;
-
   padding: 10px;
 
   border: none;
   border-radius: 10px;
-
   background: #1f3761;
-
   color: white;
 
   text-align: center;
   text-decoration: none;
-
   font-weight: 700;
-
   cursor: pointer;
 }
 
 .book-button.disabled {
   background: #e5e9ee;
   color: #8e99a7;
-
   cursor: not-allowed;
 }
 
@@ -453,26 +472,20 @@ section {
 
 .genre-grid {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
   gap: 14px;
 }
 
 .genre-large {
   min-height: 140px;
-
-  background: white;
-
-  border-radius: 20px;
-
   padding: 20px;
 
   display: flex;
   align-items: center;
-
   gap: 16px;
 
+  border-radius: 20px;
+  background: white;
   box-shadow: 0 10px 24px rgba(33, 53, 85, 0.06);
 }
 
@@ -485,8 +498,8 @@ section {
 }
 
 .genre-large p {
-  font-size: 0.84rem;
   color: #768498;
+  font-size: 0.84rem;
 }
 
 /* =========================
@@ -514,9 +527,11 @@ section {
   justify-content: center;
   margin-top: 14px;
   padding: 11px 18px;
+
   border-radius: 10px;
   background: #1f3761;
   color: white;
+
   text-decoration: none;
   font-weight: 700;
 }
@@ -531,6 +546,7 @@ section {
   align-items: center;
   gap: 20px;
   padding: 18px;
+
   border-radius: 22px;
   background: white;
   box-shadow: 0 12px 30px rgba(33, 53, 85, 0.08);
@@ -559,10 +575,12 @@ section {
 .preview-button {
   margin-top: 4px;
   padding: 10px 16px;
+
   border: 0;
   border-radius: 10px;
   background: #1f3761;
   color: white;
+
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -579,47 +597,37 @@ section {
 
 .bottom-nav {
   position: fixed;
-
   left: 50%;
   bottom: 0;
-
   transform: translateX(-50%);
 
   width: 100%;
   max-width: 1200px;
-
   min-height: 74px;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
   background: rgba(255, 255, 255, 0.97);
-
   border-top: 1px solid #e6ebf1;
-
   backdrop-filter: blur(18px);
 
   z-index: 1500;
 }
 
 .nav-item {
-  border: none;
-  background: transparent;
-
-  text-decoration: none;
-
-  color: #778596;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
-
   gap: 3px;
 
-  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #778596;
 
+  text-decoration: none;
+  cursor: pointer;
   font-family: inherit;
 }
 
@@ -644,11 +652,9 @@ section {
 ========================= */
 
 @media (max-width: 900px) {
-
   .genre-grid {
     grid-template-columns: 1fr 1fr;
   }
-
 }
 
 /* =========================
@@ -656,7 +662,6 @@ section {
 ========================= */
 
 @media (max-width: 600px) {
-
   body {
     background: #f6f8fb;
   }
@@ -689,16 +694,21 @@ section {
   }
 
   .app-container {
-    padding:
-      12px 12px 105px;
+    padding: 12px 12px 105px;
+  }
+
+  .banner-carousel {
+    border-radius: 18px;
+  }
+
+  .banner-slide img {
+    aspect-ratio: 4 / 3;
   }
 
   .hero-section {
     min-height: 260px;
-
-    border-radius: 22px;
-
     padding: 24px 20px;
+    border-radius: 22px;
   }
 
   .hero-content h2 {
@@ -718,8 +728,8 @@ section {
   }
 
   .book-card {
-    min-width: 155px;
     width: 155px;
+    min-width: 155px;
   }
 
   .book-cover {
@@ -768,7 +778,6 @@ section {
   .nav-item small {
     font-size: 0.62rem;
   }
-
 }
 
 /* =========================
@@ -776,10 +785,9 @@ section {
 ========================= */
 
 @media (max-width: 390px) {
-
   .book-card {
-    min-width: 145px;
     width: 145px;
+    min-width: 145px;
   }
 
   .book-cover {
@@ -789,53 +797,46 @@ section {
   .hero-content h2 {
     font-size: 1.8rem;
   }
-
 }
-/* ==================================================
-   BUSCA
-================================================== */
 
-#searchOverlay {
+/* =========================
+   BUSCA E PRÉVIA
+========================= */
+
+#searchOverlay,
+#previewOverlay {
   position: fixed;
   inset: 0;
-
-  background: rgba(12, 20, 35, 0.62);
-
-  backdrop-filter: blur(6px);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   padding: 20px;
+  background: rgba(12, 20, 35, 0.62);
+  backdrop-filter: blur(6px);
 
   z-index: 5000;
 }
 
-.search-modal {
+.search-modal,
+.preview-modal {
   width: 100%;
   max-width: 560px;
-
-  max-height: 80vh;
-
-  background: white;
-
-  border-radius: 24px;
-
-  padding: 22px;
-
+  max-height: 85vh;
   overflow-y: auto;
 
-  box-shadow:
-    0 30px 70px
-    rgba(0,0,0,0.25);
+  padding: 22px;
+  border-radius: 24px;
+  background: white;
+
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
 }
 
 .search-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin-bottom: 18px;
 }
 
@@ -844,71 +845,70 @@ section {
 }
 
 #closeSearch,
+#closePreview,
 .modal-close {
   width: 38px;
   height: 38px;
 
   border: none;
-
   border-radius: 50%;
-
   background: #eef2f6;
 
   cursor: pointer;
 }
 
+.preview-cover {
+  display: block;
+  width: min(100%, 240px);
+  max-height: 320px;
+  margin: 0 auto 16px;
+
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.preview-modal > p {
+  color: #6f7b8d;
+  text-align: center;
+}
+
 #bookSearchInput {
   width: 100%;
-
+  margin-bottom: 16px;
   padding: 14px 16px;
 
+  border: 1px solid #dfe5ed;
   border-radius: 13px;
-
-  border:
-    1px solid #dfe5ed;
-
   outline: none;
 
   font-size: 1rem;
-
-  margin-bottom: 16px;
 }
 
 #bookSearchInput:focus {
   border-color: #587cad;
-
-  box-shadow:
-    0 0 0 3px
-    rgba(78, 120, 173, 0.12);
+  box-shadow: 0 0 0 3px rgba(78, 120, 173, 0.12);
 }
 
 .search-result-item {
   width: 100%;
+  padding: 14px 4px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   gap: 12px;
 
-  padding: 14px 4px;
-
   border: none;
-
-  border-bottom:
-    1px solid #edf0f4;
-
+  border-bottom: 1px solid #edf0f4;
   background: transparent;
 
   text-align: left;
-
   cursor: pointer;
 }
 
 .search-result-item div {
   display: flex;
   flex-direction: column;
-
   gap: 4px;
 }
 
@@ -917,9 +917,8 @@ section {
 }
 
 .search-result-item span {
-  font-size: 0.75rem;
-
   color: #7a8798;
+  font-size: 0.75rem;
 }
 
 .search-result-item small {
@@ -928,80 +927,54 @@ section {
 
 .no-results {
   padding: 30px 10px;
-
-  text-align: center;
-
   color: #7d8999;
+  text-align: center;
 }
 
-/* ==================================================
-   MODAL PREMIUM
-================================================== */
-
-/* ==================================================
+/* =========================
    MENSAGENS DO APP
-================================================== */
+========================= */
 
 .app-message {
   position: fixed;
-
   left: 50%;
   bottom: 95px;
+  transform: translate(-50%, 20px);
 
-  transform:
-    translate(-50%, 20px);
-
-  background:
-    rgba(20, 31, 49, 0.94);
-
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(20, 31, 49, 0.94);
   color: white;
 
-  padding:
-    12px 18px;
-
-  border-radius: 999px;
-
   font-size: 0.85rem;
-
   opacity: 0;
-
   pointer-events: none;
-
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 
   z-index: 7000;
-
-  box-shadow:
-    0 12px 30px
-    rgba(0,0,0,0.22);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
 }
 
 .app-message.show {
   opacity: 1;
-
-  transform:
-    translate(-50%, 0);
+  transform: translate(-50%, 0);
 }
 
-/* ==================================================
-   MOBILE
-================================================== */
+/* =========================
+   MODAIS NO CELULAR
+========================= */
 
 @media (max-width: 600px) {
-
-  #searchOverlay {
+  #searchOverlay,
+  #previewOverlay {
     align-items: flex-end;
-
     padding: 0;
   }
 
-  .search-modal {
+  .search-modal,
+  .preview-modal {
     max-height: 88vh;
+    padding: 24px 18px 28px;
+    border-radius: 25px 25px 0 0;
   }
-
 }
-
-
-
