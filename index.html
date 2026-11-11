@@ -7,587 +7,143 @@
   <title>Valeria Books</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
-<body>
+<body id="start">
   <div class="stars" aria-hidden="true"></div>
 
-  <!-- Cabeçalho -->
   <header class="app-header">
-    <div class="brand">
-      <div class="brand-logo" aria-hidden="true">📚</div>
-      <div>
-        <h1>Valeria Books</h1>
-        <p>Geschichten zum Lesen, Hören und Entdecken</p>
-      </div>
-    </div>
+    <button class="hamburger-button" type="button" data-action="toggle-menu" aria-label="Menü öffnen" aria-expanded="false" aria-controls="sideMenu">
+      <span></span><span></span><span></span>
+    </button>
 
-    <div class="header-actions">
-      <button
-        class="icon-button"
-        type="button"
-        aria-label="Suchen"
-        data-action="search"
-      >
-        🔍
-      </button>
-    </div>
+    <a class="brand" href="#start" aria-label="Valeria Books – Startseite">
+      <span class="brand-logo" aria-hidden="true">📚</span>
+      <span>
+        <strong>Valeria Books</strong>
+        <small>Geschichten zum Lesen, Hören und Entdecken</small>
+      </span>
+    </a>
+
+    <button class="icon-button" type="button" aria-label="Bücher suchen" data-action="search">🔍</button>
   </header>
 
-  <main class="app-container">
+  <div class="menu-backdrop" data-menu-backdrop hidden></div>
+  <aside class="side-drawer" id="sideMenu" aria-label="Seitennavigation" aria-hidden="true" hidden>
+    <div class="drawer-header">
+      <div class="drawer-brand"><span aria-hidden="true">📚</span><strong>Valeria Books</strong></div>
+      <button class="drawer-close" type="button" data-action="close-menu" aria-label="Menü schließen">×</button>
+    </div>
+    <nav class="drawer-nav" aria-label="Buchbereiche">
+      <a href="#start">Startseite</a>
+      <a href="#abenteuer">Kapitänin Kapita</a>
+      <a href="#romantik">Romantik</a>
+      <a href="#horror">Horror</a>
+      <a href="#kochen">Kochen</a>
+      <a href="#shop">Shop</a>
+    </nav>
+    <button class="drawer-search" type="button" data-action="search">🔍 Bücher suchen</button>
+  </aside>
 
-    <!-- Banner da loja: três imagens que serão trocadas pelo app.js -->
+  <main class="app-container">
     <section class="banner-section" aria-label="Shop-Banner">
       <div class="banner-carousel" data-banner-carousel>
-        <a
-          class="banner-slide is-active"
-          href="https://www.valeriavontobel.ch/"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-banner-slide
-          aria-hidden="false"
-        >
-          <img src="img/shop-banner-1.jpg" alt="Shop-Banner 1">
+        <a class="banner-slide is-active" href="https://www.valeriavontobel.ch/" target="_blank" rel="noopener noreferrer" data-banner-slide aria-hidden="false">
+          <img src="img/shop-banner-1.jpg" alt="Personalisierte Produkte im Valeria-Shop">
         </a>
-
-        <a
-          class="banner-slide"
-          href="https://www.valeriavontobel.ch/"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-banner-slide
-          aria-hidden="true"
-          hidden
-        >
-          <img src="img/shop-banner-2.jpg" alt="Shop-Banner 2">
+        <a class="banner-slide" href="https://www.valeriavontobel.ch/" target="_blank" rel="noopener noreferrer" data-banner-slide aria-hidden="true" hidden>
+          <img src="img/shop-banner-2.jpg" alt="Weitere Produkte im Valeria-Shop">
         </a>
-
-        <a
-          class="banner-slide"
-          href="https://www.valeriavontobel.ch/"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-banner-slide
-          aria-hidden="true"
-          hidden
-        >
-          <img src="img/shop-banner-3.jpg" alt="Shop-Banner 3">
+        <a class="banner-slide" href="https://www.valeriavontobel.ch/" target="_blank" rel="noopener noreferrer" data-banner-slide aria-hidden="true" hidden>
+          <img src="img/shop-banner-3.jpg" alt="Entdecke den Valeria-Shop">
         </a>
-
         <div class="banner-controls" aria-label="Banner-Steuerung">
-          <button
-            type="button"
-            data-banner-previous
-            aria-label="Vorheriges Banner"
-          >
-            ‹
-          </button>
-
+          <button type="button" data-banner-previous aria-label="Vorheriges Banner">‹</button>
           <div class="banner-indicators" aria-label="Banner auswählen">
-            <button
-              type="button"
-              class="banner-indicator is-active"
-              data-banner-to="0"
-              aria-label="Banner 1"
-            ></button>
-
-            <button
-              type="button"
-              class="banner-indicator"
-              data-banner-to="1"
-              aria-label="Banner 2"
-            ></button>
-
-            <button
-              type="button"
-              class="banner-indicator"
-              data-banner-to="2"
-              aria-label="Banner 3"
-            ></button>
+            <button type="button" class="banner-indicator is-active" data-banner-to="0" aria-label="Banner 1"></button>
+            <button type="button" class="banner-indicator" data-banner-to="1" aria-label="Banner 2"></button>
+            <button type="button" class="banner-indicator" data-banner-to="2" aria-label="Banner 3"></button>
           </div>
-
-          <button
-            type="button"
-            data-banner-next
-            aria-label="Nächstes Banner"
-          >
-            ›
-          </button>
+          <button type="button" data-banner-next aria-label="Nächstes Banner">›</button>
         </div>
       </div>
     </section>
 
-    <!-- Destaque -->
-    <section class="hero-section" aria-labelledby="hero-title">
-      <div class="hero-content">
-        <span class="hero-label">Valeria Books</span>
-        <h2 id="hero-title">Geschichten zum Lesen und Entdecken</h2>
-        <a href="#bibliothek" class="hero-button">Bücher entdecken</a>
-      </div>
-    </section>
-
-    <!-- Categorias -->
-    <nav class="category-section" aria-labelledby="category-title">
+    <section class="books-section" id="abenteuer" data-section-category="abenteuer" aria-labelledby="adventure-title">
       <div class="section-header">
-        <h2 id="category-title">Entdecken</h2>
+        <div><span class="section-label">Abenteuer</span><h2 id="adventure-title">Kapitänin Kapita</h2></div>
       </div>
-
-      <div class="category-scroll">
-        <button
-          class="category-card active"
-          type="button"
-          data-category="alle"
-        >
-          <span class="category-icon" aria-hidden="true">📖</span>
-          <span>Alle</span>
-        </button>
-
-        <button
-          class="category-card"
-          type="button"
-          data-category="horror"
-        >
-          <span class="category-icon" aria-hidden="true">🌙</span>
-          <span>Horror</span>
-        </button>
-
-        <button
-          class="category-card"
-          type="button"
-          data-category="kochen"
-        >
-          <span class="category-icon" aria-hidden="true">🍲</span>
-          <span>Kochen</span>
-        </button>
-
-        <button
-          class="category-card"
-          type="button"
-          data-category="romantik"
-        >
-          <span class="category-icon" aria-hidden="true">❤️</span>
-          <span>Romantik</span>
-        </button>
-
-        <button
-          class="category-card"
-          type="button"
-          data-category="abenteuer"
-        >
-          <span class="category-icon" aria-hidden="true">🔎</span>
-          <span>Abenteuer</span>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Prévia de Encélado -->
-    <section
-      class="enceladus-section"
-      id="enceladus-preview"
-      aria-labelledby="enceladus-preview-title"
-    >
-      <div class="section-header">
-        <h2 id="enceladus-preview-title">Vorschau</h2>
-      </div>
-
-      <article class="enceladus-preview">
-        <img
-          src="img/file_000000001e9c8210babea2265572063b.png"
-          alt="Kapitän Kapita – In Enceladus"
-        >
-
-        <div class="enceladus-info">
-          <span class="book-series">KAPITÄN KAPITA</span>
-          <h3>In Enceladus</h3>
-          <span class="book-badge locked">Demnächst</span>
-
-          <button
-            class="preview-button"
-            type="button"
-            data-action="enceladus-preview"
-          >
-            Vorschau ansehen
-          </button>
-        </div>
-      </article>
-    </section>
-
-    <!-- Aventura: livros da Kapitän Kapita -->
-    <section
-      class="books-section"
-      id="bibliothek"
-      data-section-category="abenteuer"
-      aria-labelledby="adventure-title"
-    >
-      <div class="section-header">
-        <div>
-          <span class="section-label">Abenteuer</span>
-          <h2 id="adventure-title">Kapitän Kapita</h2>
-        </div>
-
-        <button
-          class="text-button"
-          type="button"
-          data-action="show-all-books"
-        >
-          Alle anzeigen
-        </button>
-      </div>
-
-      <div class="books-scroll">
-
-        <!-- Livro disponível -->
-        <article class="book-card" data-book="olympia" data-genres="abenteuer">
+      <div class="book-grid">
+        <article class="book-card" data-book="olympia" data-genres="abenteuer" data-status="available">
           <div class="cover-wrapper">
-            <img
-              src="img/file_00000000c1208210b8c25c8f486bf3bb.png"
-              class="book-cover"
-              alt="Kapitän Kapita – Die Olympischen Spiele"
-            >
+            <img src="img/file_00000000c1208210b8c25c8f486bf3bb.png" class="book-cover" alt="Kapitänin Kapita – Die Olympischen Spiele">
             <span class="book-badge free">Kostenlos</span>
           </div>
-
-          <div class="book-info">
-            <span class="book-series">KAPITÄN KAPITA</span>
-            <h3>Die Olympischen Spiele</h3>
-            <a class="book-button" href="olympiade.html">Lesen</a>
-          </div>
+          <div class="book-info"><span class="book-series">KAPITÄNIN KAPITA</span><h3>Die Olympischen Spiele</h3><a class="book-button" href="olympiade.html">Lesen</a></div>
         </article>
 
-        <!-- Encélado: livro em breve com prévia -->
-        <article class="book-card" data-book="enceladus" data-genres="abenteuer">
-          <div class="cover-wrapper">
-            <img
-              src="img/file_000000001e9c8210babea2265572063b.png"
-              class="book-cover"
-              alt="Kapitän Kapita – In Enceladus"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-
-          <div class="book-info">
-            <span class="book-series">KAPITÄN KAPITA</span>
-            <h3>In Enceladus</h3>
-
-            <button
-              class="book-button"
-              type="button"
-              data-action="enceladus-preview"
-            >
-              Vorschau ansehen
-            </button>
-          </div>
+        <article class="book-card" data-book="enceladus" data-genres="abenteuer" data-status="soon">
+          <div class="cover-wrapper"><img src="img/file_000000001e9c8210babea2265572063b.png" class="book-cover" alt="Kapitänin Kapita – In Enceladus"><span class="book-badge locked">Demnächst</span></div>
+          <div class="book-info"><span class="book-series">KAPITÄNIN KAPITA</span><h3>In Enceladus</h3><button class="book-button" type="button" data-action="enceladus-preview">Vorschau ansehen</button></div>
         </article>
 
-        <article class="book-card" data-book="eisriesen" data-genres="abenteuer">
-          <div class="cover-wrapper">
-            <img
-              src="img/os gigantes de gelo.jpg"
-              class="book-cover"
-              alt="Kapitän Kapita – Die Eisriesen"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-
-          <div class="book-info">
-            <span class="book-series">KAPITÄN KAPITA</span>
-            <h3>Die Eisriesen</h3>
-            <button class="book-button disabled" type="button" disabled>
-              Demnächst
-            </button>
-          </div>
+        <article class="book-card" data-book="eisriesen" data-genres="abenteuer" data-status="soon">
+          <div class="cover-wrapper"><img src="img/os gigantes de gelo.jpg" class="book-cover" alt="Kapitänin Kapita – Die Eisriesen"><span class="book-badge locked">Demnächst</span></div>
+          <div class="book-info"><span class="book-series">KAPITÄNIN KAPITA</span><h3>Die Eisriesen</h3><button class="book-button disabled" type="button" disabled>Demnächst</button></div>
         </article>
 
-        <article class="book-card" data-book="dunkle-zone" data-genres="abenteuer">
-          <div class="cover-wrapper">
-            <img
-              src="img/d065a248-a0b7-4462-bba8-9881a14c8a6c.jfif"
-              class="book-cover"
-              alt="Kapitän Kapita – Die Dunkle Zone"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-
-          <div class="book-info">
-            <span class="book-series">KAPITÄN KAPITA</span>
-            <h3>Die Dunkle Zone</h3>
-            <button class="book-button disabled" type="button" disabled>
-              Demnächst
-            </button>
-          </div>
+        <article class="book-card" data-book="dunkle-zone" data-genres="abenteuer" data-status="soon">
+          <div class="cover-wrapper"><img src="img/d065a248-a0b7-4462-bba8-9881a14c8a6c.jfif" class="book-cover" alt="Kapitänin Kapita – Die Dunkle Zone"><span class="book-badge locked">Demnächst</span></div>
+          <div class="book-info"><span class="book-series">KAPITÄNIN KAPITA</span><h3>Die Dunkle Zone</h3><button class="book-button disabled" type="button" disabled>Demnächst</button></div>
         </article>
 
-        <article class="book-card" data-book="zurueck-erde" data-genres="abenteuer">
-          <div class="cover-wrapper">
-            <img
-              src="img/volta para terra.jpg"
-              class="book-cover"
-              alt="Kapitän Kapita – Zurück zur Erde"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-
-          <div class="book-info">
-            <span class="book-series">KAPITÄN KAPITA</span>
-            <h3>Zurück zur Erde</h3>
-            <button class="book-button disabled" type="button" disabled>
-              Demnächst
-            </button>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-  
-
-    <!-- Três espaços para capas de culinária -->
-    <section
-      class="books-section"
-      id="kochen"
-      data-section-category="kochen"
-      aria-labelledby="kochen-title"
-    >
-      <div class="section-header">
-        <div>
-          <span class="section-label">Kochen</span>
-          <h2 id="kochen-title">Kochen</h2>
-        </div>
-      </div>
-
-      <div class="books-scroll">
-        <article
-          class="book-card cover-slot"
-          data-book="kochen-1"
-          data-genres="kochen"
-          data-status="soon"
-        >
-          <div class="cover-wrapper">
-            <img
-              src="img/kochen-01.jpg"
-              class="book-cover"
-              alt="Kochbuch-Cover 1"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-        </article>
-
-        <article
-          class="book-card cover-slot"
-          data-book="kochen-2"
-          data-genres="kochen"
-          data-status="soon"
-        >
-          <div class="cover-wrapper">
-            <img
-              src="img/kochen-02.jpg"
-              class="book-cover"
-              alt="Kochbuch-Cover 2"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-        </article>
-
-        <article
-          class="book-card cover-slot"
-          data-book="kochen-3"
-          data-genres="kochen"
-          data-status="soon"
-        >
-          <div class="cover-wrapper">
-            <img
-              src="img/kochen-03.jpg"
-              class="book-cover"
-              alt="Kochbuch-Cover 3"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
+        <article class="book-card" data-book="zurueck-erde" data-genres="abenteuer" data-status="soon">
+          <div class="cover-wrapper"><img src="img/volta para terra.jpg" class="book-cover" alt="Kapitänin Kapita – Zurück zur Erde"><span class="book-badge locked">Demnächst</span></div>
+          <div class="book-info"><span class="book-series">KAPITÄNIN KAPITA</span><h3>Zurück zur Erde</h3><button class="book-button disabled" type="button" disabled>Demnächst</button></div>
         </article>
       </div>
     </section>
 
-    <!-- Três espaços para capas de Romance -->
-    <section
-      class="books-section"
-      id="romantik"
-      data-section-category="romantik"
-      aria-labelledby="romantik-title"
-    >
-      <div class="section-header">
-        <div>
-          <span class="section-label">Romantik</span>
-          <h2 id="romantik-title">Romantik</h2>
-        </div>
-      </div>
-
-      <div class="books-scroll">
-        <article
-          class="book-card cover-slot"
-          data-book="romantik-1"
-          data-genres="romantik"
-          data-status="soon"
-        >
-          <div class="cover-wrapper">
-            <img
-              src="img/romantik-01.jpg"
-              class="book-cover"
-              alt="Romantik-Cover 1"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-        </article>
-
-        <article
-          class="book-card cover-slot"
-          data-book="romantik-2"
-          data-genres="romantik"
-          data-status="soon"
-        >
-          <div class="cover-wrapper">
-            <img
-              src="img/romantik-02.jpg"
-              class="book-cover"
-              alt="Romantik-Cover 2"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-        </article>
-
-        <article
-          class="book-card cover-slot"
-          data-book="romantik-3"
-          data-genres="romantik"
-          data-status="soon"
-        >
-          <div class="cover-wrapper">
-            <img
-              src="img/romantik-03.jpg"
-              class="book-cover"
-              alt="Romantik-Cover 3"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-        </article>
+    <section class="books-section" id="romantik" data-section-category="romantik" aria-labelledby="romantik-title">
+      <div class="section-header"><div><span class="section-label">Romantik</span><h2 id="romantik-title">Romantik</h2></div></div>
+      <div class="book-grid">
+        <article class="book-card cover-slot" data-book="romantik-1" data-genres="romantik" data-status="soon"><div class="cover-wrapper"><img src="img/romantik-01.jpg" class="book-cover" alt="Romantik-Cover 1"><span class="book-badge locked">Demnächst</span></div></article>
+        <article class="book-card cover-slot" data-book="romantik-2" data-genres="romantik" data-status="soon"><div class="cover-wrapper"><img src="img/romantik-02.jpg" class="book-cover" alt="Romantik-Cover 2"><span class="book-badge locked">Demnächst</span></div></article>
+        <article class="book-card cover-slot" data-book="romantik-3" data-genres="romantik" data-status="soon"><div class="cover-wrapper"><img src="img/romantik-03.jpg" class="book-cover" alt="Romantik-Cover 3"><span class="book-badge locked">Demnächst</span></div></article>
       </div>
     </section>
 
-    <!-- Loja -->
+    <section class="books-section" id="horror" data-section-category="horror" aria-labelledby="horror-title">
+      <div class="section-header"><div><span class="section-label">Horror</span><h2 id="horror-title">Horror</h2></div></div>
+      <div class="book-grid">
+        <article class="book-card cover-slot" data-book="horror-1" data-genres="horror" data-status="soon"><div class="cover-wrapper"><img src="img/horror-01.jpg" class="book-cover" alt="Horror-Cover 1"><span class="book-badge locked">Demnächst</span></div></article>
+        <article class="book-card cover-slot" data-book="horror-2" data-genres="horror" data-status="soon"><div class="cover-wrapper"><img src="img/horror-02.jpg" class="book-cover" alt="Horror-Cover 2"><span class="book-badge locked">Demnächst</span></div></article>
+        <article class="book-card cover-slot" data-book="horror-3" data-genres="horror" data-status="soon"><div class="cover-wrapper"><img src="img/horror-03.jpg" class="book-cover" alt="Horror-Cover 3"><span class="book-badge locked">Demnächst</span></div></article>
+      </div>
+    </section>
+
+    <section class="books-section" id="kochen" data-section-category="kochen" aria-labelledby="kochen-title">
+      <div class="section-header"><div><span class="section-label">Kochen</span><h2 id="kochen-title">Kochen</h2></div></div>
+      <div class="book-grid">
+        <article class="book-card cover-slot" data-book="kochen-1" data-genres="kochen" data-status="soon"><div class="cover-wrapper"><img src="img/kochen-01.jpg" class="book-cover" alt="Kochbuch-Cover 1"><span class="book-badge locked">Demnächst</span></div></article>
+        <article class="book-card cover-slot" data-book="kochen-2" data-genres="kochen" data-status="soon"><div class="cover-wrapper"><img src="img/kochen-02.jpg" class="book-cover" alt="Kochbuch-Cover 2"><span class="book-badge locked">Demnächst</span></div></article>
+        <article class="book-card cover-slot" data-book="kochen-3" data-genres="kochen" data-status="soon"><div class="cover-wrapper"><img src="img/kochen-03.jpg" class="book-cover" alt="Kochbuch-Cover 3"><span class="book-badge locked">Demnächst</span></div></article>
+      </div>
+    </section>
+
     <section class="shop-section" id="shop" aria-labelledby="shop-title">
-      <div class="section-header">
-        <div>
-          <span class="section-label">Shop</span>
-          <h2 id="shop-title">Shop</h2>
-        </div>
-      </div>
-
-     
-    </section> 
-
-      <!-- Três espaços para capas de Horror -->
-    <section
-      class="books-section"
-      id="horror"
-      data-section-category="horror"
-      aria-labelledby="horror-title"
-    >
-      <div class="section-header">
-        <div>
-          <span class="section-label">Horror</span>
-          <h2 id="horror-title">Horror</h2>
-        </div>
-      </div>
-
-      <div class="books-scroll">
-        <article
-          class="book-card cover-slot"
-          data-book="horror-1"
-          data-genres="horror"
-          data-status="soon"
-        >
-          <div class="cover-wrapper">
-            <img
-              src="img/horror-01.jpg"
-              class="book-cover"
-              alt="Horror-Cover 1"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-        </article>
-
-        <article
-          class="book-card cover-slot"
-          data-book="horror-2"
-          data-genres="horror"
-          data-status="soon"
-        >
-          <div class="cover-wrapper">
-            <img
-              src="img/horror-02.jpg"
-              class="book-cover"
-              alt="Horror-Cover 2"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-        </article>
-
-        <article
-          class="book-card cover-slot"
-          data-book="horror-3"
-          data-genres="horror"
-          data-status="soon"
-        >
-          <div class="cover-wrapper">
-            <img
-              src="img/horror-03.jpg"
-              class="book-cover"
-              alt="Horror-Cover 3"
-            >
-            <span class="book-badge locked">Demnächst</span>
-          </div>
-        </article>
-      </div>
+      <div class="section-header"><div><span class="section-label">Shop</span><h2 id="shop-title">Shop</h2></div></div>
+      <a class="shop-button" href="https://www.valeriavontobel.ch/" target="_blank" rel="noopener noreferrer">Zum Shop</a>
     </section>
-
-      <a
-        class="shop-button"
-        href="https://www.valeriavontobel.ch/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Zum Shop
-      </a>
 
     <div class="bottom-space" aria-hidden="true"></div>
   </main>
 
-  <!-- Navegação inferior -->
   <nav class="bottom-nav" aria-label="Hauptmenü">
-    <a href="index.html" class="nav-item active">
-      <span aria-hidden="true">🏠</span>
-      <small>Start</small>
-    </a>
-
-    <a href="#bibliothek" class="nav-item">
-      <span aria-hidden="true">📚</span>
-      <small>Bibliothek</small>
-    </a>
-
-    <button class="nav-item" type="button" data-action="search">
-      <span aria-hidden="true">🔍</span>
-      <small>Suchen</small>
-    </button>
-
-    <a
-      href="https://www.valeriavontobel.ch/"
-      class="nav-item"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <span aria-hidden="true">🛍️</span>
-      <small>Shop</small>
-    </a>
+    <a href="#start" class="nav-item active"><span aria-hidden="true">🏠</span><small>Start</small></a>
+    <a href="#abenteuer" class="nav-item"><span aria-hidden="true">📚</span><small>Bibliothek</small></a>
+    <button class="nav-item" type="button" data-action="search"><span aria-hidden="true">🔍</span><small>Suchen</small></button>
+    <a href="https://www.valeriavontobel.ch/" class="nav-item" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🛍️</span><small>Shop</small></a>
   </nav>
 
-  <!-- JavaScript separado, carregado no final da página -->
   <script src="app.js"></script>
 </body>
 </html>
