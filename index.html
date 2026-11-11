@@ -12,1924 +12,349 @@
   <title>Valeria Books</title>
 
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 
 <body>
 
-  <!-- FUNDO -->
-  <div class="stars"></div>
-
-
-  <!-- =========================
-       TOPO DO APP
-  ========================== -->
+  <div class="stars" aria-hidden="true"></div>
 
   <header class="app-header">
-
     <div class="brand">
-
-      <div class="brand-logo">
-        📚
-      </div>
+      <div class="brand-logo" aria-hidden="true">📚</div>
 
       <div>
-        <h1>Valeria Books </h1>
-
-        <p>
-          Geschichten zum Lesen, Hören und Entdecken
-        </p>
+        <h1>Valeria Books</h1>
+        <p>Geschichten zum Lesen, Hören und Entdecken</p>
       </div>
-
     </div>
 
-
     <div class="header-actions">
-
       <button
         class="icon-button"
+        type="button"
         aria-label="Suchen"
+        data-action="search"
       >
         🔍
       </button>
 
       <button
         class="profile-button"
+        type="button"
         aria-label="Profil"
+        data-action="profile"
       >
         👤
       </button>
-
     </div>
-
   </header>
-
-
-
-  <!-- =========================
-       CONTEÚDO PRINCIPAL
-  ========================== -->
 
   <main class="app-container">
 
-
-    <!-- =========================
-         DESTAQUE
-    ========================== -->
-
     <section class="hero-section">
-
       <div class="hero-content">
+        <span class="hero-label">Valeria Books</span>
 
-        <span class="hero-label">
-          NEU
-        </span>
+        <h2>Geschichten zum Lesen und Entdecken</h2>
 
-        <h2>
-          Geschichten, die mit dir wachsen.
-        </h2>
-
-        <p>
-          Lies spannende Bücher, höre Geschichten,
-          entdecke Videos und begleite deine
-          Lieblingsfiguren auf neuen Abenteuern.
-        </p>
-
-        <a
-          href="#kinder"
-          class="hero-button"
-        >
+        <a href="#bibliothek" class="hero-button">
           Bücher entdecken
         </a>
-
       </div>
-
     </section>
 
-
-
-    <!-- =========================
-         CATEGORIAS
-    ========================== -->
-
-    <section class="category-section">
-
+    <section class="category-section" aria-labelledby="category-title">
       <div class="section-header">
-
-        <h2>
-          Entdecken
-        </h2>
-
+        <h2 id="category-title">Entdecken</h2>
       </div>
-
 
       <div class="category-scroll">
-
-
-        <button class="category-card active">
-
-          <span class="category-icon">
-            🚀
-          </span>
-
-          <span>
-            Kinder
-          </span>
-
+        <button
+          class="category-card active"
+          type="button"
+          data-category="alle"
+        >
+          <span class="category-icon" aria-hidden="true">📖</span>
+          <span>Alle</span>
         </button>
 
-
-        <button class="category-card">
-
-          <span class="category-icon">
-            ✨
-          </span>
-
-          <span>
-            Fantasy
-          </span>
-
+        <button
+          class="category-card"
+          type="button"
+          data-category="kinder"
+        >
+          <span class="category-icon" aria-hidden="true">🚀</span>
+          <span>Kinder</span>
         </button>
 
-
-        <button class="category-card">
-
-          <span class="category-icon">
-            ❤️
-          </span>
-
-          <span>
-            Romantik
-          </span>
-
+        <button
+          class="category-card"
+          type="button"
+          data-category="kochen"
+        >
+          <span class="category-icon" aria-hidden="true">🍲</span>
+          <span>Kochen</span>
         </button>
 
-
-        <button class="category-card">
-
-          <span class="category-icon">
-            🔎
-          </span>
-
-          <span>
-            Abenteuer
-          </span>
-
+        <button
+          class="category-card"
+          type="button"
+          data-category="romantik"
+        >
+          <span class="category-icon" aria-hidden="true">❤️</span>
+          <span>Romantik</span>
         </button>
 
-
-        <button class="category-card">
-
-          <span class="category-icon">
-            📖
-          </span>
-
-          <span>
-            Alle
-          </span>
-
+        <button
+          class="category-card"
+          type="button"
+          data-category="fantasy"
+        >
+          <span class="category-icon" aria-hidden="true">✨</span>
+          <span>Fantasy</span>
         </button>
 
+        <button
+          class="category-card"
+          type="button"
+          data-category="abenteuer"
+        >
+          <span class="category-icon" aria-hidden="true">🔎</span>
+          <span>Abenteuer</span>
+        </button>
 
+        <button
+          class="category-card"
+          type="button"
+          data-category="horror"
+        >
+          <span class="category-icon" aria-hidden="true">🌙</span>
+          <span>Horror</span>
+        </button>
       </div>
-
     </section>
 
-
-
-    <!-- =========================
-         CONTINUE LENDO
-    ========================== -->
-
-    <section class="continue-section">
-
+    <!-- Prévia de Encélado no lugar de Continue lendo -->
+    <section
+      class="enceladus-section"
+      id="enceladus-preview"
+      aria-labelledby="enceladus-title"
+    >
       <div class="section-header">
-
-        <h2>
-          Weiterlesen
-        </h2>
-
+        <h2>Vorschau</h2>
       </div>
 
-
-      <div class="continue-card">
-
+      <article class="enceladus-preview">
         <img
-          src="img/IMG_20260826_113008.png"
-          alt="Kapitän Kapita"
+          src="img/file_000000001e9c8210babea2265572063b.png"
+          alt="Kapitän Kapita – In Enceladus"
         >
 
+        <div class="enceladus-info">
+          <span class="book-series">KAPITÄN KAPITA</span>
 
-        <div class="continue-info">
+          <h3 id="enceladus-title">In Enceladus</h3>
 
-          <span class="small-label">
-            Zuletzt gelesen
-          </span>
+          <span class="book-badge locked">Demnächst</span>
 
-          <h3>
-            Kapitän Kapita
-          </h3>
-
-          <p>
-            Die Olympischen Spiele
-          </p>
-
-
-          <div class="progress-bar">
-
-            <div
-              class="progress"
-              style="width: 35%;">
-            </div>
-
-          </div>
-
-
-          <span class="progress-text">
-            35 % gelesen
-          </span>
-
-
-          <a
-            href="olympiade.html"
-            class="continue-button"
+          <button
+            class="preview-button"
+            type="button"
+            data-action="enceladus-preview"
           >
-            Weiterlesen
-          </a>
-
+            Vorschau ansehen
+          </button>
         </div>
-
-      </div>
-
+      </article>
     </section>
-
-
-
-    <!-- =========================
-         KINDERBÜCHER
-    ========================== -->
 
     <section
       class="books-section"
-      id="kinder"
+      id="bibliothek"
+      aria-labelledby="library-title"
     >
-
       <div class="section-header">
-
         <div>
-
-          <span class="section-label">
-            Kinder
-          </span>
-
-          <h2>
-            Kapitän Kapita
-          </h2>
-
+          <span class="section-label">Bücher</span>
+          <h2 id="library-title">Kapitän Kapita</h2>
         </div>
 
-
-        <button class="text-button">
+        <button
+          class="text-button"
+          type="button"
+          data-action="show-all-books"
+        >
           Alle anzeigen
         </button>
-
       </div>
-
-
 
       <div class="books-scroll">
 
-
-        <!-- LIVRO 1 -->
-        <article class="book-card">
-
-
+        <!-- Livro disponível -->
+        <article
+          class="book-card"
+          data-book="olympia"
+          data-genres="kinder abenteuer"
+        >
           <div class="cover-wrapper">
-
             <img
               src="img/file_00000000c1208210b8c25c8f486bf3bb.png"
               class="book-cover"
               alt="Kapitän Kapita – Die Olympischen Spiele"
             >
 
-
-            <span class="book-badge free">
-              Kostenlos
-            </span>
-
+            <span class="book-badge free">Kostenlos</span>
           </div>
-
 
           <div class="book-info">
+            <span class="book-series">KAPITÄN KAPITA</span>
 
-            <span class="book-series">
-              KAPITÄN KAPITA
-            </span>
+            <h3>Die Olympischen Spiele</h3>
 
-            <h3>
-              Die Olympischen Spiele
-            </h3>
-
-            <p>
-              Abenteuer · Kinder
-            </p>
-
-
-            <a
-              class="book-button"
-              href="olympiade.html"
-            >
+            <a class="book-button" href="olympiade.html">
               Lesen
             </a>
-
           </div>
-
         </article>
 
-
-
-        <!-- LIVRO 2 -->
-        <article class="book-card">
-
-
+        <!-- Livro em breve -->
+        <article
+          class="book-card"
+          data-book="eisriesen"
+          data-genres="kinder abenteuer fantasy"
+        >
           <div class="cover-wrapper">
-
-            <img
-              src="img/file_000000001e9c8210babea2265572063b.png"
-              class="book-cover"
-              alt="Kapitän Kapita in Enceladus"
-            >
-
-
-            <span class="book-badge premium">
-              👑 Premium
-            </span>
-
-          </div>
-
-
-          <div class="book-info">
-
-            <span class="book-series">
-              KAPITÄN KAPITA
-            </span>
-
-            <h3>
-              In Enceladus
-            </h3>
-
-            <p>
-              Weltraum · Abenteuer
-            </p>
-
-
-            <a
-              class="book-button premium-button"
-              href="flipbuch2.html"
-            >
-              Lesen
-            </a>
-
-          </div>
-
-        </article>
-
-
-
-        <!-- LIVRO 3 -->
-        <article class="book-card">
-
-
-          <div class="cover-wrapper">
-
             <img
               src="img/os gigantes de gelo.jpg"
               class="book-cover"
               alt="Kapitän Kapita – Die Eisriesen"
             >
 
-
-            <span class="book-badge locked">
-              🔒 Demnächst
-            </span>
-
+            <span class="book-badge locked">Demnächst</span>
           </div>
-
 
           <div class="book-info">
+            <span class="book-series">KAPITÄN KAPITA</span>
+            <h3>Die Eisriesen</h3>
 
-            <span class="book-series">
-              KAPITÄN KAPITA
-            </span>
-
-            <h3>
-              Die Eisriesen
-            </h3>
-
-            <p>
-              Weltraum · Abenteuer
-            </p>
-
-
-            <button
-              class="book-button disabled"
-              disabled
-            >
-              Bald verfügbar
+            <button class="book-button disabled" type="button" disabled>
+              Demnächst
             </button>
-
           </div>
-
         </article>
 
-
-
-        <!-- LIVRO 4 -->
-        <article class="book-card">
-
-
+        <!-- Livro em breve -->
+        <article
+          class="book-card"
+          data-book="dunkle-zone"
+          data-genres="kinder abenteuer fantasy"
+        >
           <div class="cover-wrapper">
-
             <img
               src="img/d065a248-a0b7-4462-bba8-9881a14c8a6c.jfif"
               class="book-cover"
-              alt="Kapitän Kapita und die Dunkle Zone"
+              alt="Kapitän Kapita – Die Dunkle Zone"
             >
 
-
-            <span class="book-badge locked">
-              🔒 Demnächst
-            </span>
-
+            <span class="book-badge locked">Demnächst</span>
           </div>
-
 
           <div class="book-info">
+            <span class="book-series">KAPITÄN KAPITA</span>
+            <h3>Die Dunkle Zone</h3>
 
-            <span class="book-series">
-              KAPITÄN KAPITA
-            </span>
-
-            <h3>
-              Die Dunkle Zone
-            </h3>
-
-            <p>
-              Weltraum · Abenteuer
-            </p>
-
-
-            <button
-              class="book-button disabled"
-              disabled
-            >
-              Bald verfügbar
+            <button class="book-button disabled" type="button" disabled>
+              Demnächst
             </button>
-
           </div>
-
         </article>
 
-
-
-        <!-- LIVRO 5 -->
-        <article class="book-card">
-
-
+        <!-- Livro em breve -->
+        <article
+          class="book-card"
+          data-book="zurueck-erde"
+          data-genres="kinder abenteuer"
+        >
           <div class="cover-wrapper">
-
             <img
               src="img/volta para terra.jpg"
               class="book-cover"
               alt="Kapitän Kapita – Zurück zur Erde"
             >
 
-
-            <span class="book-badge locked">
-              🔒 Demnächst
-            </span>
-
+            <span class="book-badge locked">Demnächst</span>
           </div>
-
 
           <div class="book-info">
+            <span class="book-series">KAPITÄN KAPITA</span>
+            <h3>Zurück zur Erde</h3>
 
-            <span class="book-series">
-              KAPITÄN KAPITA
-            </span>
-
-            <h3>
-              Zurück zur Erde
-            </h3>
-
-            <p>
-              Weltraum · Abenteuer
-            </p>
-
-
-            <button
-              class="book-button disabled"
-              disabled
-            >
-              Bald verfügbar
+            <button class="book-button disabled" type="button" disabled>
+              Demnächst
             </button>
-
           </div>
-
         </article>
 
-
       </div>
-
     </section>
 
-
-
-    <!-- =========================
-         OUTROS GÊNEROS
-    ========================== -->
-
-    <section class="books-section">
-
+    <!-- Banner da loja: inserir a imagem escolhida em img/shop-banner.jpg -->
+    <section class="shop-section" id="shop" aria-labelledby="shop-title">
       <div class="section-header">
-
         <div>
-
-          <span class="section-label">
-            Mehr entdecken
-          </span>
-
-          <h2>
-            Andere Geschichten
-          </h2>
-
+          <span class="section-label">Shop</span>
+          <h2 id="shop-title">Shop</h2>
         </div>
-
       </div>
 
+      <a
+        class="shop-banner-link"
+        href="LINK-DA-SUA-LOJA"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="shop-banner-image"
+          src="img/shop-banner.jpg"
+          alt="Banner com os produtos da loja"
+        >
+      </a>
 
-      <div class="genre-grid">
-
-
-        <div class="genre-large">
-
-          <span>
-            ✨
-          </span>
-
-          <div>
-
-            <h3>
-              Fantasy
-            </h3>
-
-            <p>
-              Magische Welten entdecken
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="genre-large">
-
-          <span>
-            🌊
-          </span>
-
-          <div>
-
-            <h3>
-              Abenteuer
-            </h3>
-
-            <p>
-              Neue Welten und Geheimnisse
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="genre-large">
-
-          <span>
-            ❤️
-          </span>
-
-          <div>
-
-            <h3>
-              Geschichten für Erwachsene
-            </h3>
-
-            <p>
-              Romane und besondere Geschichten
-            </p>
-
-          </div>
-
-        </div>
-
-
-      </div>
-
+      <a
+        class="shop-button"
+        href="https://www.valeriavontobel.ch/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Zum Shop
+      </a>
     </section>
 
-
-
-    <!-- =========================
-         PREMIUM
-    ========================== -->
-
-    <section class="premium-section">
-
-      <div class="premium-icon">
-        👑
-      </div>
-
-
-      <div class="premium-content">
-
-        <span>
-          VALERIA BOOKS PREMIUM
-        </span>
-
-        <h2>
-          Unbegrenzt lesen.
-        </h2>
-
-        <p>
-          Erhalte Zugang zu exklusiven Büchern,
-          Hörgeschichten, Videos und neuen
-          Veröffentlichungen.
-        </p>
-
-
-        <div class="premium-price">
-
-          <strong>
-            Jahresabo
-          </strong>
-
-          <span>
-            Preis folgt
-          </span>
-
-        </div>
-
-
-        <button class="premium-main-button">
-          Premium entdecken
-        </button>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         LOJA
-    ========================== -->
-
-    <section class="shop-section">
-
-      <div class="section-header">
-
-        <div>
-
-          <span class="section-label">
-            Shop
-          </span>
-
-          <h2>
-            Aus den Geschichten in deine Welt
-          </h2>
-
-        </div>
-
-      </div>
-
-
-      <div class="shop-preview">
-
-
-        <article class="product-card">
-
-          <div class="product-image-placeholder">
-            🧩
-          </div>
-
-          <h3>
-            Puzzle
-          </h3>
-
-          <p>
-            Kapitän Kapita
-          </p>
-
-          <button>
-            Zum Shop
-          </button>
-
-        </article>
-
-
-        <article class="product-card">
-
-          <div class="product-image-placeholder">
-            ☕
-          </div>
-
-          <h3>
-            Tassen
-          </h3>
-
-          <p>
-            Lieblingsmotive
-          </p>
-
-          <button>
-            Zum Shop
-          </button>
-
-        </article>
-
-
-        <article class="product-card">
-
-          <div class="product-image-placeholder">
-            👕
-          </div>
-
-          <h3>
-            Kleidung
-          </h3>
-
-          <p>
-            Kapitän Kapita
-          </p>
-
-          <button>
-            Zum Shop
-          </button>
-
-        </article>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- ESPAÇO PARA MENU -->
     <div class="bottom-space"></div>
-
   </main>
 
-
-
-  <!-- =========================
-       MENU INFERIOR DO APP
-  ========================== -->
-
-  <nav class="bottom-nav">
-
-
-    <a
-      href="index.html"
-      class="nav-item active"
-    >
-
-      <span>
-        🏠
-      </span>
-
-      <small>
-        Start
-      </small>
-
+  <nav class="bottom-nav" aria-label="Hauptmenü">
+    <a href="index.html" class="nav-item active">
+      <span aria-hidden="true">🏠</span>
+      <small>Start</small>
     </a>
 
-
-    <a
-      href="#kinder"
-      class="nav-item"
-    >
-
-      <span>
-        📚
-      </span>
-
-      <small>
-        Bibliothek
-      </small>
-
+    <a href="#bibliothek" class="nav-item">
+      <span aria-hidden="true">📚</span>
+      <small>Bibliothek</small>
     </a>
 
-
-    <button
-      class="nav-item"
-      type="button"
-    >
-
-      <span>
-        🔍
-      </span>
-
-      <small>
-        Entdecken
-      </small>
-
+    <button class="nav-item" type="button" data-action="search">
+      <span aria-hidden="true">🔍</span>
+      <small>Suchen</small>
     </button>
 
-
-    <button
-      class="nav-item"
-      type="button"
-    >
-
-      <span>
-        🛍️
-      </span>
-
-      <small>
-        Shop
-      </small>
-
-    </button>
-
-
-    <button
-      class="nav-item"
-      type="button"
-    >
-
-      <span>
-        👤
-      </span>
-
-      <small>
-        Profil
-      </small>
-
-    </button>
-
-
+    <a href="https://www.valeriavontobel.ch/" class="nav-item">
+      <span aria-hidden="true">🛍️</span>
+      <small>Shop</small>
+    </a>
   </nav>
 
-<script>
-/* =====================================================
-   VALERIA BOOKS - INDEX APP
-===================================================== */
-
-
-/* =====================================================
-   ELEMENTOS
-===================================================== */
-
-const categoryButtons = document.querySelectorAll(".category-card");
-const bookCards = document.querySelectorAll(".book-card");
-const navItems = document.querySelectorAll(".nav-item");
-
-const searchButtons = document.querySelectorAll(
-  '.icon-button, .nav-item:nth-child(3)'
-);
-
-const shopButtons = document.querySelectorAll(
-  '.product-card button, .nav-item:nth-child(4)'
-);
-
-const premiumButtons = document.querySelectorAll(
-  '.premium-main-button, .premium-button'
-);
-
-
-/* =====================================================
-   DADOS DOS LIVROS
-===================================================== */
-
-const books = [
-  {
-    id: "olympia",
-    title: "Die Olympischen Spiele",
-    series: "Kapitän Kapita",
-    category: "kinder",
-    genres: ["kinder", "abenteuer"],
-    status: "free",
-    url: "flipbook.html"
-  },
-
-  {
-    id: "enceladus",
-    title: "In Enceladus",
-    series: "Kapitän Kapita",
-    category: "kinder",
-    genres: ["kinder", "abenteuer"],
-    status: "premium",
-    url: "flipbuch2.html"
-  },
-
-  {
-    id: "eisriesen",
-    title: "Die Eisriesen",
-    series: "Kapitän Kapita",
-    category: "kinder",
-    genres: ["kinder", "abenteuer"],
-    status: "soon",
-    url: ""
-  },
-
-  {
-    id: "dunkle-zone",
-    title: "Die Dunkle Zone",
-    series: "Kapitän Kapita",
-    category: "kinder",
-    genres: ["kinder", "abenteuer"],
-    status: "soon",
-    url: ""
-  },
-
-  {
-    id: "zurueck-erde",
-    title: "Zurück zur Erde",
-    series: "Kapitän Kapita",
-    category: "kinder",
-    genres: ["kinder", "abenteuer"],
-    status: "soon",
-    url: ""
-  }
-];
-
-
-/* =====================================================
-   PROGRESSO DE LEITURA
-===================================================== */
-
-const readingProgress = {
-  olympia: {
-    storageKey: "kapitaOlympiaPage"
-  },
-
-  enceladus: {
-    storageKey: "kapitaEnceladusPage"
-  }
-};
-
-
-/* =====================================================
-   CONTINUE LENDO
-===================================================== */
-
-function loadContinueReading() {
-
-  const continueSection =
-    document.querySelector(".continue-section");
-
-  if (!continueSection) return;
-
-
-  const enceladusProgress =
-    localStorage.getItem(
-      readingProgress.enceladus.storageKey
-    );
-
-
-  const olympiaProgress =
-    localStorage.getItem(
-      readingProgress.olympia.storageKey
-    );
-
-
-  let selectedBook = null;
-  let savedPage = 0;
-
-
-  if (enceladusProgress !== null) {
-
-    selectedBook =
-      books.find(book => book.id === "enceladus");
-
-    savedPage =
-      Number(enceladusProgress);
-
-  }
-
-  else if (olympiaProgress !== null) {
-
-    selectedBook =
-      books.find(book => book.id === "olympia");
-
-    savedPage =
-      Number(olympiaProgress);
-
-  }
-
-
-  if (!selectedBook) {
-
-    return;
-
-  }
-
-
-  const title =
-    continueSection.querySelector("h3");
-
-  const subtitle =
-    continueSection.querySelector("p");
-
-  const button =
-    continueSection.querySelector(".continue-button");
-
-  const progress =
-    continueSection.querySelector(".progress");
-
-  const progressText =
-    continueSection.querySelector(".progress-text");
-
-
-  if (title) {
-    title.textContent =
-      selectedBook.series;
-  }
-
-
-  if (subtitle) {
-    subtitle.textContent =
-      selectedBook.title;
-  }
-
-
-  if (button) {
-    button.href =
-      selectedBook.url;
-  }
-
-
-  /*
-    Como ainda não sabemos exatamente
-    quantas páginas cada livro terá,
-    usamos uma estimativa.
-  */
-
-  const estimatedPages = 30;
-
-  const percentage =
-    Math.min(
-      100,
-      Math.round(
-        ((savedPage + 1) / estimatedPages) * 100
-      )
-    );
-
-
-  if (progress) {
-    progress.style.width =
-      `${percentage}%`;
-  }
-
-
-  if (progressText) {
-    progressText.textContent =
-      `Seite ${savedPage + 1}`;
-  }
-
-}
-
-
-
-/* =====================================================
-   FILTRO POR CATEGORIA
-===================================================== */
-
-categoryButtons.forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    categoryButtons.forEach(btn => {
-      btn.classList.remove("active");
-    });
-
-
-    button.classList.add("active");
-
-
-    const category =
-      button.textContent
-        .trim()
-        .toLowerCase();
-
-
-    if (
-      category.includes("alle")
-    ) {
-
-      showAllBooks();
-      return;
-
-    }
-
-
-    if (
-      category.includes("kinder")
-    ) {
-
-      filterBooks("kinder");
-      return;
-
-    }
-
-
-    if (
-      category.includes("fantasy")
-    ) {
-
-      filterBooks("fantasy");
-      return;
-
-    }
-
-
-    if (
-      category.includes("romantik")
-    ) {
-
-      filterBooks("romantik");
-      return;
-
-    }
-
-
-    if (
-      category.includes("abenteuer")
-    ) {
-
-      filterBooks("abenteuer");
-      return;
-
-    }
-
-  });
-
-});
-
-
-function filterBooks(category) {
-
-  bookCards.forEach((card, index) => {
-
-    const book =
-      books[index];
-
-
-    if (!book) {
-      return;
-    }
-
-
-    if (
-      book.genres.includes(category)
-    ) {
-
-      card.style.display = "";
-
-    }
-
-    else {
-
-      card.style.display = "none";
-
-    }
-
-  });
-
-}
-
-
-function showAllBooks() {
-
-  bookCards.forEach(card => {
-
-    card.style.display = "";
-
-  });
-
-}
-
-
-
-/* =====================================================
-   BUSCA
-===================================================== */
-
-function openSearch() {
-
-  const existingOverlay =
-    document.getElementById("searchOverlay");
-
-
-  if (existingOverlay) {
-
-    existingOverlay.remove();
-
-  }
-
-
-  const overlay =
-    document.createElement("div");
-
-
-  overlay.id =
-    "searchOverlay";
-
-
-  overlay.innerHTML = `
-    <div class="search-modal">
-
-      <div class="search-top">
-
-        <h2>Bücher suchen</h2>
-
-        <button
-          id="closeSearch"
-          aria-label="Schließen"
-        >
-          ✕
-        </button>
-
-      </div>
-
-
-      <input
-        type="search"
-        id="bookSearchInput"
-        placeholder="Titel oder Kategorie suchen..."
-        autocomplete="off"
-      >
-
-
-      <div id="searchResults">
-      </div>
-
-    </div>
-  `;
-
-
-  document.body.appendChild(overlay);
-
-
-  const input =
-    document.getElementById(
-      "bookSearchInput"
-    );
-
-
-  const results =
-    document.getElementById(
-      "searchResults"
-    );
-
-
-  const closeButton =
-    document.getElementById(
-      "closeSearch"
-    );
-
-
-  input.focus();
-
-
-  renderSearchResults(
-    books,
-    results
-  );
-
-
-  input.addEventListener(
-    "input",
-    () => {
-
-      const query =
-        input.value
-          .trim()
-          .toLowerCase();
-
-
-      const filtered =
-        books.filter(book => {
-
-          return (
-
-            book.title
-              .toLowerCase()
-              .includes(query)
-
-            ||
-
-            book.series
-              .toLowerCase()
-              .includes(query)
-
-            ||
-
-            book.genres
-              .join(" ")
-              .includes(query)
-
-          );
-
-        });
-
-
-      renderSearchResults(
-        filtered,
-        results
-      );
-
-    }
-  );
-
-
-  closeButton.addEventListener(
-    "click",
-    () => {
-
-      overlay.remove();
-
-    }
-  );
-
-
-  overlay.addEventListener(
-    "click",
-    event => {
-
-      if (
-        event.target === overlay
-      ) {
-
-        overlay.remove();
-
-      }
-
-    }
-  );
-
-}
-
-
-
-/* =====================================================
-   RESULTADO DA BUSCA
-===================================================== */
-
-function renderSearchResults(
-  list,
-  container
-) {
-
-  container.innerHTML = "";
-
-
-  if (
-    list.length === 0
-  ) {
-
-    container.innerHTML = `
-      <p class="no-results">
-        Keine Bücher gefunden.
-      </p>
-    `;
-
-    return;
-
-  }
-
-
-  list.forEach(book => {
-
-    const item =
-      document.createElement("button");
-
-
-    item.className =
-      "search-result-item";
-
-
-    let badge = "";
-
-
-    if (
-      book.status === "free"
-    ) {
-
-      badge =
-        "Kostenlos";
-
-    }
-
-
-    if (
-      book.status === "premium"
-    ) {
-
-      badge =
-        "👑 Premium";
-
-    }
-
-
-    if (
-      book.status === "soon"
-    ) {
-
-      badge =
-        "Demnächst";
-
-    }
-
-
-    item.innerHTML = `
-
-      <div>
-
-        <strong>
-          ${book.title}
-        </strong>
-
-        <span>
-          ${book.series}
-        </span>
-
-      </div>
-
-      <small>
-        ${badge}
-      </small>
-    `;
-
-
-    item.addEventListener(
-      "click",
-      () => {
-
-        handleBookOpen(book);
-
-      }
-    );
-
-
-    container.appendChild(item);
-
-  });
-
-}
-
-
-
-/* =====================================================
-   ABRIR LIVRO
-===================================================== */
-
-function handleBookOpen(book) {
-
-  if (
-    book.status === "soon"
-  ) {
-
-    showMessage(
-      "Dieses Buch ist noch nicht verfügbar."
-    );
-
-    return;
-
-  }
-
-
-  if (
-    book.status === "premium"
-  ) {
-
-    const premium =
-      localStorage.getItem(
-        "valeriaBooksPremium"
-      );
-
-
-    if (
-      premium !== "true"
-    ) {
-
-      openPremiumModal();
-
-      return;
-
-    }
-
-  }
-
-
-  window.location.href =
-    book.url;
-
-}
-
-
-
-/* =====================================================
-   LIVROS PREMIUM
-===================================================== */
-
-document
-  .querySelectorAll(".premium-button")
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      event => {
-
-        const premium =
-          localStorage.getItem(
-            "valeriaBooksPremium"
-          );
-
-
-        if (
-          premium !== "true"
-        ) {
-
-          event.preventDefault();
-
-          openPremiumModal();
-
-        }
-
-      }
-    );
-
-  });
-
-
-
-/* =====================================================
-   MODAL PREMIUM
-===================================================== */
-
-function openPremiumModal() {
-
-  const existing =
-    document.getElementById(
-      "premiumOverlay"
-    );
-
-
-  if (existing) {
-    existing.remove();
-  }
-
-
-  const overlay =
-    document.createElement("div");
-
-
-  overlay.id =
-    "premiumOverlay";
-
-
-  overlay.innerHTML = `
-
-    <div class="premium-modal">
-
-      <button
-        class="modal-close"
-        id="closePremium"
-      >
-        ✕
-      </button>
-
-
-      <div class="premium-modal-icon">
-        👑
-      </div>
-
-
-      <span class="premium-small">
-        VALERIA BOOKS PREMIUM
-      </span>
-
-
-      <h2>
-        Alle Geschichten entdecken
-      </h2>
-
-
-      <p>
-        Mit der Jahresmitgliedschaft erhältst du
-        Zugang zu exklusiven Büchern,
-        Hörgeschichten, Videos und neuen
-        Veröffentlichungen.
-      </p>
-
-
-      <div class="premium-features">
-
-        <div>
-          ✓ Premium-Bücher lesen
-        </div>
-
-        <div>
-          ✓ Hörgeschichten
-        </div>
-
-        <div>
-          ✓ Videos und Extras
-        </div>
-
-        <div>
-          ✓ Neue Geschichten
-        </div>
-
-      </div>
-
-
-      <button
-        class="premium-subscribe-button"
-        id="subscribePremium"
-      >
-        Jahresabo entdecken
-      </button>
-
-
-      <small>
-        Die Bezahlung wird später aktiviert.
-      </small>
-
-    </div>
-  `;
-
-
-  document.body.appendChild(overlay);
-
-
-  document
-    .getElementById(
-      "closePremium"
-    )
-    .addEventListener(
-      "click",
-      () => {
-
-        overlay.remove();
-
-      }
-    );
-
-
-  document
-    .getElementById(
-      "subscribePremium"
-    )
-    .addEventListener(
-      "click",
-      () => {
-
-        showMessage(
-          "Die Premium-Mitgliedschaft wird bald verfügbar sein."
-        );
-
-      }
-    );
-
-}
-
-
-
-/* =====================================================
-   BOTÃO PREMIUM DA HOME
-===================================================== */
-
-document
-  .querySelectorAll(
-    ".premium-main-button"
-  )
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        openPremiumModal();
-
-      }
-    );
-
-  });
-
-
-
-/* =====================================================
-   LOJA
-===================================================== */
-
-function openShop() {
-
-  const shopSection =
-    document.querySelector(
-      ".shop-section"
-    );
-
-
-  if (!shopSection) {
-    return;
-  }
-
-
-  shopSection.scrollIntoView({
-    behavior: "smooth"
-  });
-
-
-  setActiveNavigation(
-    "shop"
-  );
-
-}
-
-
-shopButtons.forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      openShop();
-
-    }
-  );
-
-});
-
-
-
-/* =====================================================
-   BUSCA - BOTÕES
-===================================================== */
-
-searchButtons.forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      openSearch();
-
-    }
-  );
-
-});
-
-
-
-/* =====================================================
-   MENU INFERIOR
-===================================================== */
-
-navItems.forEach(item => {
-
-  item.addEventListener(
-    "click",
-    () => {
-
-      navItems.forEach(nav => {
-
-        nav.classList.remove(
-          "active"
-        );
-
-      });
-
-
-      item.classList.add(
-        "active"
-      );
-
-    }
-  );
-
-});
-
-
-function setActiveNavigation(type) {
-
-  navItems.forEach(item => {
-
-    item.classList.remove(
-      "active"
-    );
-
-  });
-
-
-  if (
-    type === "shop" &&
-    navItems[3]
-  ) {
-
-    navItems[3]
-      .classList
-      .add("active");
-
-  }
-
-}
-
-
-
-/* =====================================================
-   MENSAGEM
-===================================================== */
-
-function showMessage(message) {
-
-  const oldMessage =
-    document.querySelector(
-      ".app-message"
-    );
-
-
-  if (oldMessage) {
-    oldMessage.remove();
-  }
-
-
-  const toast =
-    document.createElement(
-      "div"
-    );
-
-
-  toast.className =
-    "app-message";
-
-
-  toast.textContent =
-    message;
-
-
-  document.body.appendChild(
-    toast
-  );
-
-
-  requestAnimationFrame(
-    () => {
-
-      toast.classList.add(
-        "show"
-      );
-
-    }
-  );
-
-
-  setTimeout(
-    () => {
-
-      toast.classList.remove(
-        "show"
-      );
-
-
-      setTimeout(
-        () => toast.remove(),
-        300
-      );
-
-    },
-    3000
-  );
-
-}
-
-
-
-/* =====================================================
-   INICIAR APP
-===================================================== */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
-
-    loadContinueReading();
-
-  }
-);
-
-</script>
 </body>
 </html>
