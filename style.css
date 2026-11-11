@@ -1,3 +1,4 @@
+
 /* =========================
    RESET
 ========================= */
@@ -20,7 +21,6 @@ body {
   overflow-x: hidden;
 }
 
-
 /* =========================
    FUNDO
 ========================= */
@@ -36,7 +36,6 @@ body {
     radial-gradient(circle at 85% 15%, rgba(190, 154, 255, 0.12), transparent 22%),
     linear-gradient(180deg, #f8fbff 0%, #f4f6fb 100%);
 }
-
 
 /* =========================
    CABEÇALHO
@@ -115,7 +114,6 @@ body {
   font-size: 1.05rem;
 }
 
-
 /* =========================
    CONTAINER PRINCIPAL
 ========================= */
@@ -128,7 +126,6 @@ body {
 
   padding: 22px 20px 120px;
 }
-
 
 /* =========================
    HERO
@@ -213,7 +210,6 @@ body {
   font-weight: 700;
 }
 
-
 /* =========================
    CABEÇALHO DAS SEÇÕES
 ========================= */
@@ -260,7 +256,6 @@ section {
 
   cursor: pointer;
 }
-
 
 /* =========================
    CATEGORIAS
@@ -318,106 +313,6 @@ section {
 .category-icon {
   font-size: 1.5rem;
 }
-
-
-/* =========================
-   CONTINUE LENDO
-========================= */
-
-.continue-card {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-
-  gap: 20px;
-
-  background: white;
-
-  border-radius: 22px;
-
-  padding: 18px;
-
-  box-shadow: 0 12px 30px rgba(33, 53, 85, 0.08);
-}
-
-.continue-card img {
-  width: 140px;
-  height: 190px;
-
-  object-fit: cover;
-
-  border-radius: 14px;
-}
-
-.continue-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.small-label {
-  color: #8090a5;
-  font-size: 0.75rem;
-  font-weight: 700;
-
-  text-transform: uppercase;
-}
-
-.continue-info h3 {
-  margin-top: 5px;
-  font-size: 1.4rem;
-}
-
-.continue-info p {
-  color: #66758a;
-  margin-top: 3px;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 7px;
-
-  border-radius: 999px;
-
-  background: #e7edf4;
-
-  margin-top: 16px;
-
-  overflow: hidden;
-}
-
-.progress {
-  height: 100%;
-
-  background: #466fa8;
-
-  border-radius: inherit;
-}
-
-.progress-text {
-  margin-top: 6px;
-
-  font-size: 0.75rem;
-  color: #718096;
-}
-
-.continue-button {
-  margin-top: 14px;
-
-  display: inline-flex;
-  align-self: flex-start;
-
-  padding: 10px 16px;
-
-  border-radius: 10px;
-
-  background: #1f3761;
-  color: white;
-
-  text-decoration: none;
-
-  font-weight: 700;
-}
-
 
 /* =========================
    LIVROS
@@ -489,11 +384,6 @@ section {
   color: #26824a;
 }
 
-.book-badge.premium {
-  background: #fff0cb;
-  color: #8a5b00;
-}
-
 .book-badge.locked {
   background: rgba(20, 29, 43, 0.82);
   color: white;
@@ -550,17 +440,12 @@ section {
   cursor: pointer;
 }
 
-.premium-button {
-  background: #d6a13c;
-}
-
 .book-button.disabled {
   background: #e5e9ee;
   color: #8e99a7;
 
   cursor: not-allowed;
 }
-
 
 /* =========================
    GÊNEROS
@@ -604,170 +489,89 @@ section {
   color: #768498;
 }
 
-
 /* =========================
-   PREMIUM
+   BANNER DA LOJA
 ========================= */
 
-.premium-section {
-  border-radius: 26px;
-
-  padding: 30px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #16233f,
-      #293e68
-    );
-
-  color: white;
-
-  display: grid;
-  grid-template-columns: 70px 1fr;
-
-  gap: 20px;
-
-  align-items: start;
-
-  box-shadow: 0 18px 45px rgba(23, 40, 70, 0.17);
-}
-
-.premium-icon {
-  width: 64px;
-  height: 64px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 18px;
-
-  background: rgba(255, 255, 255, 0.12);
-
-  font-size: 2rem;
-}
-
-.premium-content > span {
-  font-size: 0.7rem;
-
-  letter-spacing: 1px;
-
-  opacity: 0.8;
-}
-
-.premium-content h2 {
-  font-size: 1.9rem;
-
-  margin: 7px 0 10px;
-}
-
-.premium-content p {
-  line-height: 1.6;
-
-  max-width: 640px;
-
-  opacity: 0.86;
-}
-
-.premium-price {
-  margin-top: 16px;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 3px;
-}
-
-.premium-price span {
-  font-size: 0.85rem;
-
-  opacity: 0.72;
-}
-
-.premium-main-button {
-  margin-top: 18px;
-
-  padding: 11px 16px;
-
-  border: none;
-  border-radius: 10px;
-
-  background: #f3c45d;
-
-  color: #36260a;
-
-  font-weight: 700;
-
-  cursor: pointer;
-}
-
-
-/* =========================
-   LOJA
-========================= */
-
-.shop-preview {
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 16px;
-}
-
-.product-card {
+.shop-banner-link {
+  display: block;
+  overflow: hidden;
+  border-radius: 20px;
   background: white;
-
-  border-radius: 18px;
-
-  padding: 16px;
-
   box-shadow: 0 10px 26px rgba(33, 53, 85, 0.07);
 }
 
-.product-image-placeholder {
-  height: 150px;
+.shop-banner-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  object-fit: cover;
+}
 
-  display: flex;
+.shop-button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  border-radius: 14px;
-
-  background: #edf3fb;
-
-  font-size: 3rem;
-
-  margin-bottom: 13px;
-}
-
-.product-card h3 {
-  margin-bottom: 4px;
-}
-
-.product-card p {
-  font-size: 0.83rem;
-  color: #788697;
-}
-
-.product-card button {
-  width: 100%;
-
   margin-top: 14px;
-
-  padding: 10px;
-
-  border: none;
+  padding: 11px 18px;
   border-radius: 10px;
-
   background: #1f3761;
   color: white;
-
+  text-decoration: none;
   font-weight: 700;
+}
 
+/* =========================
+   PRÉVIA DE ENCÉLADO
+========================= */
+
+.enceladus-preview {
+  display: grid;
+  grid-template-columns: minmax(130px, 190px) minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 12px 30px rgba(33, 53, 85, 0.08);
+}
+
+.enceladus-preview > img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.enceladus-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.enceladus-info h3 {
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+
+.preview-button {
+  margin-top: 4px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 10px;
+  background: #1f3761;
+  color: white;
+  font: inherit;
+  font-weight: 700;
   cursor: pointer;
 }
 
+.preview-button:hover,
+.shop-button:hover {
+  filter: brightness(1.08);
+}
 
 /* =========================
    MENU INFERIOR
@@ -787,7 +591,7 @@ section {
   min-height: 74px;
 
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 
   background: rgba(255, 255, 255, 0.97);
 
@@ -835,20 +639,17 @@ section {
   height: 20px;
 }
 
-
 /* =========================
    TABLET
 ========================= */
 
 @media (max-width: 900px) {
 
-  .genre-grid,
-  .shop-preview {
+  .genre-grid {
     grid-template-columns: 1fr 1fr;
   }
 
 }
-
 
 /* =========================
    CELULAR
@@ -916,27 +717,6 @@ section {
     font-size: 1.3rem;
   }
 
-  .continue-card {
-    grid-template-columns: 105px 1fr;
-
-    gap: 14px;
-
-    padding: 13px;
-  }
-
-  .continue-card img {
-    width: 105px;
-    height: 145px;
-  }
-
-  .continue-info h3 {
-    font-size: 1.05rem;
-  }
-
-  .continue-info p {
-    font-size: 0.8rem;
-  }
-
   .book-card {
     min-width: 155px;
     width: 155px;
@@ -950,8 +730,7 @@ section {
     padding: 11px;
   }
 
-  .genre-grid,
-  .shop-preview {
+  .genre-grid {
     grid-template-columns: 1fr;
   }
 
@@ -959,20 +738,27 @@ section {
     min-height: 110px;
   }
 
-  .premium-section {
-    grid-template-columns: 1fr;
-
-    padding: 22px;
-
-    border-radius: 22px;
+  .enceladus-preview {
+    grid-template-columns: 105px minmax(0, 1fr);
+    gap: 14px;
+    padding: 13px;
   }
 
-  .premium-content h2 {
-    font-size: 1.55rem;
+  .enceladus-preview > img {
+    height: 150px;
   }
 
-  .product-image-placeholder {
-    height: 125px;
+  .enceladus-info h3 {
+    font-size: 1rem;
+  }
+
+  .preview-button {
+    padding: 9px 12px;
+    font-size: 0.85rem;
+  }
+
+  .shop-banner-image {
+    aspect-ratio: 4 / 3;
   }
 
   .bottom-nav {
@@ -984,7 +770,6 @@ section {
   }
 
 }
-
 
 /* =========================
    CELULAR PEQUENO
@@ -1010,8 +795,7 @@ section {
    BUSCA
 ================================================== */
 
-#searchOverlay,
-#premiumOverlay {
+#searchOverlay {
   position: fixed;
   inset: 0;
 
@@ -1027,7 +811,6 @@ section {
 
   z-index: 5000;
 }
-
 
 .search-modal {
   width: 100%;
@@ -1048,7 +831,6 @@ section {
     rgba(0,0,0,0.25);
 }
 
-
 .search-top {
   display: flex;
   justify-content: space-between;
@@ -1057,11 +839,9 @@ section {
   margin-bottom: 18px;
 }
 
-
 .search-top h2 {
   font-size: 1.4rem;
 }
-
 
 #closeSearch,
 .modal-close {
@@ -1076,7 +856,6 @@ section {
 
   cursor: pointer;
 }
-
 
 #bookSearchInput {
   width: 100%;
@@ -1095,7 +874,6 @@ section {
   margin-bottom: 16px;
 }
 
-
 #bookSearchInput:focus {
   border-color: #587cad;
 
@@ -1103,7 +881,6 @@ section {
     0 0 0 3px
     rgba(78, 120, 173, 0.12);
 }
-
 
 .search-result-item {
   width: 100%;
@@ -1128,7 +905,6 @@ section {
   cursor: pointer;
 }
 
-
 .search-result-item div {
   display: flex;
   flex-direction: column;
@@ -1136,11 +912,9 @@ section {
   gap: 4px;
 }
 
-
 .search-result-item strong {
   font-size: 0.95rem;
 }
-
 
 .search-result-item span {
   font-size: 0.75rem;
@@ -1148,11 +922,9 @@ section {
   color: #7a8798;
 }
 
-
 .search-result-item small {
   color: #65758c;
 }
-
 
 .no-results {
   padding: 30px 10px;
@@ -1162,143 +934,9 @@ section {
   color: #7d8999;
 }
 
-
-
 /* ==================================================
    MODAL PREMIUM
 ================================================== */
-
-.premium-modal {
-  width: 100%;
-  max-width: 470px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #15233f,
-      #263b65
-    );
-
-  color: white;
-
-  border-radius: 26px;
-
-  padding: 30px;
-
-  position: relative;
-
-  text-align: center;
-
-  box-shadow:
-    0 35px 80px
-    rgba(0,0,0,0.35);
-}
-
-
-.premium-modal .modal-close {
-  position: absolute;
-
-  top: 15px;
-  right: 15px;
-
-  background:
-    rgba(255,255,255,0.12);
-
-  color: white;
-}
-
-
-.premium-modal-icon {
-  width: 70px;
-  height: 70px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin:
-    5px auto 15px;
-
-  border-radius: 20px;
-
-  background:
-    rgba(255,255,255,0.1);
-
-  font-size: 2.3rem;
-}
-
-
-.premium-small {
-  font-size: 0.7rem;
-
-  letter-spacing: 1.2px;
-
-  opacity: 0.7;
-}
-
-
-.premium-modal h2 {
-  font-size: 1.8rem;
-
-  margin: 8px 0 14px;
-}
-
-
-.premium-modal p {
-  line-height: 1.6;
-
-  opacity: 0.86;
-
-  font-size: 0.93rem;
-}
-
-
-.premium-features {
-  margin: 22px 0;
-
-  display: grid;
-
-  gap: 10px;
-
-  text-align: left;
-}
-
-
-.premium-features div {
-  padding: 10px 12px;
-
-  border-radius: 10px;
-
-  background:
-    rgba(255,255,255,0.07);
-}
-
-
-.premium-subscribe-button {
-  width: 100%;
-
-  padding: 13px;
-
-  border: none;
-  border-radius: 12px;
-
-  background: #f2c65c;
-
-  color: #342407;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  margin-bottom: 13px;
-}
-
-
-.premium-modal small {
-  opacity: 0.6;
-}
-
-
 
 /* ==================================================
    MENSAGENS DO APP
@@ -1340,7 +978,6 @@ section {
     rgba(0,0,0,0.22);
 }
 
-
 .app-message.show {
   opacity: 1;
 
@@ -1348,41 +985,23 @@ section {
     translate(-50%, 0);
 }
 
-
-
 /* ==================================================
    MOBILE
 ================================================== */
 
 @media (max-width: 600px) {
 
-  #searchOverlay,
-  #premiumOverlay {
+  #searchOverlay {
     align-items: flex-end;
 
     padding: 0;
   }
 
-
-  .search-modal,
-  .premium-modal {
-    max-width: none;
-
-    border-radius:
-      25px 25px 0 0;
-
-    padding:
-      24px 18px 28px;
-  }
-
-
   .search-modal {
     max-height: 88vh;
   }
 
-
-  .premium-modal h2 {
-    font-size: 1.55rem;
-  }
-
 }
+
+
+
