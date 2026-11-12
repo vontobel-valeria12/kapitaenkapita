@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Die Stimme über dem See
+  </title>
+
+
+  <!-- CSS DO LIVRO -->
+
+  <link
+    rel="stylesheet"
+    href="flipbuch2.css"
+  >
+
+
+  <!-- BIBLIOTECA PAGE FLIP -->
+
+  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+</head>
+
+
+<body data-book-id="die-stimme-ueber-dem-see">
+
+
+  <!-- =====================================================
+       FUNDO
+  ====================================================== -->
+
+  <div class="stars"></div>
+
+
+  <!-- =====================================================
+       ÁREA PRINCIPAL
+  ====================================================== -->
+
+  <main class="book-area">
+
+
+    <!-- ===================================================
+         CABEÇALHO
+    ==================================================== -->
+
+    <header class="book-header">
+
+      <h1>
+        Die Stimme über dem See
+      </h1>
+
+      <p>
+        Eine düstere Horrorgeschichte
+      </p>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTAINER DO LIVRO
+    ====================================================== -->
+
+    <div class="book-container">
+
+
+      <!-- =================================================
+           FLIPBOOK
+      ================================================== -->
+
+      <div id="flipbook">
+
+
+        <!-- =================================================
+             PÁGINA 1
+             CAPA
+        ================================================== -->
+
+        <div class="page cover">
+
+          <img
+            src="img/file_00000000ce6882108fe38512d3910f28.png"
+            alt="Die Stimme über dem See"
+          >
+
+        </div>
+
+
+        <!-- =================================================
+             PÁGINA 2
+             PRÉVIA DO LIVRO
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <img
+              src="img/file_00000000ce6882108fe38512d3910f28.png"
+              alt="Buchcover: Die Stimme über dem See"
+              class="page-image"
+            >
+
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <h2>
+                  Die Stimme über dem See
+                </h2>
+
+                <p>
+                  Eine Gruppe junger Menschen verbringt ihre Ferien
+                  gemeinsam beim Camping an einer Lagune.
+                </p>
+
+                <p>
+                  Doch an diesem Ort kam eine junge Frau auf gewaltsame
+                  Weise ums Leben.
+                </p>
+
+                <p>
+                  Nun scheint sie zurückgekehrt zu sein.
+                </p>
+
+                <p>
+                  Ihre Stimme ist wieder über dem See zu hören.
+                  Sie will Rache.
+                </p>
+
+                <p>
+                  Was geschah damals an der Lagune?
+                  Und was erwartet die jungen Menschen dort?
+                </p>
+
+                <p>
+                  <em>Die Stimme über dem See</em> erzählt von einem
+                  Feriencamp, einem gewaltsamen Tod und einer jungen Frau,
+                  die zurückkehrt, um sich zu rächen.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+      <!-- FIM DO FLIPBOOK -->
+
+
+    </div>
+    <!-- FIM DO CONTAINER DO LIVRO -->
+
+
+    <!-- ===================================================
+         CONTROLES DO LIVRO
+    ==================================================== -->
+
+    <nav
+      class="book-controls"
+      aria-label="Buchsteuerung"
+    >
+
+
+      <!-- ÁUDIO -->
+
+      <button
+        id="audioButton"
+        type="button"
+      >
+        🔊 Vorlesen
+      </button>
+
+
+      <!-- MODO DE LEITURA -->
+
+      <button
+        id="readingModeButton"
+        type="button"
+      >
+        📖 Lesemodus
+      </button>
+
+
+      <!-- VISÃO GERAL DAS PÁGINAS -->
+
+      <button
+        id="pageMenuButton"
+        type="button"
+        aria-label="Seitenübersicht öffnen"
+      >
+        ▦ Seiten
+      </button>
+
+
+      <!-- NAVEGAÇÃO -->
+
+      <div class="page-navigation">
+
+        <button
+          id="prevPage"
+          class="page-nav-btn"
+          type="button"
+          aria-label="Vorherige Seite"
+        >
+          ‹
+        </button>
+
+
+        <span id="pageCounter">
+          Seite 1
+        </span>
+
+
+        <button
+          id="nextPage"
+          class="page-nav-btn"
+          type="button"
+          aria-label="Nächste Seite"
+        >
+          ›
+        </button>
+
+      </div>
+
+
+      <!-- TELA CHEIA -->
+
+      <button
+        id="fullscreenButton"
+        type="button"
+      >
+        ⛶ Vollbild
+      </button>
+
+
+      <!-- SAIR DO LIVRO -->
+
+      <button
+        id="exitBookButton"
+        type="button"
+        data-exit-url="index.html"
+      >
+        ✕ Beenden
+      </button>
+
+
+    </nav>
+
+
+  </main>
+
+
+  <!-- =====================================================
+       PAINEL LATERAL DE PÁGINAS
+  ====================================================== -->
+
+  <div
+    id="pageMenu"
+    class="page-sidebar"
+    aria-hidden="true"
+  >
+
+    <aside
+      class="page-sidebar-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pageMenuTitle"
+    >
+
+      <div class="page-sidebar-header">
+
+        <h2 id="pageMenuTitle">
+          Seiten
+        </h2>
+
+
+        <button
+          id="closePageMenu"
+          class="close-page-menu"
+          type="button"
+          aria-label="Seitenübersicht schliessen"
+        >
+          ✕
+        </button>
+
+      </div>
+
+
+      <!-- O JAVASCRIPT CRIA AS MINIATURAS AQUI -->
+
+      <div
+        id="pageList"
+        class="page-thumbnail-list"
+      >
+      </div>
+
+
+    </aside>
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT GERAL DO LIVRO
+  ====================================================== -->
+
+  <script src="book.js"></script>
+
+
+</body>
+
+</html>
