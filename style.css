@@ -290,6 +290,54 @@ body {
    CABEÇALHO DAS SEÇÕES
 ========================= */
 
+/* =========================
+   ANÚNCIOS
+========================= */
+
+.ad-section {
+  margin: 28px 0;
+}
+
+.ad-section-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #7b8796;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.ad-slot {
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border: 1px dashed #cfd7e1;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #929dab;
+  text-align: center;
+}
+
+.ad-slot span {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .ad-section {
+    margin: 22px 0;
+  }
+
+  .ad-slot {
+    min-height: 120px;
+    border-radius: 15px;
+  }
+}
+
 section {
   margin-top: 38px;
 }
