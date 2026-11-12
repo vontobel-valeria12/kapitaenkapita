@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>13 Jahre verheiratet mit einer Hexe</title>
+
+  <link rel="stylesheet" href="flipbuch2.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+</head>
+
+<body data-book-id="13-jahre-verheiratet-mit-einer-hexe">
+
+  <div class="stars"></div>
+
+  <main class="book-area">
+
+    <header class="book-header">
+      <h1>13 Jahre verheiratet mit einer Hexe</h1>
+      <p>Eine romantische Komödie</p>
+    </header>
+
+    <div class="book-container">
+
+      <div id="flipbook">
+
+        <!-- PÁGINA 1: CAPA -->
+        <div class="page cover">
+          <img
+            src="img/13 Jahre verheiratet mit einer Hexe.png"
+            alt="13 Jahre verheiratet mit einer Hexe"
+          >
+        </div>
+
+        <!-- PÁGINA 2: PRÉVIA -->
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <img
+              src="img/Zauber, Zeitung und ein verwirrter Ehemann.png"
+              alt="Die Hexe, ihr Mann und die Nachricht über das Ritual am Freitag, dem 13."
+              class="page-image"
+            >
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <h2> título aqui</h2>
+
+                <p>
+                 was
+                </p>
+
+                <p>
+                  Clara
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <nav class="book-controls" aria-label="Buchsteuerung">
+
+      <button id="audioButton" type="button">
+        🔊 Vorlesen
+      </button>
+
+      <button id="readingModeButton" type="button">
+        📖 Lesemodus
+      </button>
+
+      <button
+        id="pageMenuButton"
+        type="button"
+        aria-label="Seitenübersicht öffnen"
+      >
+        ▦ Seiten
+      </button>
+
+      <div class="page-navigation">
+
+        <button
+          id="prevPage"
+          class="page-nav-btn"
+          type="button"
+          aria-label="Vorherige Seite"
+        >
+          ‹
+        </button>
+
+        <span id="pageCounter">
+          Seite 1
+        </span>
+
+        <button
+          id="nextPage"
+          class="page-nav-btn"
+          type="button"
+          aria-label="Nächste Seite"
+        >
+          ›
+        </button>
+
+      </div>
+
+      <button id="fullscreenButton" type="button">
+        ⛶ Vollbild
+      </button>
+
+      <button
+        id="exitBookButton"
+        type="button"
+        data-exit-url="index.html"
+      >
+        ✕ Beenden
+      </button>
+
+    </nav>
+
+  </main>
+
+  <div
+    id="pageMenu"
+    class="page-sidebar"
+    aria-hidden="true"
+  >
+
+    <aside
+      class="page-sidebar-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pageMenuTitle"
+    >
+
+      <div class="page-sidebar-header">
+
+        <h2 id="pageMenuTitle">
+          Seiten
+        </h2>
+
+        <button
+          id="closePageMenu"
+          class="close-page-menu"
+          type="button"
+          aria-label="Seitenübersicht schließen"
+        >
+          ✕
+        </button>
+
+      </div>
+
+      <div
+        id="pageList"
+        class="page-thumbnail-list"
+      ></div>
+
+    </aside>
+
+  </div>
+
+  <script src="book.js"></script>
+
+</body>
+
+</html>
