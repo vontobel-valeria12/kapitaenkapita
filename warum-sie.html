@@ -1,1 +1,286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>
+    Warum sie!
+  </title>
 
+
+  <!-- CSS DO LIVRO -->
+
+  <link
+    rel="stylesheet"
+    href="flipbuch2.css"
+  >
+
+
+  <!-- BIBLIOTECA PAGE FLIP -->
+
+  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+</head>
+<body data-book-id="warum sie">
+  <div class="stars"></div>
+  <main class="book-area">
+
+    <!-- ===================================================
+         CABEÇALHO ==================================================== -->
+
+    <header class="book-header">
+      <h1>
+       Warum sie 
+      </h1>
+
+      <p>
+       Ich möchte euch meine Geschichte erzählen. 
+      </p>
+    </header>
+    <!-- =====================================================
+         CONTAINER DO LIVRO
+    ====================================================== -->
+
+    <div class="book-container">
+
+      <!-- =================================================
+           FLIPBOOK
+      ================================================== -->
+
+      <div id="flipbook">
+
+        <!-- =================================================
+             PÁGINA 1
+             CAPA
+        ================================================== -->
+
+        <div class="page cover">
+
+          <img
+            src="img/#"
+            alt="warum sie"
+          >
+        </div>
+
+        <!-- =================================================
+             PÁGINA 2
+             PRÉVIA DO LIVRO
+        ================================================== -->
+
+        <div class="page reading-page">
+
+          <div class="page-content">
+
+            <img
+              src="img/#"
+              alt="Buchcover: previa do livro"
+              class="page-image"
+            >
+
+
+            <div class="reading-text">
+
+              <div class="book-text auto-scroll">
+
+                <h2>              
+        Zufall oder Schicksal? 🔮
+Karma oder freier Wille? 
+                </h2>
+<p>Es gibt Ereignisse, die unerklärlich erscheinen.</p>
+<p>Das Schicksal bedient sich oft des Zufalls, damit das Leben seinen Lauf nimmt.</p>
+<p>Und genau das macht alles so interessant und schön.</p>
+<p>Wenn die Götter existieren, haben sie ganz sicher Freude an einem guten Drama.</p>
+<p>Während Klotho beginnt, den Lebensfaden jedes Menschen zu spinnen, frage ich mich: Wählt sie aus, wer es verdient, geboren zu werden, oder welche Art von Leben jeder bekommt? </p>
+<p> Ich glaube, sie legt den meisten Menschen gern einige Entbehrungen auf ihren Lebensweg.</p>
+<p>Lachesis misst den Faden, den Klotho gesponnen hat. Was uns widerfährt, hängt nicht immer allein von uns ab, aber auch unsere Entscheidungen spielen eine Rolle.</p>
+<p>Damit möchte ich nun meine Geschichte erzählen.</p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+      <!-- FIM DO FLIPBOOK -->
+
+
+    </div>
+    <!-- FIM DO CONTAINER DO LIVRO -->
+
+
+    <!-- ===================================================
+         CONTROLES DO LIVRO
+    ==================================================== -->
+
+    <nav
+      class="book-controls"
+      aria-label="Buchsteuerung"
+    >
+
+
+      <!-- ÁUDIO -->
+
+      <button
+        id="audioButton"
+        type="button"
+      >
+        🔊 Vorlesen
+      </button>
+
+
+      <!-- MODO DE LEITURA -->
+
+      <button
+        id="readingModeButton"
+        type="button"
+      >
+        📖 Lesemodus
+      </button>
+
+
+      <!-- VISÃO GERAL DAS PÁGINAS -->
+
+      <button
+        id="pageMenuButton"
+        type="button"
+        aria-label="Seitenübersicht öffnen"
+      >
+        ▦ Seiten
+      </button>
+
+
+      <!-- =================================================
+           NAVEGAÇÃO
+      ================================================== -->
+
+      <div class="page-navigation">
+
+        <button
+          id="prevPage"
+          class="page-nav-btn"
+          type="button"
+          aria-label="Vorherige Seite"
+        >
+          ‹
+        </button>
+
+
+        <span id="pageCounter">
+          Seite 1
+        </span>
+
+
+        <button
+          id="nextPage"
+          class="page-nav-btn"
+          type="button"
+          aria-label="Nächste Seite"
+        >
+          ›
+        </button>
+
+      </div>
+
+
+      <!-- TELA CHEIA -->
+
+      <button
+        id="fullscreenButton"
+        type="button"
+      >
+        ⛶ Vollbild
+      </button>
+
+
+      <!-- SAIR DO LIVRO -->
+
+      <button
+        id="exitBookButton"
+        type="button"
+        data-exit-url="index.html"
+      >
+        ✕ Beenden
+      </button>
+
+
+    </nav>
+
+
+  </main>
+
+
+  <!-- =====================================================
+       PAINEL LATERAL DE PÁGINAS
+  ====================================================== -->
+
+  <div
+    id="pageMenu"
+    class="page-sidebar"
+    aria-hidden="true"
+  >
+
+
+    <aside
+      class="page-sidebar-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pageMenuTitle"
+    >
+
+
+      <!-- CABEÇALHO DO PAINEL -->
+
+      <div class="page-sidebar-header">
+
+        <h2 id="pageMenuTitle">
+          Seiten
+        </h2>
+
+
+        <button
+          id="closePageMenu"
+          class="close-page-menu"
+          type="button"
+          aria-label="Seitenübersicht schließen"
+        >
+          ✕
+        </button>
+
+      </div>
+
+
+      <!--
+        O JAVASCRIPT VAI CRIAR
+        AS MINIATURAS DAS PÁGINAS AQUI
+      -->
+
+      <div
+        id="pageList"
+        class="page-thumbnail-list"
+      >
+      </div>
+
+
+    </aside>
+
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT GERAL DO LIVRO
+  ====================================================== -->
+
+  <script src="book.js"></script>
+
+
+</body>
+
+</html>
